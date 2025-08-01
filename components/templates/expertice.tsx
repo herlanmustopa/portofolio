@@ -1,18 +1,21 @@
 "use client";
 import { albert_Sans, thesignature, unbounded } from "@/utils/font";
 import Page from "../organisms/pages";
-import Button from "../molecules/button";
-import Image from "next/image";
-import Personal from "../../public/img/react.png";
-import Exclusive from "../../public/img/react.png";
-import Best from "../../public/img/react.png";
-import Discover from "../../public/img/react.png";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2, 
+    },
+  },
+};
+
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
@@ -20,34 +23,48 @@ const itemVariants = {
   },
 };
 
-interface IAnimatedCard {
-  src: any;
-  alt: string;
+interface IExpertice{
+  icon: string;
   title: string;
-  description: string;
+  skills: any;
 }
 
-function AnimatedCard({ src, alt, title, description }: IAnimatedCard) {
+
+function TechCard({ icon, title, skills }: IExpertice) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
 
   return (
     <motion.div
       ref={ref}
-      className="flex flex-col items-center justify-center text-center"
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={itemVariants}
+      whileHover={{
+        y: -8,
+        boxShadow:
+          "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)",
+      }}
+      transition={{ type: "spring", stiffness: 300 }}
+      className="tech-card text-left"
     >
-      <Image src={src} alt={alt} width={100} height={100} />
-      <div
-        className={`uppercase text-green font-bold mt-4 ${albert_Sans.className}`}
+      <div className="text-4xl mb-4">{icon}</div>
+      <h3
+        className={`text-xl font-bold text-black mb-3 ${unbounded.className}`}
       >
         {title}
-      </div>
-      <p className={`text-md text-black mt-2 ${albert_Sans.className}`}>
-        {description}
-      </p>
+      </h3>
+      <ul className="space-y-2">
+        {skills.map((skill: string, index: any) => (
+          <li
+            key={index}
+            className={`text-md text-black/80 flex items-start ${albert_Sans.className}`}
+          >
+            <span className="text-green mr-2 mt-1">✓</span>
+            <span>{skill}</span>
+          </li>
+        ))}
+      </ul>
     </motion.div>
   );
 }
@@ -57,75 +74,64 @@ export default function Expertice() {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <div className="bg-primary py-20" id="expertice">
-      <Page className="flex flex-col items-center justify-center h-full text-white">
+    <div className="bg-primary py-24" id="expertice">
+      <Page className="flex flex-col items-center justify-center h-full">
         <motion.div
           ref={ref}
-          className="my-10 text-center"
+          className="w-full text-center"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          variants={{
-            visible: { transition: { staggerChildren: 0.3 } }, // Memberi jeda antar animasi anak
-          }}
+          variants={containerVariants}
         >
           <motion.h1
-            className={`text-7xl group:items-start text-green mb-4 ${thesignature.className}`}
+            className={`text-7xl text-green mb-4 ${thesignature.className}`}
             variants={itemVariants}
           >
-            Beyond Premium
+            My Expertise
           </motion.h1>
           <motion.h2
-            className={`text-2xl md:text-3xl lg:text-4xl font-semibold mb-12 text-black ${unbounded.className}`}
+            className={`text-2xl md:text-3xl lg:text-4xl font-semibold mb-16 text-black ${unbounded.className}`}
             variants={itemVariants}
           >
-            Elevate Your Experience
+            Crafting Digital Solutions
           </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-12">
-            <AnimatedCard
-              src={Personal}
-              alt="Personal Itineraries"
-              title="PERSONAL ITINERARIES"
-              description="Our premium travel services offer tailor-made itineraries crafted to suit your unique preferences and desires."
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <TechCard
+              icon="🚀"
+              title="Frontend Development"
+              skills={[
+                "ReactJS, Next.js, VueJS, NuxtJS",
+                "TypeScript & JavaScript (ES6+)",
+                "State Management (Redux, Context)",
+                "Styling with Tailwind, MUI, Vuetify",
+                "SEO (SSR & SSG)",
+              ]}
             />
-            <AnimatedCard
-              src={Exclusive}
-              alt="Exclusive Experiences"
-              title="EXCLUSIVE EXPERIENCES"
-              description="From private charters to behind-the-scenes tours, we offer access to unique opportunities that are designed to elevate your trip to the next level."
+            <TechCard
+              icon="⚙️"
+              title="Backend & FullStack"
+              skills={[
+                "Node.js & Java Springboot",
+                "RESTful API & GraphQL Design",
+                "Microservice Architecture",
+                "API Integration (Axios, Fetch, SWR)",
+                "CMS Sitecore & Thymeleaf",
+              ]}
             />
-            <AnimatedCard
-              src={Best}
-              alt="Best Facilities"
-              title="Best Facilities"
-              description="Experience the epitome of luxury with our premium facility, designed to provide an unparalleled level of comfort and indulgence."
+            <TechCard
+              icon="🛠️"
+              title="DevOps & Tooling"
+              skills={[
+                "CI/CD with Jenkins, GitHub Actions",
+                "Containerization (Docker)",
+                "Testing with Cypress",
+                "Agile (Scrum, Kanban) & SDLC (Jira)",
+                "Git, GitHub, Bitbucket, GitLab",
+              ]}
             />
           </div>
         </motion.div>
-
-        {/* Anda dapat menerapkan pola yang sama untuk bagian "Discover" di bawah ini jika diinginkan */}
-        <div className="my-10 text-center">
-          <div className="flex lg:flex-row flex-col items-center justify-center gap-8">
-            <Image src={Discover} alt="Discover" width={302} height={302} />
-            <div className="lg:w-3/5 md:w-3/5 sm:w-full xs:w-full items-start lg:text-start text-center">
-              <p
-                className={`uppercase text-green-80 font-bold text-2xl ${unbounded.className}`}
-              >
-                Discover Tailored Experiences
-              </p>
-              <h1
-                className={`text-md text-black mt-2 ${albert_Sans.className}`}
-              >
-                Create your own journey, personalized to suit your preferences
-                and interests, ensuring a once-in-a-lifetime adventure awaits.
-              </h1>
-              <Button
-                text="Customize Your Trip"
-                className={`${albert_Sans.className} my-10 bg-green-80 hover:bg-gold font-bold lg:w-64 xs:w-full`}
-              />
-            </div>
-          </div>
-        </div>
       </Page>
     </div>
   );
