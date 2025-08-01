@@ -48,9 +48,6 @@ const config: Config = {
       transparent: "transparent",
       "green-80": "#004040",
     },
-    // fontSize: {
-    //   "font-s-84": "84px",
-    // },
   },
   plugins: [],
 };
