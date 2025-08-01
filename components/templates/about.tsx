@@ -4,7 +4,7 @@ import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { albert_Sans, thesignature, unbounded } from "@/utils/font";
 import Page from "../organisms/pages";
-import profilePlaceholder from "../../public/img/react.png";
+import profilePlaceholder from "../../public/img/ID_CARD.png";
 
 // Varian animasi untuk container
 const containerVariants = {

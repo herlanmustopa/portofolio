@@ -1,0 +1,50 @@
+"use client";
+import React from "react";
+import Page from "./pages";
+import { albert_Sans } from "@/utils/font";
+
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer className="bg-navy text-white">
+      <Page>
+        <div className="py-12 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+          <div className="mb-4 md:mb-0">
+            <h3 className={`text-lg font-bold ${albert_Sans.className}`}>
+              Herlan Mustopa
+            </h3>
+            <p className="text-white/70">Sr. Frontend & FullStack Developer</p>
+          </div>
+          <div className="flex space-x-6 mb-4 md:mb-0">
+            <a
+              href="https://www.linkedin.com/in/herlan-mustopa-15b537159/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gold transition-colors"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/herlanmustopa"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gold transition-colors"
+            >
+              GitHub
+            </a>
+            <a
+              href="mailto:herlan.mustopa01@gmail.com"
+              className="hover:text-gold transition-colors"
+            >
+              Email
+            </a>
+          </div>
+          <p className="text-sm text-white/50">
+            &copy; {currentYear} Herlan Mustopa. All Rights Reserved.
+          </p>
+        </div>
+      </Page>
+    </footer>
+  );
+}
