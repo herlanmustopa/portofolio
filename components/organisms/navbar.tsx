@@ -134,7 +134,7 @@ const Navbar = () => {
                       {activeSection === item.id && (
                         <motion.div
                           className="absolute bottom-[-2px] left-0 right-0 h-[2px] bg-gold"
-                          layoutId="active-underline" 
+                          layoutId="active-underline"
                           transition={{
                             type: "spring",
                             stiffness: 380,
@@ -145,18 +145,43 @@ const Navbar = () => {
                     </li>
                   ))}
                   <li>
-                    <div className="animated-border-container group">
-                      <div
-                        className={cn(
-                          "animated-border-content",
-                          scroll
-                            ? "bg-primary text-green group-hover:bg-primary/90"
-                            : "bg-navy text-white group-hover:bg-navy/90"
-                        )}
-                      >
-                        Need Contact Me?
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 17,
+                      }}
+                      className="rounded-full"
+                    >
+                      <div className="relative rounded-full p-[2px] overflow-hidden group cursor-pointer">
+                        <motion.div
+                          className="absolute inset-0 w-full h-full -z-10"
+                          style={{
+                            background:
+                              "conic-gradient(from 180deg at 50% 50%, #001f3f, #004040, #0b7373, #001f3f)",
+                          }}
+                          animate={{ rotate: 360 }}
+                          transition={{
+                            duration: 4,
+                            repeat: Infinity,
+                            ease: "linear",
+                          }}
+                        />
+                        <div
+                          className={cn(
+                            "relative z-10 h-full w-full rounded-full px-4 py-2 font-bold transition-colors duration-300",
+                            // 2. Ubah efek hover menjadi transparan
+                            scroll
+                              ? "bg-primary text-green "
+                              : "bg-navy text-white "
+                          )}
+                        >
+                          Need Contact Me?
+                        </div>
                       </div>
-                    </div>
+                    </motion.div>
                   </li>
                 </ul>
               </div>
