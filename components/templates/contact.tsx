@@ -30,7 +30,7 @@ export default function Contact() {
           <h2
             className={`text-2xl md:text-3xl lg:text-4xl font-semibold text-black ${unbounded.className}`}
           >
-            Let's Build Something Great
+            Lets Build Something Great
           </h2>
         </motion.div>
 
