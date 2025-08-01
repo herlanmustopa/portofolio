@@ -13,20 +13,15 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleScrollTo = (targetId: string) => {
-    const target = document.getElementById(targetId);
-    if (target) {
-      window.removeEventListener("scroll", handleScrollEffect);
-      setActiveSection(targetId);
-      window.scrollTo({
-        behavior: "smooth",
-        top: target.offsetTop - 100,
-      });
-      setTimeout(() => {
-        window.addEventListener("scroll", handleScrollEffect);
-      }, 1000);
-    }
-  };
+ const handleScrollTo = (targetId: string) => {
+   const target = document.getElementById(targetId);
+   if (target) {
+     window.scrollTo({
+       behavior: "smooth",
+       top: target.offsetTop - 100,
+     });
+   }
+ };
 
   const handleScrollEffect = () => {
     const isScrolled = window.scrollY > 20;
@@ -72,7 +67,6 @@ const Navbar = () => {
           scroll ? "bg-primary" : "bg-transparent"
         )}
       >
-       
         <div
           className={cn(
             "absolute top-0 left-0 w-full h-full -z-10 bg-primary transition-opacity duration-300 ease-in-out",
@@ -121,25 +115,36 @@ const Navbar = () => {
               >
                 <ul className="mt-4 flex flex-col p-4 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:p-0 rtl:space-x-reverse items-center">
                   {menuItems.map((item) => (
-                    <li key={item.id}>
+                    <li key={item.id} className="relative">
                       <button
                         onClick={() => handleScrollTo(item.id)}
                         className={cn(
-                          "block rounded px-3 py-2 transition-colors duration-300",
-                          scroll
-                            ? "lg:text-green sm:text-green font-bold"
-                            : "text-white",
+                          "block rounded px-3 py-2 transition-colors duration-300 font-bold",
+                          scroll ? "text-green" : "text-white",
+                          // Sedikit redupkan item yang tidak aktif
                           activeSection === item.id
-                            ? "underline decoration-gold decoration-2 underline-offset-4"
-                            : "hover:underline decoration-gold decoration-2 underline-offset-4"
+                            ? "opacity-100"
+                            : "opacity-70 hover:opacity-100"
                         )}
                       >
                         {item.label}
                       </button>
+
+                      {/* Ini adalah elemen yang akan bergerak */}
+                      {activeSection === item.id && (
+                        <motion.div
+                          className="absolute bottom-[-2px] left-0 right-0 h-[2px] bg-gold"
+                          layoutId="active-underline" 
+                          transition={{
+                            type: "spring",
+                            stiffness: 380,
+                            damping: 30,
+                          }}
+                        />
+                      )}
                     </li>
                   ))}
                   <li>
-                    {/* 👇 PERUBAHAN UTAMA ADA DI SINI 👇 */}
                     <div className="animated-border-container group">
                       <div
                         className={cn(

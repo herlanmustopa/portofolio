@@ -21,7 +21,10 @@ const textVariant = {
 
 export default function Banner() {
   return (
-    <section id="banner" className="relative h-screen bg-[#001f3f]">
+    <section
+      id="banner"
+      className="relative h-screen animated-gradient-background"
+    >
       <Page className="relative z-10 flex flex-col items-start justify-center h-full text-white">
         {/* Motion container to stagger children */}
         <motion.div
