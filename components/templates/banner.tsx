@@ -1,11 +1,10 @@
 "use client";
 import React from "react";
 import { motion } from "motion/react";
-import { albert_Sans, unbounded } from "@/utils/font";
+import { albert_Sans, unbounded, thesignature } from "@/utils/font";
 import Button from "../molecules/button";
 import Page from "../organisms/pages";
 
-// Variants for staggering child animations
 const containerVariants = {
   hidden: {},
   visible: {
@@ -15,7 +14,6 @@ const containerVariants = {
   },
 };
 
-// Simple fade-up variant
 const textVariant = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
@@ -33,7 +31,7 @@ export default function Banner() {
           animate="visible"
         >
           <motion.h1
-            className={`text-9xl text-gold mb-4 ${unbounded.className}`}
+            className={`text-9xl text-gold mb-4 ${thesignature.className}`}
             variants={textVariant}
           >
             Herlan Mustopa

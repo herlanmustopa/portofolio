@@ -1,14 +1,21 @@
+import { motion } from "framer-motion";
+
 interface IButton {
   text: string;
   onClick?: () => void;
   className?: string;
 }
 
-export default function Button({text, onClick, className}: IButton) {
+export default function Button({ text, onClick, className }: IButton) {
   return (
-    <button
-      className={` ${className} border border-teal-700  lg:text-white sm:text-green  px-4 py-2 rounded-full hover:bg-teal-700 hover:text-white transition`}>
+    <motion.button
+      whileHover={{ scale: 1.05 }} // Tombol akan membesar 5% saat di-hover
+      whileTap={{ scale: 0.95 }} // Tombol akan sedikit mengecil saat ditekan
+      transition={{ type: "spring", stiffness: 400, damping: 17 }} // Membuat animasi terasa lebih natural
+      className={` ${className} border border-gold text-white px-4 py-2 rounded-full hover:bg-gold hover:text-navy`}
+      onClick={onClick}
+    >
       {text}
-    </button>
+    </motion.button>
   );
 }
