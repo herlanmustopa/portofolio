@@ -27,7 +27,6 @@ export default function CarouselBanner({slides}: BannerProps) {
   const handleData = () => {
     const datas: any[] = [];
     slides.map((item: Slide, i: number) => {
-      console.log(item);
       datas.push({
         id: item.id,
         image: item?.src,

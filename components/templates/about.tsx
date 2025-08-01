@@ -76,18 +76,18 @@ export default function About() {
               variants={textVariant}
               className={`text-2xl font-semibold text-black mb-6 ${unbounded.className}`}
             >
-              From Code to Cloud: A Developer's Journey
+              From Code to Cloud: A Developers Journey
             </motion.h2>
             <motion.p
               variants={textVariant}
               className={`text-black/80 mb-8 leading-relaxed ${albert_Sans.className}`}
             >
-              With over 8 years in the digital trenches, I've evolved from a
+              With over 8 years in the digital trenches, Ive evolved from a
               dedicated Frontend Developer to a versatile FullStack
               professional, passionate about building complex web applications
               that are both functional and delightful. My journey across
               companies like Maybank and Telkom has equipped me with a robust
-              skill set in React, Next.js, and Java Springboot. I don't just
+              skill set in React, Next.js, and Java Springboot. I dont just
               write code; I architect seamless user experiences, optimize for
               performance and SEO, and thrive in agile environments.
             </motion.p>
@@ -126,7 +126,7 @@ export default function About() {
                 whileTap={{ scale: 0.95 }}
                 className="font-bold text-black hover:text-green transition-colors"
               >
-                Let's Talk →
+                Lets Talk →
               </motion.button>
             </motion.div>
           </div>
