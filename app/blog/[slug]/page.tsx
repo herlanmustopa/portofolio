@@ -1,4 +1,4 @@
-import { client } from "../../../sanity/client";
+import { client } from "../../../sanity/client"; // Sesuaikan path jika perlu
 import imageUrlBuilder from "@sanity/image-url";
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
@@ -26,15 +26,19 @@ function urlFor(source: any) {
   return builder.image(source);
 }
 
-// Komponen Halaman
-export default async function ArticlePage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const article = await getArticle(params?.slug);
+// 👇 1. DEFINISIKAN TIPE UNTUK PROPS HALAMAN ANDA 👇
+type Props = {
+  params: {
+    slug: string;
+  };
+};
+
+// 2. TERAPKAN TIPE 'Props' PADA KOMPONEN
+export default async function ArticlePage({ params }: Props) {
+  const article = await getArticle(params.slug);
 
   if (!article) {
+    // Anda bisa menggantinya dengan komponen notFound() dari Next.js
     return <div>Artikel tidak ditemukan.</div>;
   }
 
@@ -42,6 +46,7 @@ export default async function ArticlePage({
     <main className="bg-primary pt-32 pb-16">
       <Page>
         <article className="max-w-3xl mx-auto">
+          {/* Judul dan Info Artikel */}
           <header className="mb-8 text-center">
             <h1
               className={`text-3xl md:text-5xl font-bold text-black mb-4 ${unbounded.className}`}
