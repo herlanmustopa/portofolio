@@ -19,13 +19,10 @@ const containerVariants: Variants = {
 
 const textVariant: Variants = {
   hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-    },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } 
   },
 };
 
@@ -166,12 +163,15 @@ export default function Banner() {
           </motion.p>
 
           {/* CTA Button with enhanced animation */}
-          <motion.div
+          <motion.div 
             variants={floatingVariant}
             animate={["visible", "float"]}
             className="pt-4"
           >
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               <Button
                 text="Take me there"
                 onClick={handleCTAClick}
@@ -190,10 +190,10 @@ export default function Banner() {
             <motion.div
               className="flex flex-col items-center text-white/60 cursor-pointer"
               onClick={handleCTAClick}
-              whileHover={{
+              whileHover={{ 
                 scale: 1.1,
                 color: "#FFD700",
-                transition: { duration: 0.2 },
+                transition: { duration: 0.2 }
               }}
               animate={{
                 y: [0, 10, 0],
@@ -216,11 +216,7 @@ export default function Banner() {
                 <motion.div
                   className="w-1 h-3 bg-current rounded-full mt-2"
                   animate={{ y: [0, 12, 0] }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                 />
               </motion.div>
             </motion.div>

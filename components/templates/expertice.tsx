@@ -183,7 +183,7 @@ export default function Expertise() {
   ];
 
   return (
-    <section className="bg-primary py-24" id="custome-trip">
+    <section className="bg-primary py-24" id="expertice">
       <Page>
         <motion.div
           ref={ref}
