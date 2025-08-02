@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 
 interface INavbar {
-  onContactClick: any;
+  onContactClick?: any;
 }
 const Navbar = ({ onContactClick }: INavbar) => {
   const [scroll, setScroll] = useState(false);
