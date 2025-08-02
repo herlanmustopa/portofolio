@@ -6,7 +6,9 @@ interface IPage {
 }
 export default function Page({children, className}: IPage) {
   return (
-    <div className={`xs:mx-20 md:mx-24 sm:mx-20 lg:mx-32  ${className}`}>
+    <div
+      className={`mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-12 ${className}`}
+    >
       {children}
     </div>
   );

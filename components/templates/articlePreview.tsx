@@ -35,7 +35,7 @@ const articles = [
 
 export default function ArticlePreview() {
   return (
-    <section className="bg-primary py-24" id="article">
+    <section className="bg-gold py-24" id="article">
       <Page>
         <motion.div
           className="w-full text-center mb-16"

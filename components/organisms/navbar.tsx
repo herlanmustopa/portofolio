@@ -4,7 +4,11 @@ import { cn } from "@/utils/classMerge";
 import Page from "./pages";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Navbar = () => {
+
+interface INavbar {
+  onContactClick: any;
+}
+const Navbar = ({ onContactClick }: INavbar) => {
   const [scroll, setScroll] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("banner");
@@ -13,15 +17,15 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
- const handleScrollTo = (targetId: string) => {
-   const target = document.getElementById(targetId);
-   if (target) {
-     window.scrollTo({
-       behavior: "smooth",
-       top: target.offsetTop - 100,
-     });
-   }
- };
+  const handleScrollTo = (targetId: string) => {
+    const target = document.getElementById(targetId);
+    if (target) {
+      window.scrollTo({
+        behavior: "smooth",
+        top: target.offsetTop - 100,
+      });
+    }
+  };
 
   const handleScrollEffect = () => {
     const isScrolled = window.scrollY > 20;
@@ -130,7 +134,6 @@ const Navbar = () => {
                         {item.label}
                       </button>
 
-                      {/* Ini adalah elemen yang akan bergerak */}
                       {activeSection === item.id && (
                         <motion.div
                           className="absolute bottom-[-2px] left-0 right-0 h-[2px] bg-gold"
@@ -154,6 +157,7 @@ const Navbar = () => {
                         damping: 17,
                       }}
                       className="rounded-full"
+                      onClick={onContactClick}
                     >
                       <div className="relative rounded-full p-[2px] overflow-hidden group cursor-pointer">
                         <motion.div
