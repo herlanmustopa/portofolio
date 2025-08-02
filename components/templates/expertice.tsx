@@ -1,20 +1,22 @@
 "use client";
 import { albert_Sans, thesignature, unbounded } from "@/utils/font";
 import Page from "../organisms/pages";
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView, type Variants } from "framer-motion";
 import { useRef } from "react";
 
-const containerVariants = {
-  hidden: {},
+// 👇 PROPER TYPING UNTUK VARIANTS 👇
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
   visible: {
+    opacity: 1,
     transition: {
-      staggerChildren: 0.2, 
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
     },
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
@@ -23,59 +25,166 @@ const itemVariants = {
   },
 };
 
-interface IExpertice{
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+    },
+  },
+};
+
+const skillItemVariants: Variants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.4, ease: "easeOut" },
+  },
+};
+
+// 👇 FIXED INTERFACE TYPING 👇
+interface IExpertise {
   icon: string;
   title: string;
-  skills: any;
+  skills: string[]; // More specific typing
+  gradient?: string;
 }
 
-
-function TechCard({ icon, title, skills }: IExpertice) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
+function TechCard({
+  icon,
+  title,
+  skills,
+  gradient = "from-green/5 to-green/10",
+}: IExpertise) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
     <motion.div
       ref={ref}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
-      variants={itemVariants}
+      variants={cardVariants}
       whileHover={{
-        y: -8,
+        y: -12,
+        scale: 1.02,
         boxShadow:
-          "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)",
+          "0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 10px 20px -8px rgba(0, 0, 0, 0.1)",
+        transition: { duration: 0.3, ease: "easeOut" },
       }}
-      transition={{ type: "spring", stiffness: 300 }}
-      className="tech-card text-left"
+      whileTap={{ scale: 0.98 }}
+      className={`relative overflow-hidden rounded-xl p-6 bg-gradient-to-br ${gradient} border border-green/10 backdrop-blur-sm hover:border-green/20 transition-all duration-300 group cursor-pointer`}
     >
-      <div className="text-4xl mb-4">{icon}</div>
-      <h3
-        className={`text-xl font-bold text-black mb-3 ${unbounded.className}`}
+      {/* Background Pattern */}
+      <div className="absolute top-0 right-0 w-32 h-32 opacity-5 transform rotate-12 translate-x-8 -translate-y-8">
+        <div className="text-8xl">{icon}</div>
+      </div>
+
+      {/* Icon with animation */}
+      <motion.div
+        className="text-5xl mb-4 relative z-10"
+        whileHover={{
+          scale: 1.2,
+          rotate: [0, -10, 10, 0],
+          transition: { duration: 0.5 },
+        }}
+      >
+        {icon}
+      </motion.div>
+
+      {/* Title */}
+      <motion.h3
+        className={`text-xl lg:text-2xl font-bold text-black mb-4 relative z-10 ${unbounded.className}`}
+        variants={itemVariants}
       >
         {title}
-      </h3>
-      <ul className="space-y-2">
-        {skills.map((skill: string, index: any) => (
-          <li
+      </motion.h3>
+
+      {/* Skills List */}
+      <motion.ul
+        className="space-y-3 relative z-10"
+        variants={containerVariants}
+      >
+        {skills.map((skill: string, index: number) => (
+          <motion.li
             key={index}
-            className={`text-md text-black/80 flex items-start ${albert_Sans.className}`}
+            variants={skillItemVariants}
+            custom={index}
+            className={`text-sm lg:text-base text-black/80 flex items-start group-hover:text-black transition-colors duration-300 ${albert_Sans.className}`}
+            whileHover={{ x: 5, transition: { duration: 0.2 } }}
           >
-            <span className="text-green mr-2 mt-1">✓</span>
-            <span>{skill}</span>
-          </li>
+            <motion.span
+              className="text-green mr-3 mt-1 font-bold"
+              whileHover={{ scale: 1.2 }}
+              transition={{ duration: 0.2 }}
+            >
+              ✓
+            </motion.span>
+            <span className="leading-relaxed">{skill}</span>
+          </motion.li>
         ))}
-      </ul>
+      </motion.ul>
+
+      {/* Hover Effect Border */}
+      <motion.div
+        className="absolute inset-0 border-2 border-green/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        initial={{ scale: 0.8 }}
+        whileHover={{ scale: 1 }}
+      />
     </motion.div>
   );
 }
 
-export default function Expertice() {
-  const ref = useRef(null);
+export default function Expertise() {
+  const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
+  const expertiseData: IExpertise[] = [
+    {
+      icon: "🚀",
+      title: "Frontend Development",
+      skills: [
+        "ReactJS, Next.js, VueJS, NuxtJS",
+        "TypeScript & JavaScript (ES6+)",
+        "State Management (Redux, Context)",
+        "Styling with Tailwind, MUI, Vuetify",
+        "SEO Optimization (SSR & SSG)",
+      ],
+      gradient: "from-blue-50 to-blue-100",
+    },
+    {
+      icon: "⚙️",
+      title: "Backend & FullStack",
+      skills: [
+        "Node.js & Java Springboot",
+        "RESTful API & GraphQL Design",
+        "Microservice Architecture",
+        "API Integration (Axios, Fetch, SWR)",
+        "CMS Sitecore & Thymeleaf",
+      ],
+      gradient: "from-green-50 to-green-100",
+    },
+    {
+      icon: "🛠️",
+      title: "DevOps & Tooling",
+      skills: [
+        "CI/CD with Jenkins, GitHub Actions",
+        "Containerization (Docker)",
+        "Testing with Cypress",
+        "Agile (Scrum, Kanban) & SDLC (Jira)",
+        "Git, GitHub, Bitbucket, GitLab",
+      ],
+      gradient: "from-purple-50 to-purple-100",
+    },
+  ];
+
   return (
-    <div className="bg-primary py-24" id="expertice">
-      <Page className="flex flex-col items-center justify-center h-full">
+    <section className="bg-primary py-24" id="custome-trip">
+      <Page>
         <motion.div
           ref={ref}
           className="w-full text-center"
@@ -83,8 +192,9 @@ export default function Expertice() {
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
         >
+          {/* Header */}
           <motion.h1
-            className={`text-7xl text-green mb-4 ${thesignature.className}`}
+            className={`text-6xl lg:text-7xl text-green mb-4 ${thesignature.className}`}
             variants={itemVariants}
           >
             My Expertise
@@ -96,43 +206,44 @@ export default function Expertice() {
             Crafting Digital Solutions
           </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <TechCard
-              icon="🚀"
-              title="Frontend Development"
-              skills={[
-                "ReactJS, Next.js, VueJS, NuxtJS",
-                "TypeScript & JavaScript (ES6+)",
-                "State Management (Redux, Context)",
-                "Styling with Tailwind, MUI, Vuetify",
-                "SEO (SSR & SSG)",
-              ]}
-            />
-            <TechCard
-              icon="⚙️"
-              title="Backend & FullStack"
-              skills={[
-                "Node.js & Java Springboot",
-                "RESTful API & GraphQL Design",
-                "Microservice Architecture",
-                "API Integration (Axios, Fetch, SWR)",
-                "CMS Sitecore & Thymeleaf",
-              ]}
-            />
-            <TechCard
-              icon="🛠️"
-              title="DevOps & Tooling"
-              skills={[
-                "CI/CD with Jenkins, GitHub Actions",
-                "Containerization (Docker)",
-                "Testing with Cypress",
-                "Agile (Scrum, Kanban) & SDLC (Jira)",
-                "Git, GitHub, Bitbucket, GitLab",
-              ]}
-            />
-          </div>
+          {/* Cards Grid */}
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
+            variants={containerVariants}
+          >
+            {expertiseData.map((expertise, index) => (
+              <motion.div key={index} custom={index} variants={itemVariants}>
+                <TechCard {...expertise} />
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Bottom CTA */}
+          <motion.div className="mt-16 text-center" variants={itemVariants}>
+            <motion.p
+              className={`text-black/70 mb-6 max-w-2xl mx-auto ${albert_Sans.className}`}
+              variants={itemVariants}
+            >
+              Ready to bring your vision to life? Let&apos;s discuss how these
+              skills can solve your challenges.
+            </motion.p>
+            <motion.button
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
+              }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                const contactSection = document.getElementById("contact");
+                contactSection?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className={`bg-green text-white font-bold py-3 px-8 rounded-full transition-all duration-300 hover:bg-green-600 ${albert_Sans.className}`}
+            >
+              Let&apos;s Work Together
+            </motion.button>
+          </motion.div>
         </motion.div>
       </Page>
-    </div>
+    </section>
   );
 }

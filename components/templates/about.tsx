@@ -1,13 +1,13 @@
 "use client";
 import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, type Variants } from "framer-motion";
 import Image from "next/image";
 import { albert_Sans, thesignature, unbounded } from "@/utils/font";
 import Page from "../organisms/pages";
 import profilePlaceholder from "../../public/img/ID_CARD.png";
 
 // Varian animasi untuk container
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -15,17 +15,25 @@ const containerVariants = {
   },
 };
 
-const textVariant = {
+const textVariant: Variants = {
   hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
 };
 
-const imageVariant = {
+// 👇 PERBAIKAN UTAMA: Format ease yang benar 👇
+const imageVariant: Variants = {
   hidden: { opacity: 0, scale: 0.9 },
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    transition: {
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number], // Type assertion untuk cubic bezier
+    },
   },
 };
 
@@ -58,8 +66,8 @@ export default function About() {
               <Image
                 src={profilePlaceholder}
                 alt="Herlan Mustopa"
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: "cover" }}
                 className="scale-110"
               />
             </div>
@@ -97,14 +105,21 @@ export default function About() {
               className="grid grid-cols-2 gap-4 mb-8"
             >
               {coreValues.map((value, index) => (
-                <div key={index} className="flex items-center">
+                <motion.div
+                  key={index}
+                  className="flex items-center"
+                  whileHover={{
+                    scale: 1.05,
+                    transition: { duration: 0.2 },
+                  }}
+                >
                   <span className="text-2xl mr-3">{value.icon}</span>
                   <span
                     className={`font-semibold text-black ${albert_Sans.className}`}
                   >
                     {value.text}
                   </span>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
 
@@ -115,16 +130,24 @@ export default function About() {
               <motion.a
                 // href="/CV Herlan 2025-EN.pdf" // Pastikan CV ada di folder /public
                 download
-                whileHover={{ scale: 1.05 }}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
+                  transition: { duration: 0.2 },
+                }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-green text-white font-bold py-3 px-8 rounded-full transition-colors hover:bg-green-80 shadow-lg"
+                className={`bg-green text-white font-bold py-3 px-8 rounded-full transition-colors hover:bg-green-600 shadow-lg ${albert_Sans.className}`}
               >
                 Download CV
               </motion.a>
               <motion.button
-                whileHover={{ scale: 1.05 }}
+                whileHover={{
+                  scale: 1.05,
+                  x: 5,
+                  transition: { duration: 0.2 },
+                }}
                 whileTap={{ scale: 0.95 }}
-                className="font-bold text-black hover:text-green transition-colors"
+                className={`font-bold text-black hover:text-green transition-colors ${albert_Sans.className}`}
               >
                 Lets Talk →
               </motion.button>

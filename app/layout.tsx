@@ -3,6 +3,7 @@ import "./globals.css";
 import "./globalicons.css";
 import Navbar from "@/components/organisms/navbar";
 // import Footer from "@/components/organisms/footer";
+import { Analytics } from "@vercel/analytics/next";
 import { albert_Sans } from "@/utils/font";
 
 export const metadata: Metadata = {
@@ -39,6 +40,7 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-oss-gray h-[calc(100vh-78px)] overflow-auto text-base-black">
+        <Analytics/>
         <Navbar />
         <main itemScope>{children}</main>
         {/* <Footer /> */}
