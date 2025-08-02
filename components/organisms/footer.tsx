@@ -9,14 +9,14 @@ export default function Footer() {
   return (
     <footer className="bg-navy text-white">
       <Page>
-        <div className="py-12 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-          <div className="mb-4 md:mb-0">
+        <div className="py-12 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-8">
+          <div className="flex-shrink-0">
             <h3 className={`text-lg font-bold ${albert_Sans.className}`}>
               Herlan Mustopa
             </h3>
             <p className="text-white/70">Sr. Frontend & FullStack Developer</p>
           </div>
-          <div className="flex space-x-6 mb-4 md:mb-0">
+          <div className="flex space-x-6">
             <a
               href="https://www.linkedin.com/in/herlan-mustopa-15b537159/"
               target="_blank"
