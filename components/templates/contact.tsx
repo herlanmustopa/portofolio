@@ -221,12 +221,12 @@ export default function Contact() {
               variants={itemVariants}
             >
               <motion.a
-                href="mailto:your.email@example.com"
+                href="mailto:herlan.mustopa@outlook.com"
                 className={`text-green hover:text-green-600 font-semibold transition-colors ${albert_Sans.className}`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                📧 your.email@example.com
+                📧 herlan.mustopa@outlook.com
               </motion.a>
               <motion.a
                 href="tel:+1234567890"
@@ -234,7 +234,7 @@ export default function Contact() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                📞 +62 123 456 7890
+                📞 +62 81 1901 1099
               </motion.a>
             </motion.div>
           </motion.div>
