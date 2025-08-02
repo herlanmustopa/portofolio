@@ -18,7 +18,7 @@ export default function Footer() {
           </div>
           <div className="flex space-x-6">
             <a
-              href="https://www.linkedin.com/in/herlan-mustopa-15b537159/"
+              href="https://www.linkedin.com/in/herlanmustopa/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-gold transition-colors"
