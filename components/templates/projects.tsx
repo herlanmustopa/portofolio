@@ -11,6 +11,7 @@ import placeholder1 from "../../public/img/react.png"; // Ganti dengan gambar pr
 import placeholder2 from "../../public/img/react.png"; // Ganti dengan gambar proyek Anda
 import placeholder3 from "../../public/img/react.png"; // Ganti dengan gambar proyek Anda
 import placeholder4 from "../../public/img/react.png"; // Ganti dengan gambar proyek Anda
+import placeholder5 from "../../public/img/react.png"; // Ganti dengan gambar proyek Anda
 
 // Varian animasi untuk container
 const containerVariants = {
@@ -151,10 +152,27 @@ export default function Projects() {
         "Cypress",
         "Rest-API",
       ],
-      liveLink: "https://oss.go.id",
+      liveLink: "https://ujicoba-stg.oss.go.id/",
     },
     {
       image: placeholder2,
+      title: "OSS - Sistem Perizinan Berusaha Terintegrasi Secara Elektronic",
+      category: "Enterprise Web App | Sr. Frontend",
+      description:
+        "Spearheaded the complete rewrite of the national Online Single Submission portal, migrating from JavaScript to TypeScript and implementing modern, SEO-friendly features with Next.js (SSR/SSG).",
+      stack: [
+        "Next.js",
+        "TypeScript",
+        "ReactJS",
+        "Tailwind CSS",
+        "Cypress",
+        "Rest-API",
+      ],
+      liveLink: "https://oss.go.id",
+      align: "right",
+    },
+    {
+      image: placeholder3,
       title: "Maybank M2U & BackOffice",
       category: "Fintech Web App | FullStack Developer",
       description:
@@ -167,10 +185,9 @@ export default function Projects() {
         "Redux-Saga",
         "Azure DevOps",
       ],
-      align: "right",
     },
     {
-      image: placeholder3,
+      image: placeholder4,
       title: "SATUNADI SimKlinik & DTP",
       category: "Healthcare Portal | Frontend",
       description:
@@ -183,15 +200,16 @@ export default function Projects() {
         "Axios",
       ],
       liveLink: "http://satunadi-staging.dokternet.id/login",
+      align: "right",
     },
     {
-      image: placeholder4,
+      image: placeholder5,
       title: "BRIAPI & Dynamic Channel",
       category: "API Management & Enterprise Solutions",
       description:
         "Engineered UI applications for BRI's API management (MIS-BRIAPI) and internal Dynamic Channel using ReactJS and MUI, integrating with both REST and GraphQL APIs for versatile data flow.",
       stack: ["ReactJS", "MUI", "Redux", "GraphQL", "Axios", "Git"],
-      align: "right",
+      // align: "right",
     },
   ];
 
