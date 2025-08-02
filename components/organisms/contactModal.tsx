@@ -111,7 +111,7 @@ export default function ContactModal({ isOpen, onClose }: iModal) {
               value="herlan.mustopa01@gmail.com"
               href="#"
             />
-             <ContactLink
+            <ContactLink
               icon="💬"
               title="WhatsApp"
               value="+62 811-9011-099"
@@ -121,14 +121,14 @@ export default function ContactModal({ isOpen, onClose }: iModal) {
               icon="🔗"
               title="LinkedIn"
               value="Herlan Mustopa"
-              href="https://www.linkedin.com/in/herlan-mustopa-15b537159/"
+              href="https://www.linkedin.com/in/herlanmustopa/"
             />
-            <ContactLink
+            {/* <ContactLink
               icon="📂"
               title="Download CV"
               value="Lihat detail pengalaman saya"
               href="/CV Herlan 2025-EN.pdf"
-            />
+            /> */}
           </div>
         </motion.div>
       </motion.div>
