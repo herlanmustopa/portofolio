@@ -98,7 +98,7 @@ export default function ContactModal({ isOpen, onClose }: iModal) {
           <h2
             className={`text-3xl font-bold text-white mb-2 ${unbounded.className}`}
           >
-            Let's Connect
+            Lets Connect
           </h2>
           <p className={`text-white/70 mb-8 ${albert_Sans.className}`}>
             Pilih cara yang paling nyaman bagi Anda untuk menghubungi saya.
