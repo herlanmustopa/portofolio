@@ -11,7 +11,7 @@ import placeholder1 from "../../public/img/ossv2.png";
 import placeholder2 from "../../public/img/ossv1.png";
 import placeholder3 from "../../public/img/Maybank.png";
 import placeholder4 from "../../public/img/satunadi.png";
-import placeholder5 from "../../public/img/react.png";
+import placeholder5 from "../../public/img/Birapi.png";
 
 // 👇 PROPER TYPING UNTUK VARIANTS 👇
 const containerVariants: Variants = {
