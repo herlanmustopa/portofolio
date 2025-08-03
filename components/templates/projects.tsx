@@ -7,10 +7,10 @@ import Page from "../organisms/pages";
 import { cn } from "@/utils/classMerge";
 
 // Placeholder images - Anda bisa menggantinya nanti
-import placeholder1 from "../../public/img/react.png";
-import placeholder2 from "../../public/img/react.png";
-import placeholder3 from "../../public/img/react.png";
-import placeholder4 from "../../public/img/react.png";
+import placeholder1 from "../../public/img/ossv2.png";
+import placeholder2 from "../../public/img/ossv1.png";
+import placeholder3 from "../../public/img/Maybank.png";
+import placeholder4 from "../../public/img/satunadi.png";
 import placeholder5 from "../../public/img/react.png";
 
 // 👇 PROPER TYPING UNTUK VARIANTS 👇

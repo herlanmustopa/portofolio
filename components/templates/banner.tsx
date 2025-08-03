@@ -158,7 +158,7 @@ export default function Banner() {
             Imagine a digital journey where each moment feels tailor-made:
             seamless, inviting, and unexpectedly delightful. From the first
             glance to the final click, I sculpt experiences that immerse you in
-            clarity and elegance—transforming every visit into a memorable
+            clarity and elegance, transforming every visit into a memorable
             adventure, crafted just for you.
           </motion.p>
 
