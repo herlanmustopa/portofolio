@@ -5,6 +5,7 @@ import Navbar from "@/components/organisms/navbar";
 // import Footer from "@/components/organisms/footer";
 import { Analytics } from "@vercel/analytics/next";
 import { albert_Sans } from "@/utils/font";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: "Herlan Mustopa",
@@ -41,6 +42,7 @@ export default function RootLayout({
       </head>
       <body className="bg-oss-gray h-[calc(100vh-78px)] overflow-auto text-base-black">
         <Analytics/>
+        <SpeedInsights/>
         <Navbar />
         <main itemScope>{children}</main>
         {/* <Footer /> */}

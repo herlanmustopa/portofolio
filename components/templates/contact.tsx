@@ -229,7 +229,7 @@ export default function Contact() {
                 📧 herlan.mustopa@outlook.com
               </motion.a>
               <motion.a
-                href="tel:+1234567890"
+                href="tel:628119011099"
                 className={`text-green hover:text-green-600 font-semibold transition-colors ${albert_Sans.className}`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
