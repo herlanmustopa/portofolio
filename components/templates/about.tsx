@@ -132,8 +132,9 @@ export default function About({ onContactClick }: AboutProps) {
               className="flex items-center gap-4"
             >
               <motion.a
-                // href="/CV Herlan 2025-EN.pdf" // Pastikan CV ada di folder /public
-                download
+                href="https://drive.google.com/file/d/1tO_sVJOjwjCiJLApWWD_ggPWZuwhL6RX/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{
                   scale: 1.05,
                   boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
