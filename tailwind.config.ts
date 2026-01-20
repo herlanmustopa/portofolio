@@ -6,6 +6,7 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     screens: {
       xs: "425px",
@@ -40,13 +41,21 @@ const config: Config = {
     },
     colors: {
       primary: "#FAF9F5",
+      "primary-dark": "#0f172a",
       navy: "#001F3F",
       green: "#0b7373",
+      "green-light": "#14b8a6",
       white: "#ffffff",
       black: "#000000",
       gold: "#D6B66B",
       transparent: "transparent",
       "green-80": "#004040",
+      // Dark mode specific
+      "dark-bg": "#0f172a",
+      "dark-card": "#1e293b",
+      "dark-border": "#334155",
+      "dark-text": "#e2e8f0",
+      "dark-text-muted": "#94a3b8",
     },
   },
   plugins: [],

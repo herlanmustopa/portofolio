@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import { albert_Sans, thesignature, unbounded } from "@/utils/font";
 import Page from "../organisms/pages";
+import Toast from "../molecules/Toast";
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -46,6 +47,23 @@ export default function Contact() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [toast, setToast] = useState<{
+    message: string;
+    type: "success" | "error";
+    isVisible: boolean;
+  }>({
+    message: "",
+    type: "success",
+    isVisible: false,
+  });
+
+  const showToast = (message: string, type: "success" | "error") => {
+    setToast({ message, type, isVisible: true });
+  };
+
+  const hideToast = () => {
+    setToast((prev) => ({ ...prev, isVisible: false }));
+  };
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -61,25 +79,33 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
     try {
-      console.log("Form submitted:", formData);
-      // Add your form submission logic here
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-      // Reset form after successful submission
-      setFormData({ fullName: "", email: "", message: "" });
-      alert("Message sent successfully!");
+      const data = await response.json();
+
+      if (response.ok) {
+        setFormData({ fullName: "", email: "", message: "" });
+        showToast("Message sent successfully! I'll get back to you soon.", "success");
+      } else {
+        showToast(data.error || "Failed to send message. Please try again.", "error");
+      }
     } catch (error) {
       console.error("Error submitting form:", error);
-      alert("Failed to send message. Please try again.");
+      showToast("Failed to send message. Please try again.", "error");
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <section className="bg-white py-24" id="contact">
+    <section className="bg-white dark:bg-dark-card py-24 transition-colors duration-300" id="contact">
       <Page>
         <motion.div
           className="w-full text-center mb-16"
@@ -89,13 +115,13 @@ export default function Contact() {
           variants={containerVariants}
         >
           <motion.h1
-            className={`text-7xl text-green mb-4 ${thesignature.className}`}
+            className={`text-7xl text-green dark:text-green-light mb-4 ${thesignature.className}`}
             variants={itemVariants}
           >
             Get In Touch
           </motion.h1>
           <motion.h2
-            className={`text-2xl md:text-3xl lg:text-4xl font-semibold text-black ${unbounded.className}`}
+            className={`text-2xl md:text-3xl lg:text-4xl font-semibold text-black dark:text-dark-text ${unbounded.className}`}
             variants={itemVariants}
           >
             Let&apos;s Build Something Great
@@ -127,7 +153,7 @@ export default function Contact() {
                 value={formData.fullName}
                 onChange={handleInputChange}
                 required
-                className={`block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-2 focus:ring-green focus:border-green border-gray-300 rounded-md transition-all duration-300 ${albert_Sans.className}`}
+                className={`block w-full shadow-sm py-3 px-4 placeholder-gray-500 dark:placeholder-gray-400 bg-white dark:bg-dark-bg text-black dark:text-dark-text focus:ring-2 focus:ring-green dark:focus:ring-green-light focus:border-green dark:focus:border-green-light border border-gray-300 dark:border-dark-border rounded-md transition-all duration-300 ${albert_Sans.className}`}
               />
             </motion.div>
 
@@ -148,7 +174,7 @@ export default function Contact() {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className={`block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-2 focus:ring-green focus:border-green border-gray-300 rounded-md transition-all duration-300 ${albert_Sans.className}`}
+                className={`block w-full shadow-sm py-3 px-4 placeholder-gray-500 dark:placeholder-gray-400 bg-white dark:bg-dark-bg text-black dark:text-dark-text focus:ring-2 focus:ring-green dark:focus:ring-green-light focus:border-green dark:focus:border-green-light border border-gray-300 dark:border-dark-border rounded-md transition-all duration-300 ${albert_Sans.className}`}
               />
             </motion.div>
 
@@ -168,7 +194,7 @@ export default function Contact() {
                 value={formData.message}
                 onChange={handleInputChange}
                 required
-                className={`block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-2 focus:ring-green focus:border-green border-gray-300 rounded-md transition-all duration-300 resize-none ${albert_Sans.className}`}
+                className={`block w-full shadow-sm py-3 px-4 placeholder-gray-500 dark:placeholder-gray-400 bg-white dark:bg-dark-bg text-black dark:text-dark-text focus:ring-2 focus:ring-green dark:focus:ring-green-light focus:border-green dark:focus:border-green-light border border-gray-300 dark:border-dark-border rounded-md transition-all duration-300 resize-none ${albert_Sans.className}`}
               />
             </motion.div>
 
@@ -180,7 +206,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full inline-flex justify-center items-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-full text-white bg-green hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed ${albert_Sans.className}`}
+                className={`w-full inline-flex justify-center items-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-full text-white bg-green dark:bg-green-light hover:bg-green-80 dark:hover:bg-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green dark:focus:ring-green-light transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed ${albert_Sans.className}`}
               >
                 {isSubmitting ? (
                   <>
@@ -211,7 +237,7 @@ export default function Contact() {
             variants={containerVariants}
           >
             <motion.p
-              className={`text-gray-600 mb-4 ${albert_Sans.className}`}
+              className={`text-gray-600 dark:text-dark-text-muted mb-4 ${albert_Sans.className}`}
               variants={itemVariants}
             >
               Or reach out directly:
@@ -222,7 +248,7 @@ export default function Contact() {
             >
               <motion.a
                 href="mailto:herlan.mustopa@outlook.com"
-                className={`text-green hover:text-green-600 font-semibold transition-colors ${albert_Sans.className}`}
+                className={`text-green dark:text-green-light hover:text-green-80 dark:hover:text-green font-semibold transition-colors ${albert_Sans.className}`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -230,7 +256,7 @@ export default function Contact() {
               </motion.a>
               <motion.a
                 href="tel:628119011099"
-                className={`text-green hover:text-green-600 font-semibold transition-colors ${albert_Sans.className}`}
+                className={`text-green dark:text-green-light hover:text-green-80 dark:hover:text-green font-semibold transition-colors ${albert_Sans.className}`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -240,6 +266,14 @@ export default function Contact() {
           </motion.div>
         </motion.div>
       </Page>
+
+      {/* Toast Notification */}
+      <Toast
+        message={toast.message}
+        type={toast.type}
+        isVisible={toast.isVisible}
+        onClose={hideToast}
+      />
     </section>
   );
 }

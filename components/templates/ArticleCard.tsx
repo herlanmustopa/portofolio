@@ -20,7 +20,7 @@ export default function ArticleCard({ article, index }: ArticleCardProps) {
   return (
     <motion.a
       href={`/blog/${article.slug}`}
-      className="block bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+      className="block bg-white dark:bg-dark-card rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
@@ -40,11 +40,11 @@ export default function ArticleCard({ article, index }: ArticleCardProps) {
       )}
       <div className="p-6">
         <h3
-          className={`text-xl font-bold text-black mb-3 ${unbounded.className}`}
+          className={`text-xl font-bold text-black dark:text-dark-text mb-3 ${unbounded.className}`}
         >
           {article.title}
         </h3>
-        <p className={`text-black/70 text-sm ${albert_Sans.className}`}>
+        <p className={`text-black/70 dark:text-dark-text-muted text-sm ${albert_Sans.className}`}>
           {article.description || "Klik untuk membaca lebih lanjut..."}
         </p>
       </div>

@@ -4,26 +4,20 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-start-rgb: 250, 249, 245;
+  --background-end-rgb: 250, 249, 245;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.dark {
+  --foreground-rgb: 226, 232, 240;
+  --background-start-rgb: 15, 23, 42;
+  --background-end-rgb: 15, 23, 42;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: rgb(var(--background-start-rgb));
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 @layer utilities {
@@ -32,7 +26,7 @@ body {
   }
 }
 
-
+/* Banner gradient - same for light/dark as it's a hero section */
 .animated-gradient-background {
   background: linear-gradient(45deg, #0155a9, #001F3F, #004040);
   background-size: 400% 400%;
@@ -51,9 +45,37 @@ body {
   }
 }
 
-
 @layer components {
   .tech-card {
-    @apply bg-white rounded-lg p-6 h-full transition-shadow duration-300;
+    @apply bg-white dark:bg-dark-card rounded-lg p-6 h-full transition-all duration-300;
   }
+}
+
+/* Dark mode transitions */
+* {
+  transition-property: background-color, border-color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0b7373;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #004040;
 }

@@ -72,9 +72,9 @@ const TimelineItem = ({ data, index }: ITimeline) => {
             viewport={{ once: true, amount: 0.5 }}
             variants={contentVariants}
           >
-            <h3 className="font-bold text-lg text-black">{data.title}</h3>
-            <p className="font-semibold text-green mb-1">{data.company}</p>
-            <p className="text-sm text-black/70">{data.description}</p>
+            <h3 className="font-bold text-lg text-black dark:text-dark-text">{data.title}</h3>
+            <p className="font-semibold text-green dark:text-green-light mb-1">{data.company}</p>
+            <p className="text-sm text-black/70 dark:text-dark-text-muted">{data.description}</p>
           </motion.div>
         )}
       </div>
@@ -87,18 +87,18 @@ const TimelineItem = ({ data, index }: ITimeline) => {
           viewport={{ once: true, amount: 0.5 }}
           variants={dotVariants}
         >
-          <div className="bg-primary p-2 rounded-full shadow-md">
+          <div className="bg-primary dark:bg-dark-card p-2 rounded-full shadow-md">
             <div
               className={cn(
                 "w-4 h-4 rounded-full",
                 index === 0
                   ? "bg-gold animate-pulse ring-4 ring-gold/30"
-                  : "bg-green/50"
+                  : "bg-green/50 dark:bg-green-light/50"
               )}
             ></div>
           </div>
         </motion.div>
-        <p className="mt-2 text-xs text-center font-semibold text-black/60 whitespace-nowrap">
+        <p className="mt-2 text-xs text-center font-semibold text-black/60 dark:text-dark-text-muted whitespace-nowrap">
           {data.date}
         </p>
       </div>
@@ -112,9 +112,9 @@ const TimelineItem = ({ data, index }: ITimeline) => {
             viewport={{ once: true, amount: 0.5 }}
             variants={contentVariants}
           >
-            <h3 className="font-bold text-lg text-black">{data.title}</h3>
-            <p className="font-semibold text-green mb-1">{data.company}</p>
-            <p className="text-sm text-black/70">{data.description}</p>
+            <h3 className="font-bold text-lg text-black dark:text-dark-text">{data.title}</h3>
+            <p className="font-semibold text-green dark:text-green-light mb-1">{data.company}</p>
+            <p className="text-sm text-black/70 dark:text-dark-text-muted">{data.description}</p>
           </motion.div>
         )}
       </div>
@@ -124,7 +124,7 @@ const TimelineItem = ({ data, index }: ITimeline) => {
 
 export default function Timeline() {
   return (
-    <section className="bg-primary py-24" id="experience">
+    <section className="bg-primary dark:bg-dark-bg py-24 transition-colors duration-300" id="experience">
       <Page>
         <motion.div
           className="w-full text-center mb-20"
@@ -133,11 +133,11 @@ export default function Timeline() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className={`text-7xl text-green mb-4 ${thesignature.className}`}>
+          <h1 className={`text-7xl text-green dark:text-green-light mb-4 ${thesignature.className}`}>
             Career Journey
           </h1>
           <h2
-            className={`text-2xl md:text-3xl lg:text-4xl font-semibold text-black ${unbounded.className}`}
+            className={`text-2xl md:text-3xl lg:text-4xl font-semibold text-black dark:text-dark-text ${unbounded.className}`}
           >
             Milestones & Achievements
           </h2>

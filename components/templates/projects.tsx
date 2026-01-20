@@ -153,7 +153,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </motion.p>
 
         <motion.h3
-          className={`text-3xl lg:text-4xl font-bold text-black mb-4 ${unbounded.className}`}
+          className={`text-3xl lg:text-4xl font-bold text-black dark:text-dark-text mb-4 ${unbounded.className}`}
           initial={{ opacity: 0, x: align === "right" ? 20 : -20 }}
           animate={
             isInView
@@ -166,7 +166,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </motion.h3>
 
         <motion.p
-          className={`text-black/80 mb-6 leading-relaxed ${albert_Sans.className}`}
+          className={`text-black/80 dark:text-dark-text-muted mb-6 leading-relaxed ${albert_Sans.className}`}
           initial={{ opacity: 0, x: align === "right" ? 20 : -20 }}
           animate={
             isInView
@@ -190,7 +190,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           {stack.map((tech, techIndex) => (
             <motion.span
               key={tech}
-              className={`bg-green/10 text-green text-sm font-medium px-3 py-1 rounded-full border border-green/20 hover:bg-green/20 transition-colors ${albert_Sans.className}`}
+              className={`bg-green/10 dark:bg-green-light/10 text-green dark:text-green-light text-sm font-medium px-3 py-1 rounded-full border border-green/20 dark:border-green-light/20 hover:bg-green/20 dark:hover:bg-green-light/20 transition-colors ${albert_Sans.className}`}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={
                 isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
@@ -219,7 +219,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
             }}
             whileTap={{ scale: 0.95 }}
-            className={`bg-green text-white font-bold py-3 px-6 rounded-full transition-all duration-300 hover:bg-green-600 shadow-lg ${albert_Sans.className}`}
+            className={`bg-green dark:bg-green-light text-white font-bold py-3 px-6 rounded-full transition-all duration-300 hover:bg-green-80 dark:hover:bg-green shadow-lg ${albert_Sans.className}`}
           >
             View Case Study
           </motion.button>
@@ -229,7 +229,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               href={liveLink}
               target="_blank"
               rel="noopener noreferrer"
-              className={`text-black font-bold hover:text-green transition-colors group ${albert_Sans.className}`}
+              className={`text-black dark:text-dark-text font-bold hover:text-green dark:hover:text-green-light transition-colors group ${albert_Sans.className}`}
               whileHover={{ x: 5 }}
             >
               Live Demo
@@ -324,7 +324,7 @@ export default function Projects() {
   ];
 
   return (
-    <section className="bg-white py-24" id="projects">
+    <section className="bg-white dark:bg-dark-card py-24 transition-colors duration-300" id="projects">
       <Page>
         <motion.div
           ref={ref}
@@ -334,13 +334,13 @@ export default function Projects() {
           className="w-full text-center"
         >
           <motion.h1
-            className={`text-6xl lg:text-7xl text-green mb-4 ${thesignature.className}`}
+            className={`text-6xl lg:text-7xl text-green dark:text-green-light mb-4 ${thesignature.className}`}
             variants={itemVariants}
           >
             Featured Projects
           </motion.h1>
           <motion.h2
-            className={`text-2xl md:text-3xl lg:text-4xl font-semibold mb-20 text-black ${unbounded.className}`}
+            className={`text-2xl md:text-3xl lg:text-4xl font-semibold mb-20 text-black dark:text-dark-text ${unbounded.className}`}
             variants={itemVariants}
           >
             A Glimpse of My Work

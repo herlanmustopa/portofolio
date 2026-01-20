@@ -53,7 +53,7 @@ export default function About({ onContactClick }: AboutProps) {
   ];
 
   return (
-    <section className="bg-primary py-24" id="about">
+    <section className="bg-primary dark:bg-dark-bg py-24 transition-colors duration-300" id="about">
       <Page>
         <motion.div
           ref={ref}
@@ -80,19 +80,19 @@ export default function About({ onContactClick }: AboutProps) {
           <div className="lg:col-span-3 text-left">
             <motion.h1
               variants={textVariant}
-              className={`text-6xl text-green mb-4 ${thesignature.className}`}
+              className={`text-6xl text-green dark:text-green-light mb-4 ${thesignature.className}`}
             >
               About Me
             </motion.h1>
             <motion.h2
               variants={textVariant}
-              className={`text-2xl font-semibold text-black mb-6 ${unbounded.className}`}
+              className={`text-2xl font-semibold text-black dark:text-dark-text mb-6 ${unbounded.className}`}
             >
               From Code to Cloud: A Developers Journey
             </motion.h2>
             <motion.p
               variants={textVariant}
-              className={`text-black/80 mb-8 leading-relaxed ${albert_Sans.className}`}
+              className={`text-black/80 dark:text-dark-text-muted mb-8 leading-relaxed ${albert_Sans.className}`}
             >
               With over 8 years in the digital trenches, Ive evolved from a
               dedicated Frontend Developer to a versatile FullStack
@@ -119,7 +119,7 @@ export default function About({ onContactClick }: AboutProps) {
                 >
                   <span className="text-2xl mr-3">{value.icon}</span>
                   <span
-                    className={`font-semibold text-black ${albert_Sans.className}`}
+                    className={`font-semibold text-black dark:text-dark-text ${albert_Sans.className}`}
                   >
                     {value.text}
                   </span>
@@ -141,7 +141,7 @@ export default function About({ onContactClick }: AboutProps) {
                   transition: { duration: 0.2 },
                 }}
                 whileTap={{ scale: 0.95 }}
-                className={`bg-green text-white font-bold py-3 px-8 rounded-full transition-colors hover:bg-green-600 shadow-lg ${albert_Sans.className}`}
+                className={`bg-green dark:bg-green-light text-white font-bold py-3 px-8 rounded-full transition-colors hover:bg-green-80 dark:hover:bg-green shadow-lg ${albert_Sans.className}`}
               >
                 Download CV
               </motion.a>
@@ -153,7 +153,7 @@ export default function About({ onContactClick }: AboutProps) {
                   transition: { duration: 0.2 },
                 }}
                 whileTap={{ scale: 0.95 }}
-                className={`font-bold text-black hover:text-green transition-colors cursor-pointer ${albert_Sans.className}`}
+                className={`font-bold text-black dark:text-dark-text hover:text-green dark:hover:text-green-light transition-colors cursor-pointer ${albert_Sans.className}`}
               >
                 Lets Talk →
               </motion.button>

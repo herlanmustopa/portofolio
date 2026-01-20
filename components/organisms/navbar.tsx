@@ -2,7 +2,8 @@
 import { useEffect, useState } from "react";
 import { cn } from "@/utils/classMerge";
 import Page from "./pages";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+import ThemeToggle from "../molecules/ThemeToggle";
 
 
 interface INavbar {
@@ -67,13 +68,13 @@ const Navbar = ({ onContactClick }: INavbar) => {
     <>
       <header
         className={cn(
-          "fixed top-0 left-0 z-20 w-full",
-          scroll ? "bg-primary" : "bg-transparent"
+          "fixed top-0 left-0 z-20 w-full transition-colors duration-300",
+          scroll ? "bg-primary dark:bg-dark-bg" : "bg-transparent"
         )}
       >
         <div
           className={cn(
-            "absolute top-0 left-0 w-full h-full -z-10 bg-primary transition-opacity duration-300 ease-in-out",
+            "absolute top-0 left-0 w-full h-full -z-10 bg-primary dark:bg-dark-bg transition-opacity duration-300 ease-in-out",
             scroll ? "opacity-100" : "opacity-0"
           )}
         />
@@ -91,7 +92,7 @@ const Navbar = ({ onContactClick }: INavbar) => {
           >
             <path
               d="M0,0 L1440,0 L1440,20 C1080,50 720,10 360,40 C240,50 120,45 0,30 Z"
-              fill="#FAF9F5"
+              className="fill-primary dark:fill-dark-bg transition-colors duration-300"
             />
           </svg>
         </div>
@@ -124,8 +125,7 @@ const Navbar = ({ onContactClick }: INavbar) => {
                         onClick={() => handleScrollTo(item.id)}
                         className={cn(
                           "block rounded px-3 py-2 transition-colors duration-300 font-bold",
-                          scroll ? "text-green" : "text-white",
-                          // Sedikit redupkan item yang tidak aktif
+                          scroll ? "text-green dark:text-green-light" : "text-white",
                           activeSection === item.id
                             ? "opacity-100"
                             : "opacity-70 hover:opacity-100"
@@ -147,6 +147,10 @@ const Navbar = ({ onContactClick }: INavbar) => {
                       )}
                     </li>
                   ))}
+                  {/* Theme Toggle */}
+                  <li>
+                    <ThemeToggle />
+                  </li>
                   <li>
                     <motion.div
                       whileHover={{ scale: 1.05 }}
@@ -176,10 +180,9 @@ const Navbar = ({ onContactClick }: INavbar) => {
                         <div
                           className={cn(
                             "relative z-10 h-full w-full rounded-full px-4 py-2 font-bold transition-colors duration-300",
-                            // 2. Ubah efek hover menjadi transparan
                             scroll
-                              ? "bg-primary text-green "
-                              : "bg-navy text-white "
+                              ? "bg-primary dark:bg-dark-bg text-green dark:text-green-light"
+                              : "bg-navy text-white"
                           )}
                         >
                           Need Contact Me?

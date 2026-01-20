@@ -18,7 +18,7 @@ interface ArticleSectionProps {
 
 export default function ArticleSection({ articles }: ArticleSectionProps) {
   return (
-    <section className="bg-primary py-24" id="article">
+    <section className="bg-primary dark:bg-dark-bg py-24 transition-colors duration-300" id="article">
       <Page>
         <motion.div
           className="w-full text-center mb-16"
@@ -27,11 +27,11 @@ export default function ArticleSection({ articles }: ArticleSectionProps) {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className={`text-7xl text-green mb-4 ${thesignature.className}`}>
+          <h1 className={`text-7xl text-green dark:text-green-light mb-4 ${thesignature.className}`}>
             Writings & Insights
           </h1>
           <h2
-            className={`text-2xl md:text-3xl lg:text-4xl font-semibold text-black ${unbounded.className}`}
+            className={`text-2xl md:text-3xl lg:text-4xl font-semibold text-black dark:text-dark-text ${unbounded.className}`}
           >
             Sharing My Knowledge
           </h2>

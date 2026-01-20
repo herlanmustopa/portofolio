@@ -160,9 +160,21 @@ export default function RootLayout({
 }>) {
   const schemas = generateGlobalSchemas();
 
+  // Script to prevent theme flash on page load
+  const themeScript = `
+    (function() {
+      const theme = localStorage.getItem('theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  `;
+
   return (
-    <html lang="id" className={albert_Sans.className}>
+    <html lang="id" className={albert_Sans.className} suppressHydrationWarning>
       <head>
+        {/* Prevent theme flash */}
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         {/* Global JSON-LD Schemas */}
         {schemas.map((schema, index) => (
           <script
@@ -174,7 +186,7 @@ export default function RootLayout({
           />
         ))}
       </head>
-      <body className="bg-oss-gray h-[calc(100vh-78px)] overflow-auto text-base-black">
+      <body className="bg-primary dark:bg-dark-bg min-h-screen overflow-auto text-black dark:text-dark-text transition-colors duration-300">
         <Analytics />
         <SpeedInsights />
         <main itemScope>{children}</main>

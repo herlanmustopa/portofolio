@@ -7,6 +7,7 @@ import About from "@/components/templates/about";
 import Timeline from "@/components/templates/timeline";
 import Contact from "@/components/templates/contact";
 import ArticleSection from "@/components/templates/ArticleSection";
+import Testimonials from "@/components/templates/Testimonials";
 import Footer from "@/components/organisms/footer";
 import Navbar from "@/components/organisms/navbar";
 import ContactModal from "@/components/organisms/contactModal";
@@ -36,6 +37,7 @@ export default function HomeClient({ articles }: HomeClientProps) {
         <Projects />
         <About onContactClick={() => setIsModalOpen(true)} />
         <Timeline />
+        <Testimonials />
         <ArticleSection articles={articles} />
         <Contact />
       </main>
