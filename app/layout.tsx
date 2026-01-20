@@ -94,13 +94,86 @@ export const metadata: Metadata = {
   },
 };
 
+// Global JSON-LD schemas for SEO
+function generateGlobalSchemas() {
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://herlanmustopa.com/#website",
+    name: "Herlan Mustopa Portfolio",
+    url: "https://herlanmustopa.com",
+    description:
+      "Portfolio of Herlan Mustopa - Fullstack Developer & Software Engineer",
+    publisher: {
+      "@id": "https://herlanmustopa.com/#person",
+    },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: "https://herlanmustopa.com/?s={search_term_string}",
+      "query-input": "required name=search_term_string",
+    },
+  };
+
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://herlanmustopa.com/#person",
+    name: "Herlan Mustopa",
+    url: "https://herlanmustopa.com",
+    image: "https://herlanmustopa.com/og-image.jpg",
+    jobTitle: ["Fullstack Developer", "Software Engineer", "Product Engineer"],
+    description:
+      "Fullstack Developer & Software Engineer with 8+ years experience specializing in React, Next.js, and modern web technologies",
+    email: "herlanmustopa@gmail.com",
+    sameAs: [
+      "https://github.com/herlanmustopa",
+      "https://linkedin.com/in/herlanmustopa",
+    ],
+    knowsAbout: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "JavaScript",
+      "Node.js",
+      "Java Spring Boot",
+      "Frontend Development",
+      "Backend Development",
+      "Web Development",
+    ],
+    alumniOf: {
+      "@type": "Organization",
+      name: "Telkom Indonesia",
+    },
+    worksFor: {
+      "@type": "Organization",
+      name: "Maybank",
+    },
+  };
+
+  return [websiteSchema, personSchema];
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const schemas = generateGlobalSchemas();
+
   return (
     <html lang="id" className={albert_Sans.className}>
+      <head>
+        {/* Global JSON-LD Schemas */}
+        {schemas.map((schema, index) => (
+          <script
+            key={index}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(schema),
+            }}
+          />
+        ))}
+      </head>
       <body className="bg-oss-gray h-[calc(100vh-78px)] overflow-auto text-base-black">
         <Analytics />
         <SpeedInsights />

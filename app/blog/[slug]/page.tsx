@@ -5,6 +5,7 @@ import { PortableText } from "@portabletext/react";
 import imageUrlBuilder from "@sanity/image-url";
 import { albert_Sans, unbounded } from "@/utils/font";
 import Page from "@/components/organisms/pages";
+import Breadcrumb from "@/components/molecules/Breadcrumb";
 import { client } from "@/sanity/client";
 import { getArticle, getAllArticleSlugs } from "@/sanity/queries";
 
@@ -130,6 +131,17 @@ export default async function ArticlePage({
 
       <main className="bg-primary pt-32 pb-16">
         <Page>
+          {/* Breadcrumb */}
+          <div className="max-w-3xl mx-auto mb-6">
+            <Breadcrumb
+              items={[
+                { name: "Home", href: "/" },
+                { name: "Blog", href: "/blog" },
+                { name: article.title },
+              ]}
+            />
+          </div>
+
           <article className="max-w-3xl mx-auto" itemScope itemType="https://schema.org/BlogPosting">
             {/* Article Header */}
             <header className="mb-8 text-center">
