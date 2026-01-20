@@ -34,7 +34,7 @@ export default function HomeClient({ articles }: HomeClientProps) {
         <Banner />
         <Expertice />
         <Projects />
-        <About />
+        <About onContactClick={() => setIsModalOpen(true)} />
         <Timeline />
         <ArticleSection articles={articles} />
         <Contact />

@@ -69,72 +69,39 @@ function TechCard({
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={cardVariants}
-      whileHover={{
-        y: -12,
-        scale: 1.02,
-        boxShadow:
-          "0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 10px 20px -8px rgba(0, 0, 0, 0.1)",
-        transition: { duration: 0.3, ease: "easeOut" },
-      }}
-      whileTap={{ scale: 0.98 }}
-      className={`relative overflow-hidden rounded-xl p-6 bg-gradient-to-br ${gradient} border border-green/10 backdrop-blur-sm hover:border-green/20 transition-all duration-300 group cursor-pointer`}
+      className={`relative overflow-hidden rounded-xl p-6 bg-gradient-to-br ${gradient} border border-green/10 backdrop-blur-sm group cursor-pointer h-full
+        transition-all duration-300 ease-out
+        hover:-translate-y-2 hover:shadow-xl hover:border-green/20`}
     >
       {/* Background Pattern */}
       <div className="absolute top-0 right-0 w-32 h-32 opacity-5 transform rotate-12 translate-x-8 -translate-y-8">
         <div className="text-8xl">{icon}</div>
       </div>
 
-      {/* Icon with animation */}
-      <motion.div
-        className="text-5xl mb-4 relative z-10"
-        whileHover={{
-          scale: 1.2,
-          rotate: [0, -10, 10, 0],
-          transition: { duration: 0.5 },
-        }}
-      >
+      {/* Icon */}
+      <div className="text-5xl mb-4 relative z-10 transition-transform duration-300 group-hover:scale-110">
         {icon}
-      </motion.div>
+      </div>
 
       {/* Title */}
-      <motion.h3
+      <h3
         className={`text-xl lg:text-2xl font-bold text-black mb-4 relative z-10 ${unbounded.className}`}
-        variants={itemVariants}
       >
         {title}
-      </motion.h3>
+      </h3>
 
       {/* Skills List */}
-      <motion.ul
-        className="space-y-3 relative z-10"
-        variants={containerVariants}
-      >
+      <ul className="space-y-3 relative z-10">
         {skills.map((skill: string, index: number) => (
-          <motion.li
+          <li
             key={index}
-            variants={skillItemVariants}
-            custom={index}
-            className={`text-sm lg:text-base text-black/80 flex items-start group-hover:text-black transition-colors duration-300 ${albert_Sans.className}`}
-            whileHover={{ x: 5, transition: { duration: 0.2 } }}
+            className={`text-sm lg:text-base text-black/80 flex items-start group-hover:text-black transition-colors duration-200 ${albert_Sans.className}`}
           >
-            <motion.span
-              className="text-green mr-3 mt-1 font-bold"
-              whileHover={{ scale: 1.2 }}
-              transition={{ duration: 0.2 }}
-            >
-              ✓
-            </motion.span>
+            <span className="text-green mr-3 mt-1 font-bold">✓</span>
             <span className="leading-relaxed">{skill}</span>
-          </motion.li>
+          </li>
         ))}
-      </motion.ul>
-
-      {/* Hover Effect Border */}
-      <motion.div
-        className="absolute inset-0 border-2 border-green/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        initial={{ scale: 0.8 }}
-        whileHover={{ scale: 1 }}
-      />
+      </ul>
     </motion.div>
   );
 }
@@ -212,7 +179,7 @@ export default function Expertise() {
             variants={containerVariants}
           >
             {expertiseData.map((expertise, index) => (
-              <motion.div key={index} custom={index} variants={itemVariants}>
+              <motion.div key={index} custom={index} variants={itemVariants} className="h-full">
                 <TechCard {...expertise} />
               </motion.div>
             ))}

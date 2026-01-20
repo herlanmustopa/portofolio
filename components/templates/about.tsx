@@ -37,7 +37,11 @@ const imageVariant: Variants = {
   },
 };
 
-export default function About() {
+interface AboutProps {
+  onContactClick?: () => void;
+}
+
+export default function About({ onContactClick }: AboutProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
@@ -141,13 +145,14 @@ export default function About() {
                 Download CV
               </motion.a>
               <motion.button
+                onClick={onContactClick}
                 whileHover={{
                   scale: 1.05,
                   x: 5,
                   transition: { duration: 0.2 },
                 }}
                 whileTap={{ scale: 0.95 }}
-                className={`font-bold text-black hover:text-green transition-colors ${albert_Sans.className}`}
+                className={`font-bold text-black hover:text-green transition-colors cursor-pointer ${albert_Sans.className}`}
               >
                 Lets Talk →
               </motion.button>
