@@ -35,6 +35,13 @@ const testimonialsMeta: Testimonial[] = [
     company: "Telkom Indonesia",
     contentKey: "gunawan",
   },
+  {
+    id: 3,
+    name: "Syauqi Fajri",
+    role: "Senior Software Developer",
+    company: "Maybank Indonesia",
+    contentKey: "syauqi",
+  },
 ];
 
 export default function Testimonials() {

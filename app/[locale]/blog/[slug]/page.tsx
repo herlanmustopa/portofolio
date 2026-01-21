@@ -9,6 +9,7 @@ import Page from "@/components/organisms/pages";
 import Breadcrumb from "@/components/molecules/Breadcrumb";
 import ArticleComments from "@/components/molecules/ArticleComments";
 import ArticleShare from "@/components/molecules/ArticleShare";
+import BlogLayoutClient from "@/components/templates/BlogLayoutClient";
 import { client } from "@/sanity/client";
 import { getArticle, getAllArticleSlugs } from "@/sanity/queries";
 
@@ -133,7 +134,7 @@ export default async function ArticlePage({ params }: Props) {
   }
 
   return (
-    <>
+    <BlogLayoutClient>
       {/* JSON-LD Structured Data */}
       <script
         type="application/ld+json"
@@ -218,7 +219,7 @@ export default async function ArticlePage({ params }: Props) {
           </div>
         </Page>
       </main>
-    </>
+    </BlogLayoutClient>
   );
 }
 

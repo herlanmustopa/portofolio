@@ -135,10 +135,6 @@ export default function ShareButtons({ title, url, description }: ShareButtonsPr
                                 times: [0, 0.4, 0.6, 0.8, 1],
                                 duration: 0.6,
                             },
-                            exit: {
-                                duration: 0.3,
-                                ease: "easeOut",
-                            }
                         }}
                     >
                         <motion.div

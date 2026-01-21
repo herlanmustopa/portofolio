@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getArticles } from "@/sanity/queries";
 import BlogClient from "@/components/templates/BlogClient";
+import BlogLayoutClient from "@/components/templates/BlogLayoutClient";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -72,7 +73,7 @@ export default async function BlogPage({ params }: Props) {
   const articles = await getArticles();
 
   return (
-    <>
+    <BlogLayoutClient>
       {/* JSON-LD Structured Data */}
       <script
         type="application/ld+json"
@@ -82,6 +83,7 @@ export default async function BlogPage({ params }: Props) {
       />
 
       <BlogClient articles={articles} />
-    </>
+    </BlogLayoutClient>
   );
 }
+
