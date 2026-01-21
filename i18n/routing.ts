@@ -7,8 +7,9 @@ export const routing = defineRouting({
   // Used when no locale matches
   defaultLocale: 'id',
 
-  // The prefix for locales (always show in URL)
-  localePrefix: 'always'
+  // The prefix for locales - 'as-needed' avoids redirect on root path
+  localePrefix: 'as-needed'
 });
 
 export type Locale = (typeof routing.locales)[number];
+
