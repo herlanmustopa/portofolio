@@ -8,6 +8,7 @@ import { albert_Sans, unbounded } from "@/utils/font";
 import Page from "@/components/organisms/pages";
 import Breadcrumb from "@/components/molecules/Breadcrumb";
 import ArticleComments from "@/components/molecules/ArticleComments";
+import ArticleShare from "@/components/molecules/ArticleShare";
 import { client } from "@/sanity/client";
 import { getArticle, getAllArticleSlugs } from "@/sanity/queries";
 
@@ -203,6 +204,11 @@ export default async function ArticlePage({ params }: Props) {
               itemProp="articleBody"
             >
               <PortableText value={article.body} />
+            </div>
+
+            {/* Share Buttons */}
+            <div className="mt-8 pt-6 border-t border-green/20 dark:border-green-light/20">
+              <ArticleShare title={article.title} description={article.description} />
             </div>
           </article>
 

@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useLocaleContext } from "@/context/LocaleProvider";
 
 interface ShareButtonsProps {
@@ -11,6 +12,7 @@ interface ShareButtonsProps {
 
 export default function ShareButtons({ title, url, description }: ShareButtonsProps) {
     const { locale } = useLocaleContext();
+    const [showToast, setShowToast] = useState(false);
 
     // Use current URL if not provided
     const shareUrl = url || (typeof window !== "undefined" ? window.location.href : "");
@@ -53,52 +55,156 @@ export default function ShareButtons({ title, url, description }: ShareButtonsPr
         window.open(getUrl(), "_blank", "noopener,noreferrer,width=600,height=400");
     };
 
-    // Copy link function
+    // Copy link function with toast
     const handleCopyLink = async () => {
         try {
             await navigator.clipboard.writeText(shareUrl);
-            // Could add a toast notification here
+            setShowToast(true);
+            setTimeout(() => setShowToast(false), 2500);
         } catch (err) {
             console.error("Failed to copy:", err);
         }
     };
 
     return (
-        <div className="flex flex-wrap items-center gap-3">
-            <span className="text-sm font-medium text-black/60 dark:text-dark-text-muted">
-                {locale === "id" ? "Bagikan:" : "Share:"}
-            </span>
+        <>
+            <div className="flex flex-wrap items-center gap-3">
+                <span className="text-sm font-medium text-black/60 dark:text-dark-text-muted">
+                    {locale === "id" ? "Bagikan:" : "Share:"}
+                </span>
 
-            {shareLinks.map((link) => (
+                {shareLinks.map((link) => (
+                    <motion.button
+                        key={link.name}
+                        onClick={() => handleShare(link.getUrl)}
+                        className={`p-2.5 rounded-full border border-green/20 dark:border-green-light/20 
+              text-green dark:text-green-light transition-all duration-200 ${link.color}`}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        aria-label={`Share on ${link.name}`}
+                        title={`Share on ${link.name}`}
+                    >
+                        {link.icon}
+                    </motion.button>
+                ))}
+
+                {/* Copy Link Button */}
                 <motion.button
-                    key={link.name}
-                    onClick={() => handleShare(link.getUrl)}
-                    className={`p-2.5 rounded-full border border-green/20 dark:border-green-light/20 
-            text-green dark:text-green-light transition-all duration-200 ${link.color}`}
+                    onClick={handleCopyLink}
+                    className="p-2.5 rounded-full border border-green/20 dark:border-green-light/20 
+            text-green dark:text-green-light transition-all duration-200
+            hover:bg-green hover:text-white dark:hover:bg-green-light dark:hover:text-dark-bg"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
-                    aria-label={`Share on ${link.name}`}
-                    title={`Share on ${link.name}`}
+                    aria-label="Copy link"
+                    title={locale === "id" ? "Salin tautan" : "Copy link"}
                 >
-                    {link.icon}
+                    <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                    </svg>
                 </motion.button>
-            ))}
+            </div>
 
-            {/* Copy Link Button */}
-            <motion.button
-                onClick={handleCopyLink}
-                className="p-2.5 rounded-full border border-green/20 dark:border-green-light/20 
-          text-green dark:text-green-light transition-all duration-200
-          hover:bg-green hover:text-white dark:hover:bg-green-light dark:hover:text-dark-bg"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label="Copy link"
-                title={locale === "id" ? "Salin tautan" : "Copy link"}
-            >
-                <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                </svg>
-            </motion.button>
-        </div>
+            {/* Toast Notification - Bubble Animation */}
+            <AnimatePresence>
+                {showToast && (
+                    <motion.div
+                        className="fixed bottom-8 left-1/2 z-50"
+                        initial={{
+                            opacity: 0,
+                            y: 80,
+                            x: "-50%",
+                            scale: 0.3,
+                        }}
+                        animate={{
+                            opacity: 1,
+                            y: 0,
+                            x: "-50%",
+                            scale: [0.3, 1.15, 0.95, 1.05, 1],
+                        }}
+                        exit={{
+                            opacity: 0,
+                            scale: [1, 1.2, 0],
+                            y: -20,
+                            x: "-50%",
+                        }}
+                        transition={{
+                            duration: 0.6,
+                            ease: [0.34, 1.56, 0.64, 1],
+                            scale: {
+                                times: [0, 0.4, 0.6, 0.8, 1],
+                                duration: 0.6,
+                            },
+                            exit: {
+                                duration: 0.3,
+                                ease: "easeOut",
+                            }
+                        }}
+                    >
+                        <motion.div
+                            className="flex items-center gap-3 px-5 py-3 rounded-full bg-gradient-to-r from-green to-green-light text-white shadow-2xl shadow-green/30"
+                            animate={{
+                                y: [0, -3, 0, -2, 0],
+                            }}
+                            transition={{
+                                y: {
+                                    duration: 2,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                }
+                            }}
+                        >
+                            {/* Success Icon */}
+                            <motion.div
+                                initial={{ scale: 0, rotate: -180 }}
+                                animate={{ scale: 1, rotate: 0 }}
+                                transition={{ type: "spring", stiffness: 500, damping: 15, delay: 0.2 }}
+                            >
+                                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                                    <motion.path
+                                        d="M5 13l4 4L19 7"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        initial={{ pathLength: 0 }}
+                                        animate={{ pathLength: 1 }}
+                                        transition={{ duration: 0.4, delay: 0.3 }}
+                                    />
+                                </svg>
+                            </motion.div>
+
+                            {/* Toast Text */}
+                            <span className="font-medium text-sm whitespace-nowrap">
+                                {locale === "id" ? "Tautan berhasil disalin!" : "Link copied to clipboard!"}
+                            </span>
+
+                            {/* Bubble glow effect */}
+                            <motion.div
+                                className="absolute inset-0 rounded-full bg-white/30 blur-xl -z-10"
+                                initial={{ opacity: 0, scale: 0.5 }}
+                                animate={{
+                                    opacity: [0.3, 0.5, 0.3],
+                                    scale: [1, 1.3, 1.1],
+                                }}
+                                exit={{ opacity: 0, scale: 1.5 }}
+                                transition={{
+                                    duration: 1.5,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                }}
+                            />
+
+                            {/* Bubble shine effect */}
+                            <motion.div
+                                className="absolute top-1 left-4 w-3 h-1.5 rounded-full bg-white/40 blur-[1px]"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.3 }}
+                            />
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </>
     );
 }
+
