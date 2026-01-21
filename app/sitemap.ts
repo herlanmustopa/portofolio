@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { getAllArticleSlugs } from "@/sanity/queries";
 
 const locales = ["id", "en"];
-const baseUrl = "https://herlanmustopa.com";
+const baseUrl = "https://www.herlanmustopa.com";
 
 // Static pages with their sections
 const staticPages = [

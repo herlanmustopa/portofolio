@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     : "Portfolio of Herlan Mustopa - Fullstack Developer & Software Engineer specializing in React, Next.js, and modern web technologies. Elevating every interaction beyond expectation.";
 
   return {
-    metadataBase: new URL("https://herlanmustopa.com"),
+    metadataBase: new URL("https://www.herlanmustopa.com"),
     title: {
       default: title,
       template: "%s | Herlan Mustopa",
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       "Portfolio",
       "Indonesia",
     ],
-    authors: [{ name: "Herlan Mustopa", url: "https://herlanmustopa.com" }],
+    authors: [{ name: "Herlan Mustopa", url: "https://www.herlanmustopa.com" }],
     creator: "Herlan Mustopa",
     publisher: "Herlan Mustopa",
     formatDetection: {
@@ -69,7 +69,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       type: "website",
       locale: locale === "id" ? "id_ID" : "en_US",
-      url: `https://herlanmustopa.com/${locale}`,
+      url: `https://www.herlanmustopa.com/${locale}`,
       siteName: "Herlan Mustopa Portfolio",
       title,
       description,
@@ -101,10 +101,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     alternates: {
-      canonical: `https://herlanmustopa.com/${locale}`,
+      canonical: `https://www.herlanmustopa.com/${locale}`,
       languages: {
-        "id": "https://herlanmustopa.com/id",
-        "en": "https://herlanmustopa.com/en",
+        "id": "https://www.herlanmustopa.com/id",
+        "en": "https://www.herlanmustopa.com/en",
       },
     },
     icons: {
@@ -135,18 +135,18 @@ function generateGlobalSchemas(locale: string) {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "https://herlanmustopa.com/#website",
+    "@id": "https://www.herlanmustopa.com/#website",
     name: "Herlan Mustopa Portfolio",
-    url: "https://herlanmustopa.com",
+    url: "https://www.herlanmustopa.com",
     description:
       "Portfolio of Herlan Mustopa - Fullstack Developer & Software Engineer",
     inLanguage: locale === "id" ? "id-ID" : "en-US",
     publisher: {
-      "@id": "https://herlanmustopa.com/#person",
+      "@id": "https://www.herlanmustopa.com/#person",
     },
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://herlanmustopa.com/?s={search_term_string}",
+      target: "https://www.herlanmustopa.com/?s={search_term_string}",
       "query-input": "required name=search_term_string",
     },
   };
@@ -154,10 +154,10 @@ function generateGlobalSchemas(locale: string) {
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "@id": "https://herlanmustopa.com/#person",
+    "@id": "https://www.herlanmustopa.com/#person",
     name: "Herlan Mustopa",
-    url: "https://herlanmustopa.com",
-    image: "https://herlanmustopa.com/og-image.jpg",
+    url: "https://www.herlanmustopa.com",
+    image: "https://www.herlanmustopa.com/og-image.jpg",
     jobTitle: ["Fullstack Developer", "Software Engineer", "Product Engineer"],
     description:
       "Fullstack Developer & Software Engineer with 8+ years experience specializing in React, Next.js, and modern web technologies",
@@ -206,9 +206,9 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <>
       {/* hreflang tags for SEO */}
-      <link rel="alternate" hrefLang="id" href="https://herlanmustopa.com/id" />
-      <link rel="alternate" hrefLang="en" href="https://herlanmustopa.com/en" />
-      <link rel="alternate" hrefLang="x-default" href="https://herlanmustopa.com/id" />
+      <link rel="alternate" hrefLang="id" href="https://www.herlanmustopa.com/id" />
+      <link rel="alternate" hrefLang="en" href="https://www.herlanmustopa.com/en" />
+      <link rel="alternate" hrefLang="x-default" href="https://www.herlanmustopa.com/id" />
       {/* Global JSON-LD Schemas */}
       {schemas.map((schema, index) => (
         <script

@@ -6,37 +6,36 @@ import { albert_Sans, unbounded, thesignature } from "@/utils/font";
 import Button from "../molecules/button";
 import Page from "../organisms/pages";
 
-// 👇 PROPER TYPING UNTUK VARIANTS 👇
 const containerVariants: Variants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 1 }, // Start visible for LCP
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3,
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
     },
   },
 };
 
 const textVariant: Variants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }
   },
 };
 
 const nameVariant: Variants = {
-  hidden: { opacity: 0, scale: 0.8, y: 20 },
+  hidden: { opacity: 0, scale: 0.95, y: 10 },
   visible: {
     opacity: 1,
     scale: 1,
     y: 0,
     transition: {
-      duration: 1.2,
+      duration: 0.6,
       ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-      delay: 0.2,
+      delay: 0,
     },
   },
 };
@@ -153,7 +152,7 @@ export default function Banner() {
             {t("subtitle")}
           </motion.h2>
 
-          {/* Description with improved typography */}
+          {/* Description - LCP element, no animation delay */}
           <motion.p
             className={`text-base md:text-lg lg:text-xl max-w-3xl leading-relaxed text-white/90 ${albert_Sans.className}`}
             variants={textVariant}

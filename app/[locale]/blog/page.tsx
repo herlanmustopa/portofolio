@@ -25,14 +25,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${title} | Herlan Mustopa`,
       description,
       type: "website",
-      url: `https://herlanmustopa.com/${locale}/blog`,
+      url: `https://www.herlanmustopa.com/${locale}/blog`,
       locale: locale === "id" ? "id_ID" : "en_US",
     },
     alternates: {
-      canonical: `https://herlanmustopa.com/${locale}/blog`,
+      canonical: `https://www.herlanmustopa.com/${locale}/blog`,
       languages: {
-        "id": "https://herlanmustopa.com/id/blog",
-        "en": "https://herlanmustopa.com/en/blog",
+        "id": "https://www.herlanmustopa.com/id/blog",
+        "en": "https://www.herlanmustopa.com/en/blog",
       },
     },
   };
@@ -43,21 +43,21 @@ function generateBlogListJsonLd(articles: any[], locale: string) {
   return {
     "@context": "https://schema.org",
     "@type": "Blog",
-    "@id": `https://herlanmustopa.com/${locale}/blog/#blog`,
+    "@id": `https://www.herlanmustopa.com/${locale}/blog/#blog`,
     name: "Herlan Mustopa Blog",
     description:
       locale === "id"
         ? "Artikel dan tulisan tentang web development, React, Next.js, dan teknologi modern"
         : "Articles and writings about web development, React, Next.js, and modern technologies",
-    url: `https://herlanmustopa.com/${locale}/blog`,
+    url: `https://www.herlanmustopa.com/${locale}/blog`,
     inLanguage: locale === "id" ? "id-ID" : "en-US",
     author: {
-      "@id": "https://herlanmustopa.com/#person",
+      "@id": "https://www.herlanmustopa.com/#person",
     },
     blogPost: articles.map((article) => ({
       "@type": "BlogPosting",
       headline: article.title,
-      url: `https://herlanmustopa.com/${locale}/blog/${article.slug}`,
+      url: `https://www.herlanmustopa.com/${locale}/blog/${article.slug}`,
       image: article.imageUrl,
       description: article.description,
     })),

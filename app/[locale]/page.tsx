@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       type: "website",
       locale: locale === "id" ? "id_ID" : "en_US",
-      url: `https://herlanmustopa.com/${locale}`,
+      url: `https://www.herlanmustopa.com/${locale}`,
       siteName: "Herlan Mustopa Portfolio",
       title,
       description,
@@ -75,7 +75,7 @@ function generateJsonLd(locale: string) {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Herlan Mustopa",
-    url: "https://herlanmustopa.com",
+    url: "https://www.herlanmustopa.com",
     jobTitle: ["Fullstack Developer", "Software Engineer", "Product Engineer"],
     description:
       "Fullstack Developer & Software Engineer specializing in React, Next.js, and modern web technologies",

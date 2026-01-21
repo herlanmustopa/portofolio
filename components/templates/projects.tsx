@@ -130,9 +130,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             whileHover={{ opacity: 1 }}
           >
             <div className="text-center text-white p-6">
-              <h4 className={`text-xl font-bold mb-2 ${unbounded.className}`}>
+              <p className={`text-xl font-bold mb-2 ${unbounded.className}`}>
                 {title}
-              </h4>
+              </p>
               <p className={`text-sm opacity-90 ${albert_Sans.className}`}>
                 {clickToViewDetailsText}
               </p>

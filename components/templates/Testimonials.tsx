@@ -119,9 +119,9 @@ export default function Testimonials() {
 
                 {/* Author Info */}
                 <div>
-                  <h4 className={`text-xl font-bold text-black dark:text-dark-text ${unbounded.className}`}>
+                  <p className={`text-xl font-bold text-black dark:text-dark-text ${unbounded.className}`}>
                     {testimonials[activeIndex].name}
-                  </h4>
+                  </p>
                   <p className={`text-green dark:text-green-light font-medium ${albert_Sans.className}`}>
                     {testimonials[activeIndex].role}
                   </p>

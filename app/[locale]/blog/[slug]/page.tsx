@@ -56,7 +56,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       type: "article",
       locale: locale === "id" ? "id_ID" : "en_US",
-      url: `https://herlanmustopa.com/${locale}/blog/${slug}`,
+      url: `https://www.herlanmustopa.com/${locale}/blog/${slug}`,
       siteName: "Herlan Mustopa Blog",
       title: article.title,
       description: article.description || `${locale === "id" ? "Artikel oleh" : "Article by"} ${article.authorName || "Herlan Mustopa"}`,
@@ -82,10 +82,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       follow: true,
     },
     alternates: {
-      canonical: `https://herlanmustopa.com/${locale}/blog/${slug}`,
+      canonical: `https://www.herlanmustopa.com/${locale}/blog/${slug}`,
       languages: {
-        "id": `https://herlanmustopa.com/id/blog/${slug}`,
-        "en": `https://herlanmustopa.com/en/blog/${slug}`,
+        "id": `https://www.herlanmustopa.com/id/blog/${slug}`,
+        "en": `https://www.herlanmustopa.com/en/blog/${slug}`,
       },
     },
   };
@@ -109,16 +109,16 @@ function generateArticleJsonLd(article: any, locale: string, slug: string) {
     author: {
       "@type": "Person",
       name: article.authorName || "Herlan Mustopa",
-      url: "https://herlanmustopa.com",
+      url: "https://www.herlanmustopa.com",
     },
     publisher: {
       "@type": "Person",
       name: "Herlan Mustopa",
-      url: "https://herlanmustopa.com",
+      url: "https://www.herlanmustopa.com",
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://herlanmustopa.com/${locale}/blog/${slug}`,
+      "@id": `https://www.herlanmustopa.com/${locale}/blog/${slug}`,
     },
   };
 }

@@ -37,7 +37,7 @@ function generateBreadcrumbJsonLd(items: BreadcrumbItem[], baseUrl: string, curr
 }
 
 export default function Breadcrumb({ items }: BreadcrumbProps) {
-  const baseUrl = "https://herlanmustopa.com";
+  const baseUrl = "https://www.herlanmustopa.com";
   const pathname = usePathname();
 
   return (

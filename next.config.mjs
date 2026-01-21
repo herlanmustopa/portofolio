@@ -115,6 +115,19 @@ const nextConfig = {
       },
     ],
   },
+  // Optimize for modern browsers only
+  experimental: {
+    optimizePackageImports: [
+      'framer-motion',
+      'motion',
+      '@sanity/image-url',
+      'clsx',
+      '@rive-app/react-canvas',
+      'next-intl',
+      '@portabletext/react',
+      'tailwind-merge',
+    ],
+  },
 };
 
 export default withPWA(withNextIntl(nextConfig));
