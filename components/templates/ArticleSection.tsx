@@ -1,7 +1,8 @@
 "use client";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { thesignature, unbounded } from "@/utils/font";
+import { Link } from "@/i18n/navigation";
+import { albert_Sans, thesignature, unbounded } from "@/utils/font";
 import Page from "../organisms/pages";
 import ArticleCard from "./ArticleCard";
 
@@ -38,13 +39,75 @@ export default function ArticleSection({ articles }: ArticleSectionProps) {
           >
             {t("subtitle")}
           </h2>
+
+          {/* Article Count Badge */}
+          <motion.div
+            className="mt-4 inline-flex items-center gap-2"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+          >
+            <span className={`px-4 py-2 bg-green/10 dark:bg-green-light/10 text-green dark:text-green-light rounded-full text-sm font-medium ${albert_Sans.className}`}>
+              {articles.length} {t("articleCount")}
+            </span>
+          </motion.div>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {articles.map((article, index) => (
+          {articles.slice(0, 3).map((article, index) => (
             <ArticleCard key={article._id} article={article} index={index} />
           ))}
         </div>
+
+        {/* View All Articles Button */}
+        <motion.div
+          className="mt-12 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <Link href="/blog">
+            <motion.button
+              className={`group relative inline-flex items-center gap-3 px-8 py-4 bg-green dark:bg-green-light text-white rounded-full font-medium overflow-hidden ${albert_Sans.className}`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {/* Background animation */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-green-light to-green dark:from-green dark:to-green-light"
+                initial={{ x: "-100%" }}
+                whileHover={{ x: 0 }}
+                transition={{ duration: 0.3 }}
+              />
+
+              <span className="relative z-10">{t("viewAll")}</span>
+
+              {/* Arrow icon */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="relative z-10 transition-transform duration-200 group-hover:translate-x-1"
+              >
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </motion.button>
+          </Link>
+
+          {/* Additional text */}
+          <p className={`mt-4 text-black/50 dark:text-dark-text-muted text-sm ${albert_Sans.className}`}>
+            {t("exploreMore")}
+          </p>
+        </motion.div>
       </Page>
     </section>
   );

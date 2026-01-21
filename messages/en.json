@@ -157,7 +157,11 @@
   },
   "articles": {
     "title": "Writings & Insights",
-    "subtitle": "Sharing My Knowledge"
+    "subtitle": "Sharing My Knowledge",
+    "articleCount": "Articles",
+    "viewAll": "View All Articles",
+    "exploreMore": "Explore more insights and tutorials",
+    "clickToRead": "Click to read more..."
   },
   "contact": {
     "title": "Get In Touch",

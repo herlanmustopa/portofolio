@@ -157,7 +157,11 @@
   },
   "articles": {
     "title": "Tulisan & Wawasan",
-    "subtitle": "Berbagi Pengetahuan Saya"
+    "subtitle": "Berbagi Pengetahuan Saya",
+    "articleCount": "Artikel",
+    "viewAll": "Lihat Semua Artikel",
+    "exploreMore": "Jelajahi lebih banyak wawasan dan tutorial",
+    "clickToRead": "Klik untuk membaca selengkapnya..."
   },
   "contact": {
     "title": "Hubungi Saya",
