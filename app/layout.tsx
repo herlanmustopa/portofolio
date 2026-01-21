@@ -1,9 +1,16 @@
 import { albert_Sans } from "@/utils/font";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
-import ScrollToTop from "@/components/molecules/ScrollToTop";
+import dynamic from "next/dynamic";
+
+// Lazy load components that aren't needed for initial render
+const ScrollToTop = dynamic(
+  () => import("@/components/molecules/ScrollToTop"),
+  { ssr: false }
+);
+const GoogleAnalytics = dynamic(
+  () => import("@/components/analytics/GoogleAnalytics").then(mod => ({ default: mod.GoogleAnalytics })),
+  { ssr: false }
+);
 
 // Script to prevent theme flash on page load
 const themeScript = `
@@ -30,10 +37,10 @@ export default function RootLayout({
       <body className="bg-primary dark:bg-dark-bg min-h-screen overflow-auto text-black dark:text-dark-text transition-colors duration-300" suppressHydrationWarning>
         {children}
         <ScrollToTop />
-        <Analytics />
-        <SpeedInsights />
         <GoogleAnalytics />
       </body>
     </html>
   );
 }
+
+

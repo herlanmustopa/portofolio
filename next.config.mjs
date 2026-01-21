@@ -128,6 +128,8 @@ const nextConfig = {
       'tailwind-merge',
       'lucide-react',
     ],
+    // Inline critical CSS to reduce network dependency chain
+    optimizeCss: true,
   },
 };
 
