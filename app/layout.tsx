@@ -1,16 +1,6 @@
 import { albert_Sans } from "@/utils/font";
 import "./globals.css";
-import dynamic from "next/dynamic";
-
-// Lazy load components that aren't needed for initial render
-const ScrollToTop = dynamic(
-  () => import("@/components/molecules/ScrollToTop"),
-  { ssr: false }
-);
-const GoogleAnalytics = dynamic(
-  () => import("@/components/analytics/GoogleAnalytics").then(mod => ({ default: mod.GoogleAnalytics })),
-  { ssr: false }
-);
+import { ClientComponents } from "@/components/providers/ClientComponents";
 
 // Script to prevent theme flash on page load
 const themeScript = `
@@ -36,11 +26,11 @@ export default function RootLayout({
       </head>
       <body className="bg-primary dark:bg-dark-bg min-h-screen overflow-auto text-black dark:text-dark-text transition-colors duration-300" suppressHydrationWarning>
         {children}
-        <ScrollToTop />
-        <GoogleAnalytics />
+        <ClientComponents />
       </body>
     </html>
   );
 }
+
 
 
