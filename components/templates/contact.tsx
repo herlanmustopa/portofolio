@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { useTranslations } from "next-intl";
 import { motion, type Variants } from "framer-motion";
 import { albert_Sans, thesignature, unbounded } from "@/utils/font";
 import Page from "../organisms/pages";
@@ -41,6 +42,7 @@ interface FormData {
 }
 
 export default function Contact() {
+  const t = useTranslations("contact");
   const [formData, setFormData] = useState<FormData>({
     fullName: "",
     email: "",
@@ -92,13 +94,13 @@ export default function Contact() {
 
       if (response.ok) {
         setFormData({ fullName: "", email: "", message: "" });
-        showToast("Message sent successfully! I'll get back to you soon.", "success");
+        showToast(t("success"), "success");
       } else {
-        showToast(data.error || "Failed to send message. Please try again.", "error");
+        showToast(data.error || t("error"), "error");
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      showToast("Failed to send message. Please try again.", "error");
+      showToast(t("error"), "error");
     } finally {
       setIsSubmitting(false);
     }
@@ -118,13 +120,13 @@ export default function Contact() {
             className={`text-7xl text-green dark:text-green-light mb-4 ${thesignature.className}`}
             variants={itemVariants}
           >
-            Get In Touch
+            {t("title")}
           </motion.h1>
           <motion.h2
             className={`text-2xl md:text-3xl lg:text-4xl font-semibold text-black dark:text-dark-text ${unbounded.className}`}
             variants={itemVariants}
           >
-            Let&apos;s Build Something Great
+            {t("subtitle")}
           </motion.h2>
         </motion.div>
 
@@ -142,14 +144,14 @@ export default function Contact() {
               transition={{ duration: 0.2 }}
             >
               <label htmlFor="fullName" className="sr-only">
-                Full name
+                {t("form.fullName")}
               </label>
               <input
                 type="text"
                 name="fullName"
                 id="fullName"
                 autoComplete="name"
-                placeholder="Full Name"
+                placeholder={t("form.fullName")}
                 value={formData.fullName}
                 onChange={handleInputChange}
                 required
@@ -163,14 +165,14 @@ export default function Contact() {
               transition={{ duration: 0.2 }}
             >
               <label htmlFor="email" className="sr-only">
-                Email
+                {t("form.email")}
               </label>
               <input
                 id="email"
                 name="email"
                 type="email"
                 autoComplete="email"
-                placeholder="Email Address"
+                placeholder={t("form.email")}
                 value={formData.email}
                 onChange={handleInputChange}
                 required
@@ -184,13 +186,13 @@ export default function Contact() {
               transition={{ duration: 0.2 }}
             >
               <label htmlFor="message" className="sr-only">
-                Message
+                {t("form.message")}
               </label>
               <textarea
                 id="message"
                 name="message"
                 rows={4}
-                placeholder="Your Message"
+                placeholder={t("form.message")}
                 value={formData.message}
                 onChange={handleInputChange}
                 required
@@ -219,10 +221,10 @@ export default function Contact() {
                         ease: "linear",
                       }}
                     />
-                    Sending...
+                    {t("form.sending")}
                   </>
                 ) : (
-                  "Send Message"
+                  t("form.submit")
                 )}
               </button>
             </motion.div>
@@ -240,7 +242,7 @@ export default function Contact() {
               className={`text-gray-600 dark:text-dark-text-muted mb-4 ${albert_Sans.className}`}
               variants={itemVariants}
             >
-              Or reach out directly:
+              {t("reachOut")}
             </motion.p>
             <motion.div
               className="flex flex-col sm:flex-row justify-center items-center gap-4"
@@ -252,7 +254,7 @@ export default function Contact() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                📧 herlan.mustopa@outlook.com
+                herlan.mustopa@outlook.com
               </motion.a>
               <motion.a
                 href="tel:628119011099"
@@ -260,7 +262,7 @@ export default function Contact() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                📞 +62 81 1901 1099
+                +62 81 1901 1099
               </motion.a>
             </motion.div>
           </motion.div>

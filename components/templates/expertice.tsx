@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 import { albert_Sans, thesignature, unbounded } from "@/utils/font";
 import Page from "../organisms/pages";
 import { motion, useInView, type Variants } from "framer-motion";
@@ -37,20 +38,11 @@ const cardVariants: Variants = {
   },
 };
 
-const skillItemVariants: Variants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.4, ease: "easeOut" },
-  },
-};
-
 // 👇 FIXED INTERFACE TYPING 👇
 interface IExpertise {
   icon: string;
   title: string;
-  skills: string[]; // More specific typing
+  skills: string[];
   gradient?: string;
 }
 
@@ -109,42 +101,25 @@ function TechCard({
 export default function Expertise() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const t = useTranslations("expertise");
 
   const expertiseData: IExpertise[] = [
     {
       icon: "🚀",
-      title: "Frontend Development",
-      skills: [
-        "ReactJS, Next.js, VueJS, NuxtJS",
-        "TypeScript & JavaScript (ES6+)",
-        "State Management (Redux, Context)",
-        "Styling with Tailwind, MUI, Vuetify",
-        "SEO Optimization (SSR & SSG)",
-      ],
+      title: t("frontend.title"),
+      skills: t.raw("frontend.skills") as string[],
       gradient: "from-blue-50 to-blue-100",
     },
     {
       icon: "⚙️",
-      title: "Backend & FullStack",
-      skills: [
-        "Node.js & Java Springboot",
-        "RESTful API & GraphQL Design",
-        "Microservice Architecture",
-        "API Integration (Axios, Fetch, SWR)",
-        "CMS Sitecore & Thymeleaf",
-      ],
+      title: t("backend.title"),
+      skills: t.raw("backend.skills") as string[],
       gradient: "from-green-50 to-green-100",
     },
     {
       icon: "🛠️",
-      title: "DevOps & Tooling",
-      skills: [
-        "CI/CD with Jenkins, GitHub Actions",
-        "Containerization (Docker)",
-        "Testing with Cypress",
-        "Agile (Scrum, Kanban) & SDLC (Jira)",
-        "Git, GitHub, Bitbucket, GitLab",
-      ],
+      title: t("devops.title"),
+      skills: t.raw("devops.skills") as string[],
       gradient: "from-purple-50 to-purple-100",
     },
   ];
@@ -164,13 +139,13 @@ export default function Expertise() {
             className={`text-6xl lg:text-7xl text-green dark:text-green-light mb-4 ${thesignature.className}`}
             variants={itemVariants}
           >
-            My Expertise
+            {t("title")}
           </motion.h1>
           <motion.h2
             className={`text-2xl md:text-3xl lg:text-4xl font-semibold mb-16 text-black dark:text-dark-text ${unbounded.className}`}
             variants={itemVariants}
           >
-            Crafting Digital Solutions
+            {t("subtitle")}
           </motion.h2>
 
           {/* Cards Grid */}
@@ -191,8 +166,7 @@ export default function Expertise() {
               className={`text-black/70 dark:text-dark-text-muted mb-6 max-w-2xl mx-auto ${albert_Sans.className}`}
               variants={itemVariants}
             >
-              Ready to bring your vision to life? Let&apos;s discuss how these
-              skills can solve your challenges.
+              {t("cta.description")}
             </motion.p>
             <motion.button
               whileHover={{
@@ -206,7 +180,7 @@ export default function Expertise() {
               }}
               className={`bg-green dark:bg-green-light text-white font-bold py-3 px-8 rounded-full transition-all duration-300 hover:bg-green-80 dark:hover:bg-green ${albert_Sans.className}`}
             >
-              Let&apos;s Work Together
+              {t("cta.button")}
             </motion.button>
           </motion.div>
         </motion.div>

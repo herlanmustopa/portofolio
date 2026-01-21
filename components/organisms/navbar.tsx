@@ -1,10 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/utils/classMerge";
 import Page from "./pages";
 import { motion } from "framer-motion";
 import ThemeToggle from "../molecules/ThemeToggle";
-
+import LanguageSwitcher from "../molecules/LanguageSwitcher";
 
 interface INavbar {
   onContactClick?: any;
@@ -13,6 +14,7 @@ const Navbar = ({ onContactClick }: INavbar) => {
   const [scroll, setScroll] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("banner");
+  const t = useTranslations("nav");
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -57,11 +59,11 @@ const Navbar = ({ onContactClick }: INavbar) => {
   }, []);
 
   const menuItems = [
-    { id: "banner", label: "Homepage" },
-    { id: "expertice", label: "Expertice" },
-    { id: "projects", label: "Projects" },
-    { id: "about", label: "About" },
-    { id: "article", label: "Article" },
+    { id: "banner", label: t("homepage") },
+    { id: "expertice", label: t("expertise") },
+    { id: "projects", label: t("projects") },
+    { id: "about", label: t("about") },
+    { id: "article", label: t("article") },
   ];
 
   return (
@@ -147,6 +149,10 @@ const Navbar = ({ onContactClick }: INavbar) => {
                       )}
                     </li>
                   ))}
+                  {/* Language Switcher */}
+                  <li>
+                    <LanguageSwitcher isScrolled={scroll} />
+                  </li>
                   {/* Theme Toggle */}
                   <li>
                     <ThemeToggle />
@@ -185,7 +191,7 @@ const Navbar = ({ onContactClick }: INavbar) => {
                               : "bg-navy text-white"
                           )}
                         >
-                          Need Contact Me?
+                          {t("contactMe")}
                         </div>
                       </div>
                     </motion.div>

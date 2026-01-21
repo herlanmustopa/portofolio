@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef } from "react";
+import { useTranslations } from "next-intl";
 import { motion, useInView, type Variants } from "framer-motion";
 import Image from "next/image";
 import { albert_Sans, thesignature, unbounded } from "@/utils/font";
@@ -44,12 +45,13 @@ interface AboutProps {
 export default function About({ onContactClick }: AboutProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const t = useTranslations("about");
 
   const coreValues = [
-    { icon: "💡", text: "Innovative Solutions" },
-    { icon: "🎯", text: "Detail-Oriented & Precise" },
-    { icon: "🤝", text: "Collaborative Team Player" },
-    { icon: "📈", text: "Continuous Learning" },
+    { icon: "💡", text: t("coreValues.innovative") },
+    { icon: "🎯", text: t("coreValues.detail") },
+    { icon: "🤝", text: t("coreValues.collaborative") },
+    { icon: "📈", text: t("coreValues.learning") },
   ];
 
   return (
@@ -82,26 +84,19 @@ export default function About({ onContactClick }: AboutProps) {
               variants={textVariant}
               className={`text-6xl text-green dark:text-green-light mb-4 ${thesignature.className}`}
             >
-              About Me
+              {t("title")}
             </motion.h1>
             <motion.h2
               variants={textVariant}
               className={`text-2xl font-semibold text-black dark:text-dark-text mb-6 ${unbounded.className}`}
             >
-              From Code to Cloud: A Developers Journey
+              {t("subtitle")}
             </motion.h2>
             <motion.p
               variants={textVariant}
               className={`text-black/80 dark:text-dark-text-muted mb-8 leading-relaxed ${albert_Sans.className}`}
             >
-              With over 8 years in the digital trenches, Ive evolved from a
-              dedicated Frontend Developer to a versatile FullStack
-              professional, passionate about building complex web applications
-              that are both functional and delightful. My journey across
-              companies like Maybank and Telkom has equipped me with a robust
-              skill set in React, Next.js, and Java Springboot. I dont just
-              write code; I architect seamless user experiences, optimize for
-              performance and SEO, and thrive in agile environments.
+              {t("description")}
             </motion.p>
 
             <motion.div
@@ -143,7 +138,7 @@ export default function About({ onContactClick }: AboutProps) {
                 whileTap={{ scale: 0.95 }}
                 className={`bg-green dark:bg-green-light text-white font-bold py-3 px-8 rounded-full transition-colors hover:bg-green-80 dark:hover:bg-green shadow-lg ${albert_Sans.className}`}
               >
-                Download CV
+                {t("downloadCv")}
               </motion.a>
               <motion.button
                 onClick={onContactClick}
@@ -155,7 +150,7 @@ export default function About({ onContactClick }: AboutProps) {
                 whileTap={{ scale: 0.95 }}
                 className={`font-bold text-black dark:text-dark-text hover:text-green dark:hover:text-green-light transition-colors cursor-pointer ${albert_Sans.className}`}
               >
-                Lets Talk →
+                {t("letsTalk")} →
               </motion.button>
             </motion.div>
           </div>

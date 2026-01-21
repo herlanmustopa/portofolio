@@ -1,0 +1,210 @@
+{
+  "metadata": {
+    "title": "Herlan Mustopa | Fullstack Developer & Software Engineer",
+    "titleTemplate": "{title} | Herlan Mustopa",
+    "description": "Portfolio Herlan Mustopa - Fullstack Developer & Software Engineer yang spesialis dalam React, Next.js, dan teknologi web modern. Meningkatkan setiap interaksi melampaui ekspektasi.",
+    "ogTitle": "Herlan Mustopa | Fullstack Developer & Software Engineer",
+    "ogDescription": "Portfolio Herlan Mustopa - Fullstack Developer & Software Engineer yang spesialis dalam React, Next.js, dan teknologi web modern."
+  },
+  "nav": {
+    "homepage": "Beranda",
+    "expertise": "Keahlian",
+    "projects": "Proyek",
+    "about": "Tentang",
+    "article": "Artikel",
+    "contactMe": "Hubungi Saya?"
+  },
+  "banner": {
+    "subtitle": "Meningkatkan Setiap Interaksi",
+    "description": "Bayangkan perjalanan digital di mana setiap momen terasa dibuat khusus: mulus, mengundang, dan menyenangkan. Dari pandangan pertama hingga klik terakhir, saya merancang pengalaman yang menghanyutkan Anda dalam kejelasan dan keanggunan, mengubah setiap kunjungan menjadi petualangan yang berkesan, dibuat khusus untuk Anda.",
+    "cta": "Bawa saya kesana",
+    "scrollToExplore": "Gulir untuk menjelajahi"
+  },
+  "expertise": {
+    "title": "Keahlian Saya",
+    "subtitle": "Menciptakan Solusi Digital",
+    "frontend": {
+      "title": "Frontend Development",
+      "skills": [
+        "ReactJS, Next.js, VueJS, NuxtJS",
+        "TypeScript & JavaScript (ES6+)",
+        "State Management (Redux, Context)",
+        "Styling dengan Tailwind, MUI, Vuetify",
+        "Optimasi SEO (SSR & SSG)"
+      ]
+    },
+    "backend": {
+      "title": "Backend & FullStack",
+      "skills": [
+        "Node.js & Java Springboot",
+        "Desain RESTful API & GraphQL",
+        "Arsitektur Microservice",
+        "Integrasi API (Axios, Fetch, SWR)",
+        "CMS Sitecore & Thymeleaf"
+      ]
+    },
+    "devops": {
+      "title": "DevOps & Tooling",
+      "skills": [
+        "CI/CD dengan Jenkins, GitHub Actions",
+        "Containerization (Docker)",
+        "Testing dengan Cypress",
+        "Agile (Scrum, Kanban) & SDLC (Jira)",
+        "Git, GitHub, Bitbucket, GitLab"
+      ]
+    },
+    "cta": {
+      "description": "Siap mewujudkan visi Anda? Mari diskusikan bagaimana keahlian ini dapat menyelesaikan tantangan Anda.",
+      "button": "Mari Bekerja Sama"
+    }
+  },
+  "projects": {
+    "title": "Proyek Unggulan",
+    "subtitle": "Sekilas Karya Saya",
+    "viewCaseStudy": "Lihat Studi Kasus",
+    "liveDemo": "Demo Langsung",
+    "clickToViewDetails": "Klik untuk melihat detail",
+    "items": {
+      "ossv2": {
+        "category": "Aplikasi Web Enterprise | Sr. Frontend",
+        "description": "Memimpin penulisan ulang lengkap portal Online Single Submission nasional, migrasi dari JavaScript ke TypeScript dan mengimplementasikan fitur modern yang SEO-friendly dengan Next.js (SSR/SSG)."
+      },
+      "oss": {
+        "category": "Aplikasi Web Enterprise | Sr. Frontend",
+        "description": "Memimpin penulisan ulang lengkap portal Online Single Submission nasional, migrasi dari JavaScript ke TypeScript dan mengimplementasikan fitur modern yang SEO-friendly dengan Next.js (SSR/SSG)."
+      },
+      "maybank": {
+        "category": "Aplikasi Web Fintech | FullStack Developer",
+        "description": "Mengembangkan dan memelihara aplikasi web M2U untuk nasabah menggunakan ReactJS dan sistem BackOffice internal dengan Java, Spring Boot, dan Thymeleaf, memastikan integrasi yang mulus dan performa tinggi."
+      },
+      "satunadi": {
+        "category": "Portal Kesehatan | Frontend",
+        "description": "Membangun dua portal kesehatan kritis dari nol menggunakan Next.js dan TypeScript. Mengimplementasikan state management yang robust dengan Redux-Toolkit untuk penanganan data kompleks di dashboard klinik dan DTP."
+      },
+      "briapi": {
+        "category": "Manajemen API & Solusi Enterprise",
+        "description": "Membangun aplikasi UI untuk manajemen API BRI (MIS-BRIAPI) dan Dynamic Channel internal menggunakan ReactJS dan MUI, mengintegrasikan dengan REST dan GraphQL API untuk aliran data yang versatile."
+      }
+    }
+  },
+  "about": {
+    "title": "Tentang Saya",
+    "subtitle": "Dari Kode ke Cloud: Perjalanan Seorang Developer",
+    "description": "Dengan lebih dari 8 tahun di dunia digital, saya berkembang dari Frontend Developer yang berdedikasi menjadi profesional FullStack yang versatile, dengan passion membangun aplikasi web kompleks yang fungsional dan menyenangkan. Perjalanan saya di perusahaan seperti Maybank dan Telkom telah membekali saya dengan keahlian yang kuat dalam React, Next.js, dan Java Springboot. Saya tidak hanya menulis kode; saya merancang pengalaman pengguna yang mulus, mengoptimalkan performa dan SEO, dan berkembang di lingkungan agile.",
+    "coreValues": {
+      "innovative": "Solusi Inovatif",
+      "detail": "Detail-Oriented & Presisi",
+      "collaborative": "Tim Player Kolaboratif",
+      "learning": "Pembelajaran Berkelanjutan"
+    },
+    "downloadCv": "Unduh CV",
+    "letsTalk": "Mari Berbicara"
+  },
+  "timeline": {
+    "title": "Perjalanan Karir",
+    "subtitle": "Pencapaian & Prestasi",
+    "present": "Sekarang",
+    "items": {
+      "maybank": {
+        "date": "Okt 2024 - Sekarang",
+        "title": "FullStack Developer",
+        "company": "Maybank",
+        "description": "Mengembangkan berbagai aplikasi web (M2U, BackOffice, Corporate) dan backend microservices menggunakan ReactJS, Java Springboot, dan CMS Sitecore."
+      },
+      "telkom": {
+        "date": "Feb 2023 - Okt 2024",
+        "title": "Sr. Frontend Web Developer",
+        "company": "Telkom",
+        "description": "Memimpin penulisan ulang Portal OSS ke V2 menggunakan Next.js & TypeScript. Membangun beberapa dashboard CMS dan portal internal dengan React dan Vue."
+      },
+      "cronos": {
+        "date": "Apr 2022 - Jan 2023",
+        "title": "Mid. Frontend Web Developer",
+        "company": "Cronos Studio Indonesia",
+        "description": "Membangun aplikasi MIS-BRIAPI Auto Debit untuk BRI menggunakan ReactJS dan Material UI, dengan fokus pada integrasi API dan state management Redux."
+      },
+      "telkomsigma": {
+        "date": "Sep 2018 - Apr 2022",
+        "title": "Frontend Web Developer",
+        "company": "Telkomsigma",
+        "description": "Mengembangkan berbagai proyek untuk pemerintah dan enterprise seperti LPPD & EKPPD menggunakan Vue.js/Nuxt.js dan aplikasi internal dengan React.js."
+      },
+      "infosys": {
+        "date": "Jan 2017 - Sep 2018",
+        "title": "Mobile & Web Developer",
+        "company": "Infosys Integrated Solutions",
+        "description": "Terlibat dalam pembuatan aplikasi mobile Brimo BRI, My Indihome, dan My Telkom Solution, serta portal web untuk CIMB Niaga."
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Testimoni",
+    "subtitle": "Apa Kata Mereka",
+    "items": {
+      "badrus": {
+        "content": "Herlan adalah developer yang sangat dedicated dan memiliki kemampuan problem-solving yang luar biasa. Kontribusinya dalam proyek OSS V2 sangat signifikan, terutama dalam hal optimasi performa dan implementasi SSR/SSG."
+      },
+      "sarah": {
+        "content": "Bekerja dengan Herlan selalu menyenangkan. Dia tidak hanya mengerti requirement teknis, tapi juga memahami kebutuhan bisnis. Hasil kerjanya selalu berkualitas tinggi dan tepat waktu."
+      },
+      "gunawan": {
+        "content": "Herlan memiliki skill frontend yang sangat solid. Kemampuannya dalam React dan state management sangat impressive. Dia juga selalu update dengan teknologi terbaru."
+      }
+    }
+  },
+  "articles": {
+    "title": "Tulisan & Wawasan",
+    "subtitle": "Berbagi Pengetahuan Saya"
+  },
+  "contact": {
+    "title": "Hubungi Saya",
+    "subtitle": "Mari Bangun Sesuatu yang Hebat",
+    "form": {
+      "fullName": "Nama Lengkap",
+      "email": "Alamat Email",
+      "message": "Pesan Anda",
+      "submit": "Kirim Pesan",
+      "sending": "Mengirim..."
+    },
+    "reachOut": "Atau hubungi langsung:",
+    "success": "Pesan berhasil dikirim! Saya akan segera menghubungi Anda.",
+    "error": "Gagal mengirim pesan. Silakan coba lagi."
+  },
+  "contactModal": {
+    "title": "Mari Terhubung",
+    "subtitle": "Pilih cara yang paling nyaman bagi Anda untuk menghubungi saya.",
+    "email": "Email",
+    "whatsapp": "WhatsApp",
+    "linkedin": "LinkedIn",
+    "copy": "Salin",
+    "copied": "Tersalin!"
+  },
+  "footer": {
+    "role": "Sr. Frontend & FullStack Developer",
+    "rights": "Hak Cipta Dilindungi."
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Tulisan & Wawasan",
+    "description": "Berbagi pengetahuan dan pengalaman seputar web development, teknologi, dan hal menarik lainnya.",
+    "searchPlaceholder": "Cari artikel...",
+    "articlesFound": "{count} artikel ditemukan untuk \"{query}\"",
+    "noArticles": "Belum ada artikel",
+    "noArticlesFound": "Tidak ada artikel ditemukan",
+    "noArticlesDescription": "Coba kata kunci lain atau hapus filter pencarian.",
+    "stayTuned": "Nantikan tulisan menarik dari saya!",
+    "clearSearch": "Hapus pencarian",
+    "clickToReadMore": "Klik untuk membaca lebih lanjut...",
+    "by": "Oleh",
+    "home": "Beranda"
+  },
+  "notFound": {
+    "title": "404",
+    "subtitle": "Halaman Tidak Ditemukan",
+    "description": "Maaf, halaman yang Anda cari tidak dapat ditemukan.",
+    "backHome": "Kembali ke Beranda"
+  },
+  "common": {
+    "loading": "Memuat..."
+  }
+}

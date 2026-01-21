@@ -1,4 +1,6 @@
-import Link from "next/link";
+"use client";
+
+import { Link } from "@/i18n/navigation";
 import { albert_Sans } from "@/utils/font";
 
 export interface BreadcrumbItem {
@@ -40,7 +42,7 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
       {/* Visual Breadcrumb */}
       <nav aria-label="Breadcrumb" className={`${albert_Sans.className}`}>
         <ol
-          className="flex items-center space-x-2 text-sm text-black/60"
+          className="flex items-center space-x-2 text-sm text-black/60 dark:text-dark-text-muted"
           itemScope
           itemType="https://schema.org/BreadcrumbList"
         >
@@ -53,18 +55,18 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
               itemType="https://schema.org/ListItem"
             >
               {index > 0 && (
-                <span className="mx-2 text-black/40">/</span>
+                <span className="mx-2 text-black/40 dark:text-dark-text-muted">/</span>
               )}
               {item.href ? (
                 <Link
                   href={item.href}
-                  className="hover:text-green transition-colors"
+                  className="hover:text-green dark:hover:text-green-light transition-colors"
                   itemProp="item"
                 >
                   <span itemProp="name">{item.name}</span>
                 </Link>
               ) : (
-                <span className="text-black font-medium" itemProp="name">
+                <span className="text-black dark:text-dark-text font-medium" itemProp="name">
                   {item.name}
                 </span>
               )}

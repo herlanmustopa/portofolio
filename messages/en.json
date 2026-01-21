@@ -1,0 +1,210 @@
+{
+  "metadata": {
+    "title": "Herlan Mustopa | Fullstack Developer & Software Engineer",
+    "titleTemplate": "{title} | Herlan Mustopa",
+    "description": "Portfolio of Herlan Mustopa - Fullstack Developer & Software Engineer specializing in React, Next.js, and modern web technologies. Elevating every interaction beyond expectation.",
+    "ogTitle": "Herlan Mustopa | Fullstack Developer & Software Engineer",
+    "ogDescription": "Portfolio of Herlan Mustopa - Fullstack Developer & Software Engineer specializing in React, Next.js, and modern web technologies."
+  },
+  "nav": {
+    "homepage": "Homepage",
+    "expertise": "Expertise",
+    "projects": "Projects",
+    "about": "About",
+    "article": "Article",
+    "contactMe": "Need Contact Me?"
+  },
+  "banner": {
+    "subtitle": "Elevating Every Interaction",
+    "description": "Imagine a digital journey where each moment feels tailor-made: seamless, inviting, and unexpectedly delightful. From the first glance to the final click, I sculpt experiences that immerse you in clarity and elegance, transforming every visit into a memorable adventure, crafted just for you.",
+    "cta": "Take me there",
+    "scrollToExplore": "Scroll to explore"
+  },
+  "expertise": {
+    "title": "My Expertise",
+    "subtitle": "Crafting Digital Solutions",
+    "frontend": {
+      "title": "Frontend Development",
+      "skills": [
+        "ReactJS, Next.js, VueJS, NuxtJS",
+        "TypeScript & JavaScript (ES6+)",
+        "State Management (Redux, Context)",
+        "Styling with Tailwind, MUI, Vuetify",
+        "SEO Optimization (SSR & SSG)"
+      ]
+    },
+    "backend": {
+      "title": "Backend & FullStack",
+      "skills": [
+        "Node.js & Java Springboot",
+        "RESTful API & GraphQL Design",
+        "Microservice Architecture",
+        "API Integration (Axios, Fetch, SWR)",
+        "CMS Sitecore & Thymeleaf"
+      ]
+    },
+    "devops": {
+      "title": "DevOps & Tooling",
+      "skills": [
+        "CI/CD with Jenkins, GitHub Actions",
+        "Containerization (Docker)",
+        "Testing with Cypress",
+        "Agile (Scrum, Kanban) & SDLC (Jira)",
+        "Git, GitHub, Bitbucket, GitLab"
+      ]
+    },
+    "cta": {
+      "description": "Ready to bring your vision to life? Let's discuss how these skills can solve your challenges.",
+      "button": "Let's Work Together"
+    }
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "subtitle": "A Glimpse of My Work",
+    "viewCaseStudy": "View Case Study",
+    "liveDemo": "Live Demo",
+    "clickToViewDetails": "Click to view details",
+    "items": {
+      "ossv2": {
+        "category": "Enterprise Web App | Sr. Frontend",
+        "description": "Spearheaded the complete rewrite of the national Online Single Submission portal, migrating from JavaScript to TypeScript and implementing modern, SEO-friendly features with Next.js (SSR/SSG)."
+      },
+      "oss": {
+        "category": "Enterprise Web App | Sr. Frontend",
+        "description": "Spearheaded the complete rewrite of the national Online Single Submission portal, migrating from JavaScript to TypeScript and implementing modern, SEO-friendly features with Next.js (SSR/SSG)."
+      },
+      "maybank": {
+        "category": "Fintech Web App | FullStack Developer",
+        "description": "Developed and maintained both the customer-facing M2U web app using ReactJS and the internal BackOffice system with Java, Spring Boot, and Thymeleaf, ensuring seamless integration and high performance."
+      },
+      "satunadi": {
+        "category": "Healthcare Portal | Frontend",
+        "description": "Built two critical healthcare portals from scratch using Next.js and TypeScript. Implemented robust state management with Redux-Toolkit for complex data handling in clinical and DTP dashboards."
+      },
+      "briapi": {
+        "category": "API Management & Enterprise Solutions",
+        "description": "Engineered UI applications for BRI's API management (MIS-BRIAPI) and internal Dynamic Channel using ReactJS and MUI, integrating with both REST and GraphQL APIs for versatile data flow."
+      }
+    }
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "From Code to Cloud: A Developer's Journey",
+    "description": "With over 8 years in the digital trenches, I've evolved from a dedicated Frontend Developer to a versatile FullStack professional, passionate about building complex web applications that are both functional and delightful. My journey across companies like Maybank and Telkom has equipped me with a robust skill set in React, Next.js, and Java Springboot. I don't just write code; I architect seamless user experiences, optimize for performance and SEO, and thrive in agile environments.",
+    "coreValues": {
+      "innovative": "Innovative Solutions",
+      "detail": "Detail-Oriented & Precise",
+      "collaborative": "Collaborative Team Player",
+      "learning": "Continuous Learning"
+    },
+    "downloadCv": "Download CV",
+    "letsTalk": "Let's Talk"
+  },
+  "timeline": {
+    "title": "Career Journey",
+    "subtitle": "Milestones & Achievements",
+    "present": "Present",
+    "items": {
+      "maybank": {
+        "date": "Oct 2024 - Present",
+        "title": "FullStack Developer",
+        "company": "Maybank",
+        "description": "Developing various web applications (M2U, BackOffice, Corporate) and backend microservices using ReactJS, Java Springboot, and CMS Sitecore."
+      },
+      "telkom": {
+        "date": "Feb 2023 - Oct 2024",
+        "title": "Sr. Frontend Web Developer",
+        "company": "Telkom",
+        "description": "Led the rewrite of OSS Portal to V2 using Next.js & TypeScript. Built multiple CMS dashboards and internal portals with React and Vue."
+      },
+      "cronos": {
+        "date": "Apr 2022 - Jan 2023",
+        "title": "Mid. Frontend Web Developer",
+        "company": "Cronos Studio Indonesia",
+        "description": "Built MIS-BRIAPI Auto Debit application for BRI using ReactJS and Material UI, focusing on API integration and Redux state management."
+      },
+      "telkomsigma": {
+        "date": "Sep 2018 - Apr 2022",
+        "title": "Frontend Web Developer",
+        "company": "Telkomsigma",
+        "description": "Developed various government and enterprise projects such as LPPD & EKPPD using Vue.js/Nuxt.js and internal applications with React.js."
+      },
+      "infosys": {
+        "date": "Jan 2017 - Sep 2018",
+        "title": "Mobile & Web Developer",
+        "company": "Infosys Integrated Solutions",
+        "description": "Involved in building Brimo BRI mobile app, My Indihome, and My Telkom Solution, as well as web portal for CIMB Niaga."
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Testimonials",
+    "subtitle": "What People Say",
+    "items": {
+      "badrus": {
+        "content": "Herlan is a very dedicated developer with exceptional problem-solving skills. His contribution to the OSS V2 project was significant, especially in performance optimization and SSR/SSG implementation."
+      },
+      "sarah": {
+        "content": "Working with Herlan is always a pleasure. He not only understands technical requirements but also understands business needs. His work is always high quality and on time."
+      },
+      "gunawan": {
+        "content": "Herlan has very solid frontend skills. His abilities in React and state management are impressive. He also keeps up with the latest technologies."
+      }
+    }
+  },
+  "articles": {
+    "title": "Writings & Insights",
+    "subtitle": "Sharing My Knowledge"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Let's Build Something Great",
+    "form": {
+      "fullName": "Full Name",
+      "email": "Email Address",
+      "message": "Your Message",
+      "submit": "Send Message",
+      "sending": "Sending..."
+    },
+    "reachOut": "Or reach out directly:",
+    "success": "Message sent successfully! I'll get back to you soon.",
+    "error": "Failed to send message. Please try again."
+  },
+  "contactModal": {
+    "title": "Let's Connect",
+    "subtitle": "Choose the most convenient way for you to contact me.",
+    "email": "Email",
+    "whatsapp": "WhatsApp",
+    "linkedin": "LinkedIn",
+    "copy": "Copy",
+    "copied": "Copied!"
+  },
+  "footer": {
+    "role": "Sr. Frontend & FullStack Developer",
+    "rights": "All Rights Reserved."
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Writings & Insights",
+    "description": "Sharing knowledge and experiences about web development, technology, and other interesting things.",
+    "searchPlaceholder": "Search articles...",
+    "articlesFound": "{count} articles found for \"{query}\"",
+    "noArticles": "No articles yet",
+    "noArticlesFound": "No articles found",
+    "noArticlesDescription": "Try different keywords or clear the search filter.",
+    "stayTuned": "Stay tuned for interesting articles from me!",
+    "clearSearch": "Clear search",
+    "clickToReadMore": "Click to read more...",
+    "by": "By",
+    "home": "Home"
+  },
+  "notFound": {
+    "title": "404",
+    "subtitle": "Page Not Found",
+    "description": "Sorry, the page you are looking for cannot be found.",
+    "backHome": "Back to Home"
+  },
+  "common": {
+    "loading": "Loading..."
+  }
+}

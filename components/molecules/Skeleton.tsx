@@ -136,3 +136,43 @@ export function TimelineSkeleton() {
     </div>
   );
 }
+
+export function ArticleDetailSkeleton() {
+  return (
+    <div className="max-w-3xl mx-auto">
+      {/* Breadcrumb skeleton */}
+      <div className="mb-6">
+        <Skeleton className="h-5 w-64" />
+      </div>
+
+      {/* Article Header */}
+      <header className="mb-8 text-center">
+        {/* Title */}
+        <div className="space-y-3 mb-4">
+          <Skeleton className="h-10 md:h-14 w-3/4 mx-auto" />
+          <Skeleton className="h-10 md:h-14 w-1/2 mx-auto" />
+        </div>
+        {/* Author & Date */}
+        <Skeleton className="h-5 w-48 mx-auto" />
+      </header>
+
+      {/* Main Image */}
+      <Skeleton className="w-full h-64 md:h-96 mb-8 rounded-lg" />
+
+      {/* Article Content */}
+      <div className="space-y-4">
+        <Skeleton className="h-6 w-full" />
+        <Skeleton className="h-6 w-full" />
+        <Skeleton className="h-6 w-5/6" />
+        <Skeleton className="h-6 w-full" />
+        <Skeleton className="h-6 w-4/5" />
+        <div className="py-2" />
+        <Skeleton className="h-6 w-full" />
+        <Skeleton className="h-6 w-full" />
+        <Skeleton className="h-6 w-3/4" />
+        <Skeleton className="h-6 w-full" />
+        <Skeleton className="h-6 w-2/3" />
+      </div>
+    </div>
+  );
+}

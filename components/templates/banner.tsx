@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { useTranslations } from "next-intl";
 import { motion, type Variants } from "framer-motion";
 import { albert_Sans, unbounded, thesignature } from "@/utils/font";
 import Button from "../molecules/button";
@@ -19,10 +20,10 @@ const containerVariants: Variants = {
 
 const textVariant: Variants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } 
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }
   },
 };
 
@@ -61,6 +62,8 @@ const floatingVariant: Variants = {
 };
 
 export default function Banner() {
+  const t = useTranslations("banner");
+
   const handleCTAClick = () => {
     const targetSection = document.getElementById("projects");
     if (targetSection) {
@@ -147,7 +150,7 @@ export default function Banner() {
             className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-6 bg-gradient-to-r from-white via-gray-100 to-gold bg-clip-text text-transparent ${unbounded.className}`}
             variants={textVariant}
           >
-            Elevating Every Interaction
+            {t("subtitle")}
           </motion.h2>
 
           {/* Description with improved typography */}
@@ -155,15 +158,11 @@ export default function Banner() {
             className={`text-base md:text-lg lg:text-xl max-w-3xl leading-relaxed text-white/90 ${albert_Sans.className}`}
             variants={textVariant}
           >
-            Imagine a digital journey where each moment feels tailor-made:
-            seamless, inviting, and unexpectedly delightful. From the first
-            glance to the final click, I sculpt experiences that immerse you in
-            clarity and elegance, transforming every visit into a memorable
-            adventure, crafted just for you.
+            {t("description")}
           </motion.p>
 
           {/* CTA Button with enhanced animation */}
-          <motion.div 
+          <motion.div
             variants={floatingVariant}
             animate={["visible", "float"]}
             className="pt-4"
@@ -173,7 +172,7 @@ export default function Banner() {
               whileTap={{ scale: 0.95 }}
             >
               <Button
-                text="Take me there"
+                text={t("cta")}
                 onClick={handleCTAClick}
                 className={`${albert_Sans.className} my-10 hover:bg-gold border-2 font-bold transition-all duration-300 hover:shadow-lg hover:shadow-gold/25`}
               />
@@ -190,7 +189,7 @@ export default function Banner() {
             <motion.div
               className="flex flex-col items-center text-white/60 cursor-pointer"
               onClick={handleCTAClick}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.1,
                 color: "#FFD700",
                 transition: { duration: 0.2 }
@@ -205,7 +204,7 @@ export default function Banner() {
               }}
             >
               <span className={`text-sm mb-2 ${albert_Sans.className}`}>
-                Scroll to explore
+                {t("scrollToExplore")}
               </span>
               <motion.div
                 className="w-6 h-10 border-2 border-current rounded-full flex justify-center"

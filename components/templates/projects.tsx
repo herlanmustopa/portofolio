@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef } from "react";
+import { useTranslations } from "next-intl";
 import { motion, useInView, type Variants } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 import { albert_Sans, thesignature, unbounded } from "@/utils/font";
@@ -53,6 +54,9 @@ interface ProjectCardProps {
   caseLink?: string;
   align?: "left" | "right";
   index?: number;
+  viewCaseStudyText: string;
+  liveDemoText: string;
+  clickToViewDetailsText: string;
 }
 
 // Komponen Card untuk setiap Proyek
@@ -66,6 +70,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   caseLink,
   align = "left",
   index = 0,
+  viewCaseStudyText,
+  liveDemoText,
+  clickToViewDetailsText,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
@@ -127,7 +134,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 {title}
               </h4>
               <p className={`text-sm opacity-90 ${albert_Sans.className}`}>
-                Click to view details
+                {clickToViewDetailsText}
               </p>
             </div>
           </motion.div>
@@ -221,7 +228,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             whileTap={{ scale: 0.95 }}
             className={`bg-green dark:bg-green-light text-white font-bold py-3 px-6 rounded-full transition-all duration-300 hover:bg-green-80 dark:hover:bg-green shadow-lg ${albert_Sans.className}`}
           >
-            View Case Study
+            {viewCaseStudyText}
           </motion.button>
 
           {liveLink && (
@@ -232,7 +239,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               className={`text-black dark:text-dark-text font-bold hover:text-green dark:hover:text-green-light transition-colors group ${albert_Sans.className}`}
               whileHover={{ x: 5 }}
             >
-              Live Demo
+              {liveDemoText}
               <span className="inline-block transition-transform group-hover:translate-x-1">
                 →
               </span>
@@ -247,14 +254,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 export default function Projects() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const t = useTranslations("projects");
 
-  const projectData: ProjectCardProps[] = [
+  const projectData = [
     {
       image: placeholder1,
       title: "Portal OSS V2 - Rewrite",
-      category: "Enterprise Web App | Sr. Frontend",
-      description:
-        "Spearheaded the complete rewrite of the national Online Single Submission portal, migrating from JavaScript to TypeScript and implementing modern, SEO-friendly features with Next.js (SSR/SSG).",
+      category: t("items.ossv2.category"),
+      description: t("items.ossv2.description"),
       stack: [
         "Next.js",
         "TypeScript",
@@ -268,9 +275,8 @@ export default function Projects() {
     {
       image: placeholder2,
       title: "OSS - Sistem Perizinan Berusaha Terintegrasi Secara Elektronic",
-      category: "Enterprise Web App | Sr. Frontend",
-      description:
-        "Spearheaded the complete rewrite of the national Online Single Submission portal, migrating from JavaScript to TypeScript and implementing modern, SEO-friendly features with Next.js (SSR/SSG).",
+      category: t("items.oss.category"),
+      description: t("items.oss.description"),
       stack: [
         "Next.js",
         "TypeScript",
@@ -280,14 +286,13 @@ export default function Projects() {
         "REST API",
       ],
       liveLink: "https://oss.go.id",
-      align: "right",
+      align: "right" as const,
     },
     {
       image: placeholder3,
       title: "Maybank M2U & BackOffice",
-      category: "Fintech Web App | FullStack Developer",
-      description:
-        "Developed and maintained both the customer-facing M2U web app using ReactJS and the internal BackOffice system with Java, Spring Boot, and Thymeleaf, ensuring seamless integration and high performance.",
+      category: t("items.maybank.category"),
+      description: t("items.maybank.description"),
       stack: [
         "ReactJS",
         "Java",
@@ -300,9 +305,8 @@ export default function Projects() {
     {
       image: placeholder4,
       title: "SATUNADI SimKlinik & DTP",
-      category: "Healthcare Portal | Frontend",
-      description:
-        "Built two critical healthcare portals from scratch using Next.js and TypeScript. Implemented robust state management with Redux-Toolkit for complex data handling in clinical and DTP dashboards.",
+      category: t("items.satunadi.category"),
+      description: t("items.satunadi.description"),
       stack: [
         "Next.js",
         "TypeScript",
@@ -311,14 +315,13 @@ export default function Projects() {
         "Axios",
       ],
       liveLink: "http://satunadi-staging.dokternet.id/login",
-      align: "right",
+      align: "right" as const,
     },
     {
       image: placeholder5,
       title: "BRIAPI & Dynamic Channel",
-      category: "API Management & Enterprise Solutions",
-      description:
-        "Engineered UI applications for BRI's API management (MIS-BRIAPI) and internal Dynamic Channel using ReactJS and MUI, integrating with both REST and GraphQL APIs for versatile data flow.",
+      category: t("items.briapi.category"),
+      description: t("items.briapi.description"),
       stack: ["ReactJS", "MUI", "Redux", "GraphQL", "Axios", "Git"],
     },
   ];
@@ -337,19 +340,26 @@ export default function Projects() {
             className={`text-6xl lg:text-7xl text-green dark:text-green-light mb-4 ${thesignature.className}`}
             variants={itemVariants}
           >
-            Featured Projects
+            {t("title")}
           </motion.h1>
           <motion.h2
             className={`text-2xl md:text-3xl lg:text-4xl font-semibold mb-20 text-black dark:text-dark-text ${unbounded.className}`}
             variants={itemVariants}
           >
-            A Glimpse of My Work
+            {t("subtitle")}
           </motion.h2>
         </motion.div>
 
         <div className="space-y-24 lg:space-y-32">
           {projectData.map((project, index) => (
-            <ProjectCard key={index} {...project} index={index} />
+            <ProjectCard
+              key={index}
+              {...project}
+              index={index}
+              viewCaseStudyText={t("viewCaseStudy")}
+              liveDemoText={t("liveDemo")}
+              clickToViewDetailsText={t("clickToViewDetails")}
+            />
           ))}
         </div>
       </Page>

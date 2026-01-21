@@ -1,7 +1,8 @@
 "use client";
 import { useState, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { albert_Sans, thesignature, unbounded } from "@/utils/font";
 import Page from "../organisms/pages";
@@ -22,6 +23,7 @@ interface BlogClientProps {
 
 export default function BlogClient({ articles }: BlogClientProps) {
   const [searchQuery, setSearchQuery] = useState("");
+  const t = useTranslations("blog");
 
   // Filter articles based on search query
   const filteredArticles = useMemo(() => {
@@ -42,8 +44,8 @@ export default function BlogClient({ articles }: BlogClientProps) {
         <div className="mb-8">
           <Breadcrumb
             items={[
-              { name: "Home", href: "/" },
-              { name: "Blog" },
+              { name: t("home"), href: "/" },
+              { name: t("title") },
             ]}
           />
         </div>
@@ -53,18 +55,17 @@ export default function BlogClient({ articles }: BlogClientProps) {
           <h1
             className={`text-6xl lg:text-7xl text-green dark:text-green-light mb-4 ${thesignature.className}`}
           >
-            Blog
+            {t("title")}
           </h1>
           <h2
             className={`text-2xl md:text-3xl lg:text-4xl font-semibold text-black dark:text-dark-text ${unbounded.className}`}
           >
-            Writings & Insights
+            {t("subtitle")}
           </h2>
           <p
             className={`mt-4 text-black/70 dark:text-dark-text-muted max-w-2xl mx-auto ${albert_Sans.className}`}
           >
-            Berbagi pengetahuan dan pengalaman seputar web development,
-            teknologi, dan hal menarik lainnya.
+            {t("description")}
           </p>
         </header>
 
@@ -73,7 +74,7 @@ export default function BlogClient({ articles }: BlogClientProps) {
           <SearchInput
             value={searchQuery}
             onChange={setSearchQuery}
-            placeholder="Cari artikel..."
+            placeholder={t("searchPlaceholder")}
           />
         </div>
 
@@ -84,7 +85,7 @@ export default function BlogClient({ articles }: BlogClientProps) {
             animate={{ opacity: 1 }}
             className={`text-center mb-8 text-black/60 dark:text-dark-text-muted ${albert_Sans.className}`}
           >
-            {filteredArticles.length} artikel ditemukan untuk &ldquo;{searchQuery}&rdquo;
+            {t("articlesFound", { count: filteredArticles.length, query: searchQuery })}
           </motion.p>
         )}
 
@@ -127,7 +128,7 @@ export default function BlogClient({ articles }: BlogClientProps) {
                     <p
                       className={`text-black/70 dark:text-dark-text-muted text-sm line-clamp-3 ${albert_Sans.className}`}
                     >
-                      {article.description || "Klik untuk membaca lebih lanjut..."}
+                      {article.description || t("clickToReadMore")}
                     </p>
                   </div>
                 </Link>
@@ -145,19 +146,19 @@ export default function BlogClient({ articles }: BlogClientProps) {
           >
             <div className="text-6xl mb-4">📝</div>
             <h3 className={`text-xl font-semibold text-black dark:text-dark-text mb-2 ${unbounded.className}`}>
-              {searchQuery ? "Tidak ada artikel ditemukan" : "Belum ada artikel"}
+              {searchQuery ? t("noArticlesFound") : t("noArticles")}
             </h3>
             <p className={`text-black/60 dark:text-dark-text-muted ${albert_Sans.className}`}>
               {searchQuery
-                ? "Coba kata kunci lain atau hapus filter pencarian."
-                : "Nantikan tulisan menarik dari saya!"}
+                ? t("noArticlesDescription")
+                : t("stayTuned")}
             </p>
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
                 className={`mt-4 text-green dark:text-green-light hover:underline ${albert_Sans.className}`}
               >
-                Hapus pencarian
+                {t("clearSearch")}
               </button>
             )}
           </motion.div>

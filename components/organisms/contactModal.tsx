@@ -1,17 +1,20 @@
 "use client";
 import React, { useState } from "react";
+import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { albert_Sans, unbounded } from "@/utils/font";
 
-
-interface IContact{
-    icon: string;
-    title: string;
-    value: any;
-    href: any;
+interface IContact {
+  icon: string;
+  title: string;
+  value: any;
+  href: any;
+  isEmail?: boolean;
+  copyText: string;
+  copiedText: string;
 }
 
-const ContactLink = ({ icon, title, value, href }: IContact) => {
+const ContactLink = ({ icon, title, value, href, isEmail, copyText, copiedText }: IContact) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
@@ -19,8 +22,6 @@ const ContactLink = ({ icon, title, value, href }: IContact) => {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000); // Reset after 2 seconds
   };
-
-  const isEmail = title === "Email";
 
   return (
     <a
@@ -44,7 +45,7 @@ const ContactLink = ({ icon, title, value, href }: IContact) => {
       </div>
       {isEmail && (
         <span className="text-sm font-semibold text-gold transition-opacity duration-300">
-          {copied ? "Copied!" : "Copy"}
+          {copied ? copiedText : copyText}
         </span>
       )}
       {!isEmail && (
@@ -56,13 +57,15 @@ const ContactLink = ({ icon, title, value, href }: IContact) => {
   );
 };
 
-
-interface iModal{
-    isOpen: any;
-    onClose: any;
+interface iModal {
+  isOpen: any;
+  onClose: any;
 }
+
 // Komponen utama Modal
 export default function ContactModal({ isOpen, onClose }: iModal) {
+  const t = useTranslations("contactModal");
+
   if (!isOpen) return null;
 
   return (
@@ -98,37 +101,38 @@ export default function ContactModal({ isOpen, onClose }: iModal) {
           <h2
             className={`text-3xl font-bold text-white mb-2 ${unbounded.className}`}
           >
-            Lets Connect
+            {t("title")}
           </h2>
           <p className={`text-white/70 mb-8 ${albert_Sans.className}`}>
-            Pilih cara yang paling nyaman bagi Anda untuk menghubungi saya.
+            {t("subtitle")}
           </p>
 
           <div className="space-y-4">
             <ContactLink
               icon="📧"
-              title="Email"
+              title={t("email")}
               value="herlan.mustopa01@gmail.com"
               href="#"
+              isEmail={true}
+              copyText={t("copy")}
+              copiedText={t("copied")}
             />
             <ContactLink
               icon="💬"
-              title="WhatsApp"
+              title={t("whatsapp")}
               value="+62 811-9011-099"
               href="https://wa.me/628119011099"
+              copyText={t("copy")}
+              copiedText={t("copied")}
             />
             <ContactLink
               icon="🔗"
-              title="LinkedIn"
+              title={t("linkedin")}
               value="Herlan Mustopa"
               href="https://www.linkedin.com/in/herlanmustopa/"
+              copyText={t("copy")}
+              copiedText={t("copied")}
             />
-            {/* <ContactLink
-              icon="📂"
-              title="Download CV"
-              value="Lihat detail pengalaman saya"
-              href="/CV Herlan 2025-EN.pdf"
-            /> */}
           </div>
         </motion.div>
       </motion.div>

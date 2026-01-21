@@ -1,10 +1,12 @@
 "use client";
 import React from "react";
+import { useTranslations } from "next-intl";
 import Page from "./pages";
 import { albert_Sans } from "@/utils/font";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const t = useTranslations("footer");
 
   return (
     <footer className="bg-navy text-white">
@@ -14,7 +16,7 @@ export default function Footer() {
             <h3 className={`text-lg font-bold ${albert_Sans.className}`}>
               Herlan Mustopa
             </h3>
-            <p className="text-white/70">Sr. Frontend & FullStack Developer</p>
+            <p className="text-white/70">{t("role")}</p>
           </div>
           <div className="flex space-x-6">
             <a
@@ -41,7 +43,7 @@ export default function Footer() {
             </a>
           </div>
           <p className="text-sm text-white/50">
-            &copy; {currentYear} Herlan Mustopa. All Rights Reserved.
+            &copy; {currentYear} Herlan Mustopa. {t("rights")}
           </p>
         </div>
       </Page>

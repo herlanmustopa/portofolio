@@ -1,51 +1,19 @@
 "use client";
 import React from "react";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import Page from "../organisms/pages";
 import { albert_Sans, thesignature, unbounded } from "@/utils/font";
 import { cn } from "@/utils/classMerge";
 
-const timelineData = [
-  {
-    date: "Okt 2024 - Sekarang",
-    title: "FullStack Developer",
-    company: "Maybank",
-    description:
-      "Mengembangkan berbagai aplikasi web (M2U, BackOffice, Corporate) dan backend microservices menggunakan ReactJS, Java Springboot, dan CMS Sitecore.",
-  },
-  {
-    date: "Feb 2023 - Okt 2024",
-    title: "Sr. Frontend Web Developer",
-    company: "Telkom",
-    description:
-      "Memimpin penulisan ulang Portal OSS ke V2 menggunakan Next.js & TypeScript. Membangun beberapa dashboard CMS dan portal internal dengan React dan Vue.",
-  },
-  {
-    date: "Apr 2022 - Jan 2023",
-    title: "Mid. Frontend Web Developer",
-    company: "Cronos Studio Indonesia",
-    description:
-      "Membangun aplikasi MIS-BRIAPI Auto Debit untuk BRI menggunakan ReactJS dan Material UI, dengan fokus pada integrasi API dan state management Redux.",
-  },
-  {
-    date: "Sep 2018 - Apr 2022",
-    title: "Frontend Web Developer",
-    company: "Telkomsigma",
-    description:
-      "Mengembangkan berbagai proyek untuk pemerintah dan enterprise seperti LPPD & EKPPD menggunakan Vue.js/Nuxt.js dan aplikasi internal dengan React.js.",
-  },
-  {
-    date: "Jan 2017 - Sep 2018",
-    title: "Mobile & Web Developer",
-    company: "Infosys Integrated Solutions",
-    description:
-      "Terlibat dalam pembuatan aplikasi mobile Brimo BRI, My Indihome, dan My Telkom Solution, serta portal web untuk CIMB Niaga.",
-  },
-];
-
 interface ITimeline {
-    data: any;
-    index: any
+  data: {
+    date: string;
+    title: string;
+    company: string;
+    description: string;
+  };
+  index: number;
 }
 
 const TimelineItem = ({ data, index }: ITimeline) => {
@@ -123,6 +91,41 @@ const TimelineItem = ({ data, index }: ITimeline) => {
 };
 
 export default function Timeline() {
+  const t = useTranslations("timeline");
+
+  const timelineData = [
+    {
+      date: t("items.maybank.date"),
+      title: t("items.maybank.title"),
+      company: t("items.maybank.company"),
+      description: t("items.maybank.description"),
+    },
+    {
+      date: t("items.telkom.date"),
+      title: t("items.telkom.title"),
+      company: t("items.telkom.company"),
+      description: t("items.telkom.description"),
+    },
+    {
+      date: t("items.cronos.date"),
+      title: t("items.cronos.title"),
+      company: t("items.cronos.company"),
+      description: t("items.cronos.description"),
+    },
+    {
+      date: t("items.telkomsigma.date"),
+      title: t("items.telkomsigma.title"),
+      company: t("items.telkomsigma.company"),
+      description: t("items.telkomsigma.description"),
+    },
+    {
+      date: t("items.infosys.date"),
+      title: t("items.infosys.title"),
+      company: t("items.infosys.company"),
+      description: t("items.infosys.description"),
+    },
+  ];
+
   return (
     <section className="bg-primary dark:bg-dark-bg py-24 transition-colors duration-300" id="experience">
       <Page>
@@ -134,12 +137,12 @@ export default function Timeline() {
           transition={{ duration: 0.6 }}
         >
           <h1 className={`text-7xl text-green dark:text-green-light mb-4 ${thesignature.className}`}>
-            Career Journey
+            {t("title")}
           </h1>
           <h2
             className={`text-2xl md:text-3xl lg:text-4xl font-semibold text-black dark:text-dark-text ${unbounded.className}`}
           >
-            Milestones & Achievements
+            {t("subtitle")}
           </h2>
         </motion.div>
 
