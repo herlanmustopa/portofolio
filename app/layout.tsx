@@ -4,6 +4,7 @@ import "./globalicons.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
+import ScrollToTop from "@/components/molecules/ScrollToTop";
 
 // Script to prevent theme flash on page load
 const themeScript = `
@@ -29,6 +30,7 @@ export default function RootLayout({
       </head>
       <body className="bg-primary dark:bg-dark-bg min-h-screen overflow-auto text-black dark:text-dark-text transition-colors duration-300" suppressHydrationWarning>
         {children}
+        <ScrollToTop />
         <Analytics />
         <SpeedInsights />
         <GoogleAnalytics />
