@@ -216,7 +216,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           />
         ))}
       </head>
-      <body className="bg-primary dark:bg-dark-bg min-h-screen overflow-auto text-black dark:text-dark-text transition-colors duration-300">
+      <body className="bg-primary dark:bg-dark-bg min-h-screen overflow-auto text-black dark:text-dark-text transition-colors duration-300" suppressHydrationWarning>
         <LocaleClientWrapper initialLocale={locale as Locale}>
           {children}
         </LocaleClientWrapper>

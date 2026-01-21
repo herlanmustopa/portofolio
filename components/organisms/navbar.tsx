@@ -102,10 +102,11 @@ const Navbar = ({ onContactClick }: INavbar) => {
         <Page>
           <nav className="min-h-[6.25rem] justify-between flex items-center w-full py-5 sticky top-0 z-40">
             <div className="justify-between flex flex-wrap items-center w-full">
-              <div className="border border-green rounded-full">
+              {/* Mobile: Hamburger menu on left */}
+              <div className="border border-green rounded-full md:hidden">
                 <button
                   onClick={toggleMenu}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-200 md:hidden dark:text-gray-400"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400"
                   aria-controls="mega-menu-full"
                   aria-expanded={isMenuOpen}
                 >
@@ -114,12 +115,20 @@ const Navbar = ({ onContactClick }: INavbar) => {
                   </span>
                 </button>
               </div>
+
+              {/* Mobile: Language switcher and Theme toggle on right side */}
+              <div className="flex items-center gap-4 md:hidden">
+                <LanguageSwitcher isScrolled={scroll} />
+                <ThemeToggle />
+              </div>
+
+              {/* Desktop: Full width container with left menu and right actions */}
               <div
                 id="mega-menu-full"
-                className={`group items-center justify-between font-medium ${
-                  isMenuOpen ? "block" : "hidden"
-                } w-full md:order-1 md:flex md:w-auto`}
+                className={`group items-center justify-between font-medium ${isMenuOpen ? "block" : "hidden"
+                  } w-full md:flex`}
               >
+                {/* LEFT SIDE: Menu Items */}
                 <ul className="mt-4 flex flex-col p-4 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:p-0 rtl:space-x-reverse items-center">
                   {menuItems.map((item) => (
                     <li key={item.id} className="relative">
@@ -149,54 +158,91 @@ const Navbar = ({ onContactClick }: INavbar) => {
                       )}
                     </li>
                   ))}
-                  {/* Language Switcher */}
-                  <li>
-                    <LanguageSwitcher isScrolled={scroll} />
-                  </li>
-                  {/* Theme Toggle */}
-                  <li>
-                    <ThemeToggle />
-                  </li>
-                  <li>
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 400,
-                        damping: 17,
-                      }}
-                      className="rounded-full"
-                      onClick={onContactClick}
-                    >
-                      <div className="relative rounded-full p-[2px] overflow-hidden group cursor-pointer">
-                        <motion.div
-                          className="absolute inset-0 w-full h-full -z-10"
-                          style={{
-                            background:
-                              "conic-gradient(from 180deg at 50% 50%, #001f3f, #004040, #0b7373, #001f3f)",
-                          }}
-                          animate={{ rotate: 360 }}
-                          transition={{
-                            duration: 4,
-                            repeat: Infinity,
-                            ease: "linear",
-                          }}
-                        />
-                        <div
-                          className={cn(
-                            "relative z-10 h-full w-full rounded-full px-4 py-2 font-bold transition-colors duration-300",
-                            scroll
-                              ? "bg-primary dark:bg-dark-bg text-green dark:text-green-light"
-                              : "bg-navy text-white"
-                          )}
-                        >
-                          {t("contactMe")}
-                        </div>
-                      </div>
-                    </motion.div>
-                  </li>
                 </ul>
+
+                {/* RIGHT SIDE: Language, Theme, Contact - Desktop only */}
+                <div className="hidden md:flex items-center gap-4">
+                  <LanguageSwitcher isScrolled={scroll} />
+                  <ThemeToggle />
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 17,
+                    }}
+                    className="rounded-full"
+                    onClick={onContactClick}
+                  >
+                    <div className="relative rounded-full p-[2px] overflow-hidden group cursor-pointer">
+                      <motion.div
+                        className="absolute inset-0 w-full h-full -z-10"
+                        style={{
+                          background:
+                            "conic-gradient(from 180deg at 50% 50%, #001f3f, #004040, #0b7373, #001f3f)",
+                        }}
+                        animate={{ rotate: 360 }}
+                        transition={{
+                          duration: 4,
+                          repeat: Infinity,
+                          ease: "linear",
+                        }}
+                      />
+                      <div
+                        className={cn(
+                          "relative z-10 h-full w-full rounded-full px-4 py-2 font-bold transition-colors duration-300",
+                          scroll
+                            ? "bg-primary dark:bg-dark-bg text-green dark:text-green-light"
+                            : "bg-navy text-white"
+                        )}
+                      >
+                        {t("contactMe")}
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+
+                {/* Mobile: Contact button in menu */}
+                <div className="md:hidden flex justify-center mt-4 p-4">
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 17,
+                    }}
+                    className="rounded-full"
+                    onClick={onContactClick}
+                  >
+                    <div className="relative rounded-full p-[2px] overflow-hidden group cursor-pointer">
+                      <motion.div
+                        className="absolute inset-0 w-full h-full -z-10"
+                        style={{
+                          background:
+                            "conic-gradient(from 180deg at 50% 50%, #001f3f, #004040, #0b7373, #001f3f)",
+                        }}
+                        animate={{ rotate: 360 }}
+                        transition={{
+                          duration: 4,
+                          repeat: Infinity,
+                          ease: "linear",
+                        }}
+                      />
+                      <div
+                        className={cn(
+                          "relative z-10 h-full w-full rounded-full px-4 py-2 font-bold transition-colors duration-300",
+                          scroll
+                            ? "bg-primary dark:bg-dark-bg text-green dark:text-green-light"
+                            : "bg-navy text-white"
+                        )}
+                      >
+                        {t("contactMe")}
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
               </div>
             </div>
           </nav>
