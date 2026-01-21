@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@portabletext/react": "^3.2.1",
+    "@rive-app/react-canvas": "^4.26.1",
     "@sanity/image-url": "^1.1.0",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",

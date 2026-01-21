@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Link } from "@/i18n/navigation";
@@ -14,12 +15,40 @@ interface Article {
   description: string;
 }
 
+interface ArticleStats {
+  views: number;
+  likes: number;
+  shares: number;
+}
+
 interface ArticleSectionProps {
   articles: Article[];
 }
 
 export default function ArticleSection({ articles }: ArticleSectionProps) {
   const t = useTranslations("articles");
+  const [articleStats, setArticleStats] = useState<Record<string, ArticleStats>>({});
+
+  // Fetch all stats at once
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const slugs = articles.map((a) => a.slug);
+        const res = await fetch("/api/stats", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ slugs }),
+        });
+        const data = await res.json();
+        setArticleStats(data.stats || {});
+      } catch {
+        // Silently fail
+      }
+    };
+    if (articles.length > 0) {
+      fetchStats();
+    }
+  }, [articles]);
 
   return (
     <section className="bg-primary dark:bg-dark-bg py-24 transition-colors duration-300" id="article">
@@ -56,7 +85,12 @@ export default function ArticleSection({ articles }: ArticleSectionProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {articles.slice(0, 3).map((article, index) => (
-            <ArticleCard key={article._id} article={article} index={index} />
+            <ArticleCard
+              key={article._id}
+              article={article}
+              index={index}
+              stats={articleStats[article.slug]}
+            />
           ))}
         </div>
 

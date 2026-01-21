@@ -8,11 +8,13 @@ import { albert_Sans, unbounded } from "@/utils/font";
 import Page from "@/components/organisms/pages";
 import Breadcrumb from "@/components/molecules/Breadcrumb";
 import ArticleComments from "@/components/molecules/ArticleComments";
-import ArticleShare from "@/components/molecules/ArticleShare";
 import BlogLayoutClient from "@/components/templates/BlogLayoutClient";
 import { client } from "@/sanity/client";
 import { getArticle, getAllArticleSlugs } from "@/sanity/queries";
 import ViewCounter from "@/components/molecules/ViewCounter";
+import LikeButton from "@/components/molecules/LikeButton";
+import ShareButtons from "@/components/molecules/ShareButtons";
+import { RiveRunningCharacters } from "@/components/molecules/RiveCharacter";
 
 // Configure image builder
 const builder = imageUrlBuilder(client);
@@ -157,7 +159,11 @@ export default async function ArticlePage({ params }: Props) {
             />
           </div>
 
-          <article className="max-w-3xl mx-auto" itemScope itemType="https://schema.org/BlogPosting">
+          <article
+            className="max-w-3xl mx-auto"
+            itemScope
+            itemType="https://schema.org/BlogPosting"
+          >
             {/* Article Header */}
             <header className="mb-8 text-center">
               <h1
@@ -166,24 +172,29 @@ export default async function ArticlePage({ params }: Props) {
               >
                 {article.title}
               </h1>
-              <p className={`text-black/60 dark:text-dark-text-muted ${albert_Sans.className}`}>
+              <p
+                className={`text-black/60 dark:text-dark-text-muted ${albert_Sans.className}`}
+              >
                 {t("by")}{" "}
-                <span itemProp="author" itemScope itemType="https://schema.org/Person">
+                <span
+                  itemProp="author"
+                  itemScope
+                  itemType="https://schema.org/Person"
+                >
                   <span itemProp="name">{article.authorName || "Admin"}</span>
                 </span>{" "}
                 •{" "}
-                <time
-                  dateTime={article.publishedAt}
-                  itemProp="datePublished"
-                >
-                  {new Date(article.publishedAt).toLocaleDateString(locale === "id" ? "id-ID" : "en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </time>
-                {" "}•{" "}
-                <ViewCounter slug={slug} increment={true} />
+                <time dateTime={article.publishedAt} itemProp="datePublished">
+                  {new Date(article.publishedAt).toLocaleDateString(
+                    locale === "id" ? "id-ID" : "en-US",
+                    {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    },
+                  )}
+                </time>{" "}
+                • <ViewCounter slug={slug} increment={true} />
               </p>
             </header>
 
@@ -210,9 +221,23 @@ export default async function ArticlePage({ params }: Props) {
               <PortableText value={article.body} />
             </div>
 
-            {/* Share Buttons */}
-            <div className="mt-8 pt-6 border-t border-green/20 dark:border-green-light/20">
-              <ArticleShare title={article.title} description={article.description} />
+            {/* Like & Share Section */}
+            <div className="mt-8 py-6 border-y border-green/20 dark:border-green-light/20">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                {/* Like Button */}
+                <LikeButton slug={slug} size="md" />
+
+                {/* Share Buttons */}
+                <ShareButtons
+                  title={article.title}
+                  description={article.description}
+                  slug={slug}
+                />
+              </div>
+              {/* Bottom Border with Running Characters */}
+              <div className="relative max-w-3xl mt-4">
+                <RiveRunningCharacters />
+              </div>
             </div>
           </article>
 

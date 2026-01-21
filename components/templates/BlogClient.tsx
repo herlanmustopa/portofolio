@@ -22,30 +22,36 @@ interface BlogClientProps {
   articles: Article[];
 }
 
+interface ArticleStats {
+  views: number;
+  likes: number;
+  shares: number;
+}
+
 export default function BlogClient({ articles }: BlogClientProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [viewCounts, setViewCounts] = useState<Record<string, number>>({});
+  const [articleStats, setArticleStats] = useState<Record<string, ArticleStats>>({});
   const t = useTranslations("blog");
 
-  // Fetch all view counts at once
+  // Fetch all stats (views, likes, shares) at once
   useEffect(() => {
-    const fetchViews = async () => {
+    const fetchStats = async () => {
       try {
         const slugs = articles.map((a) => a.slug);
-        const res = await fetch("/api/views", {
+        const res = await fetch("/api/stats", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ slugs }),
         });
         const data = await res.json();
-        setViewCounts(data.views || {});
+        setArticleStats(data.stats || {});
       } catch {
         // Silently fail
       }
     };
     if (articles.length > 0) {
-      fetchViews();
+      fetchStats();
     }
   }, [articles]);
 
@@ -262,27 +268,72 @@ export default function BlogClient({ articles }: BlogClientProps) {
                     >
                       {article.description || t("clickToReadMore")}
                     </p>
-                    {/* View Count */}
-                    <div className={`mt-3 pt-3 border-t border-black/10 dark:border-white/10 flex items-center gap-1 text-xs text-black/50 dark:text-dark-text-muted ${albert_Sans.className}`}>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
-                        <circle cx="12" cy="12" r="3" />
-                      </svg>
-                      <span>
-                        {viewCounts[article.slug] !== undefined
-                          ? `${viewCounts[article.slug].toLocaleString()} views`
-                          : "— views"}
-                      </span>
+                    {/* Stats: Views, Likes, Shares */}
+                    <div className={`mt-3 pt-3 border-t border-black/10 dark:border-white/10 flex items-center gap-4 text-xs text-black/50 dark:text-dark-text-muted ${albert_Sans.className}`}>
+                      {/* Views */}
+                      <div className="flex items-center gap-1">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                          <circle cx="12" cy="12" r="3" />
+                        </svg>
+                        <span>
+                          {articleStats[article.slug]?.views?.toLocaleString() ?? "—"}
+                        </span>
+                      </div>
+
+                      {/* Likes */}
+                      <div className="flex items-center gap-1">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                        </svg>
+                        <span>
+                          {articleStats[article.slug]?.likes?.toLocaleString() ?? "—"}
+                        </span>
+                      </div>
+
+                      {/* Shares */}
+                      <div className="flex items-center gap-1">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <circle cx="18" cy="5" r="3" />
+                          <circle cx="6" cy="12" r="3" />
+                          <circle cx="18" cy="19" r="3" />
+                          <line x1="8.59" x2="15.42" y1="13.51" y2="17.49" />
+                          <line x1="15.41" x2="8.59" y1="6.51" y2="10.49" />
+                        </svg>
+                        <span>
+                          {articleStats[article.slug]?.shares?.toLocaleString() ?? "—"}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </Link>

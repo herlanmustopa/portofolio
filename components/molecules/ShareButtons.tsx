@@ -1,22 +1,55 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocaleContext } from "@/context/LocaleProvider";
+import { albert_Sans } from "@/utils/font";
 
 interface ShareButtonsProps {
     title: string;
     url?: string;
     description?: string;
+    slug?: string;
+    showCount?: boolean;
 }
 
-export default function ShareButtons({ title, url, description }: ShareButtonsProps) {
+export default function ShareButtons({ title, url, description, slug, showCount = true }: ShareButtonsProps) {
     const { locale } = useLocaleContext();
     const [showToast, setShowToast] = useState(false);
+    const [shares, setShares] = useState<number | null>(null);
 
     // Use current URL if not provided
     const shareUrl = url || (typeof window !== "undefined" ? window.location.href : "");
     const shareText = description || title;
+
+    // Fetch share count
+    useEffect(() => {
+        if (!slug || !showCount) return;
+
+        const fetchShares = async () => {
+            try {
+                const res = await fetch(`/api/shares/${slug}`);
+                const data = await res.json();
+                setShares(data.shares);
+            } catch {
+                setShares(0);
+            }
+        };
+        fetchShares();
+    }, [slug, showCount]);
+
+    // Increment share count
+    const incrementShare = async () => {
+        if (!slug) return;
+
+        try {
+            const res = await fetch(`/api/shares/${slug}`, { method: "POST" });
+            const data = await res.json();
+            setShares(data.shares);
+        } catch {
+            // Silent fail
+        }
+    };
 
     const shareLinks = [
         {
@@ -53,6 +86,7 @@ export default function ShareButtons({ title, url, description }: ShareButtonsPr
 
     const handleShare = (getUrl: () => string) => {
         window.open(getUrl(), "_blank", "noopener,noreferrer,width=600,height=400");
+        incrementShare();
     };
 
     // Copy link function with toast
@@ -60,6 +94,7 @@ export default function ShareButtons({ title, url, description }: ShareButtonsPr
         try {
             await navigator.clipboard.writeText(shareUrl);
             setShowToast(true);
+            incrementShare();
             setTimeout(() => setShowToast(false), 2500);
         } catch (err) {
             console.error("Failed to copy:", err);
@@ -69,15 +104,26 @@ export default function ShareButtons({ title, url, description }: ShareButtonsPr
     return (
         <>
             <div className="flex flex-wrap items-center gap-3">
-                <span className="text-sm font-medium text-black/60 dark:text-dark-text-muted">
-                    {locale === "id" ? "Bagikan:" : "Share:"}
-                </span>
+                <div className="flex items-center gap-2">
+                    <span className="text-sm font-medium text-black/60 dark:text-dark-text-muted">
+                        {locale === "id" ? "Bagikan:" : "Share:"}
+                    </span>
+                    {showCount && slug && (
+                        <span className={`text-sm text-black/40 dark:text-dark-text-muted ${albert_Sans.className}`}>
+                            {shares === null ? (
+                                <span className="inline-block w-6 h-4 bg-black/10 dark:bg-white/10 rounded animate-pulse" />
+                            ) : (
+                                `(${shares.toLocaleString()})`
+                            )}
+                        </span>
+                    )}
+                </div>
 
                 {shareLinks.map((link) => (
                     <motion.button
                         key={link.name}
                         onClick={() => handleShare(link.getUrl)}
-                        className={`p-2.5 rounded-full border border-green/20 dark:border-green-light/20 
+                        className={`p-2.5 rounded-full border border-green/20 dark:border-green-light/20
               text-green dark:text-green-light transition-all duration-200 ${link.color}`}
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}
@@ -91,7 +137,7 @@ export default function ShareButtons({ title, url, description }: ShareButtonsPr
                 {/* Copy Link Button */}
                 <motion.button
                     onClick={handleCopyLink}
-                    className="p-2.5 rounded-full border border-green/20 dark:border-green-light/20 
+                    className="p-2.5 rounded-full border border-green/20 dark:border-green-light/20
             text-green dark:text-green-light transition-all duration-200
             hover:bg-green hover:text-white dark:hover:bg-green-light dark:hover:text-dark-bg"
                     whileHover={{ scale: 1.1 }}
@@ -203,4 +249,3 @@ export default function ShareButtons({ title, url, description }: ShareButtonsPr
         </>
     );
 }
-
