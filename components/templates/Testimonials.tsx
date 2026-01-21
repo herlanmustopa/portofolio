@@ -74,12 +74,24 @@ export default function Testimonials() {
         </motion.div>
 
         {/* Testimonial Carousel */}
-        <div className="max-w-4xl mx-auto">
+        <motion.div
+          className="max-w-4xl mx-auto"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
           <div className="relative">
             {/* Quote Icon */}
-            <div className="absolute -top-8 left-0 text-8xl text-green/10 dark:text-green-light/10 font-serif">
+            <motion.div
+              className="absolute -top-8 left-0 text-8xl text-green/10 dark:text-green-light/10 font-serif"
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
               &ldquo;
-            </div>
+            </motion.div>
 
             {/* Testimonial Content */}
             <AnimatePresence mode="wait">
@@ -121,7 +133,13 @@ export default function Testimonials() {
             </AnimatePresence>
 
             {/* Navigation Buttons */}
-            <div className="flex justify-center items-center gap-4 mt-12">
+            <motion.div
+              className="flex justify-center items-center gap-4 mt-12"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
               <motion.button
                 onClick={prevTestimonial}
                 whileHover={{ scale: 1.1 }}
@@ -161,9 +179,9 @@ export default function Testimonials() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </motion.button>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </Page>
     </section>
   );

@@ -2,9 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import "../globals.css";
-import "../globalicons.css";
-import { albert_Sans } from "@/utils/font";
 import { LocaleClientWrapper } from "@/context/LocaleClientWrapper";
 import type { Locale } from "@/context/LocaleProvider";
 
@@ -196,42 +193,26 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   const schemas = generateGlobalSchemas(locale);
 
-  // Script to prevent theme flash on page load
-  const themeScript = `
-    (function() {
-      const theme = localStorage.getItem('theme');
-      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-      }
-    })();
-  `;
-
   return (
-    <html lang={locale} className={albert_Sans.className} suppressHydrationWarning>
-      <head>
-        {/* Prevent theme flash */}
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-        {/* hreflang tags for SEO */}
-        <link rel="alternate" hrefLang="id" href="https://herlanmustopa.com/id" />
-        <link rel="alternate" hrefLang="en" href="https://herlanmustopa.com/en" />
-        <link rel="alternate" hrefLang="x-default" href="https://herlanmustopa.com/id" />
-        {/* Global JSON-LD Schemas */}
-        {schemas.map((schema, index) => (
-          <script
-            key={index}
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(schema),
-            }}
-          />
-        ))}
-      </head>
-      <body className="bg-primary dark:bg-dark-bg min-h-screen overflow-auto text-black dark:text-dark-text transition-colors duration-300" suppressHydrationWarning>
-        <LocaleClientWrapper initialLocale={locale as Locale}>
-          {children}
-        </LocaleClientWrapper>
-      </body>
-    </html>
+    <>
+      {/* hreflang tags for SEO */}
+      <link rel="alternate" hrefLang="id" href="https://herlanmustopa.com/id" />
+      <link rel="alternate" hrefLang="en" href="https://herlanmustopa.com/en" />
+      <link rel="alternate" hrefLang="x-default" href="https://herlanmustopa.com/id" />
+      {/* Global JSON-LD Schemas */}
+      {schemas.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schema),
+          }}
+        />
+      ))}
+      <LocaleClientWrapper initialLocale={locale as Locale}>
+        {children}
+      </LocaleClientWrapper>
+    </>
   );
 }
 
