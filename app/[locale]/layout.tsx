@@ -37,6 +37,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       template: "%s | Herlan Mustopa",
     },
     description,
+    // Search Engine Verification - replace with your actual verification codes
+    verification: {
+      google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+      yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
+      other: {
+        "msvalidate.01": process.env.NEXT_PUBLIC_BING_VERIFICATION || "",
+      },
+    },
     keywords: [
       "Fullstack Developer",
       "Software Engineer",

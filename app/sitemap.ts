@@ -2,40 +2,37 @@ import { MetadataRoute } from "next";
 import { getAllArticleSlugs } from "@/sanity/queries";
 
 const locales = ["id", "en"];
+const baseUrl = "https://herlanmustopa.com";
+
+// Static pages with their sections
+const staticPages = [
+  { path: "", priority: 1, changeFreq: "weekly" as const },
+  { path: "/blog", priority: 0.9, changeFreq: "daily" as const },
+  { path: "/#expertise", priority: 0.8, changeFreq: "monthly" as const },
+  { path: "/#projects", priority: 0.8, changeFreq: "monthly" as const },
+  { path: "/#about", priority: 0.8, changeFreq: "monthly" as const },
+  { path: "/#article", priority: 0.8, changeFreq: "weekly" as const },
+];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://herlanmustopa.com";
-
   // Get all blog post slugs
   const slugs = await getAllArticleSlugs();
 
-  // Generate locale-specific home and blog pages
-  const localePages: MetadataRoute.Sitemap = locales.flatMap((locale) => [
-    {
-      url: `${baseUrl}/${locale}`,
+  // Generate locale-specific static pages
+  const staticUrls: MetadataRoute.Sitemap = locales.flatMap((locale) =>
+    staticPages.map((page) => ({
+      url: `${baseUrl}/${locale}${page.path}`,
       lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: locale === "id" ? 1 : 0.9,
+      changeFrequency: page.changeFreq,
+      priority: locale === "id" ? page.priority : page.priority * 0.9,
       alternates: {
         languages: {
-          id: `${baseUrl}/id`,
-          en: `${baseUrl}/en`,
+          id: `${baseUrl}/id${page.path}`,
+          en: `${baseUrl}/en${page.path}`,
         },
       },
-    },
-    {
-      url: `${baseUrl}/${locale}/blog`,
-      lastModified: new Date(),
-      changeFrequency: "daily" as const,
-      priority: 0.8,
-      alternates: {
-        languages: {
-          id: `${baseUrl}/id/blog`,
-          en: `${baseUrl}/en/blog`,
-        },
-      },
-    },
-  ]);
+    }))
+  );
 
   // Generate locale-specific blog post URLs
   const blogUrls: MetadataRoute.Sitemap = locales.flatMap((locale) =>
@@ -53,5 +50,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
   );
 
-  return [...localePages, ...blogUrls];
+  return [...staticUrls, ...blogUrls];
 }
