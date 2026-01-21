@@ -1,6 +1,7 @@
 "use client";
 
 import { Link } from "@/i18n/navigation";
+import { usePathname } from "next/navigation";
 import { albert_Sans } from "@/utils/font";
 
 export interface BreadcrumbItem {
@@ -13,21 +14,31 @@ interface BreadcrumbProps {
 }
 
 // JSON-LD structured data for breadcrumbs
-function generateBreadcrumbJsonLd(items: BreadcrumbItem[], baseUrl: string) {
+function generateBreadcrumbJsonLd(items: BreadcrumbItem[], baseUrl: string, currentPath: string) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: items.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: item.name,
-      item: item.href ? `${baseUrl}${item.href}` : undefined,
-    })),
+    itemListElement: items.map((item, index) => {
+      const isLast = index === items.length - 1;
+      const itemUrl = item.href
+        ? `${baseUrl}${item.href}`
+        : isLast
+          ? `${baseUrl}${currentPath}`
+          : undefined;
+
+      return {
+        "@type": "ListItem",
+        position: index + 1,
+        name: item.name,
+        ...(itemUrl && { item: itemUrl }),
+      };
+    }),
   };
 }
 
 export default function Breadcrumb({ items }: BreadcrumbProps) {
   const baseUrl = "https://herlanmustopa.com";
+  const pathname = usePathname();
 
   return (
     <>
@@ -35,7 +46,7 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateBreadcrumbJsonLd(items, baseUrl)),
+          __html: JSON.stringify(generateBreadcrumbJsonLd(items, baseUrl, pathname)),
         }}
       />
 
