@@ -22,13 +22,6 @@ const testimonialsMeta: Testimonial[] = [
     contentKey: "badrus",
   },
   {
-    id: 2,
-    name: "Sarah Wijaya",
-    role: "Product Manager",
-    company: "Maybank Indonesia",
-    contentKey: "sarah",
-  },
-  {
     id: 3,
     name: "Gunawan",
     role: "Senior Developer",
@@ -36,10 +29,10 @@ const testimonialsMeta: Testimonial[] = [
     contentKey: "gunawan",
   },
   {
-    id: 3,
+    id: 4,
     name: "Syauqi Fajri",
     role: "Senior Software Developer",
-    company: "Maybank Indonesia",
+    company: "Ikonsultan Inovatama",
     contentKey: "syauqi",
   },
 ];
