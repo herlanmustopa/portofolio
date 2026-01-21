@@ -12,6 +12,7 @@ import ArticleShare from "@/components/molecules/ArticleShare";
 import BlogLayoutClient from "@/components/templates/BlogLayoutClient";
 import { client } from "@/sanity/client";
 import { getArticle, getAllArticleSlugs } from "@/sanity/queries";
+import ViewCounter from "@/components/molecules/ViewCounter";
 
 // Configure image builder
 const builder = imageUrlBuilder(client);
@@ -181,6 +182,8 @@ export default async function ArticlePage({ params }: Props) {
                     day: "numeric",
                   })}
                 </time>
+                {" "}•{" "}
+                <ViewCounter slug={slug} increment={true} />
               </p>
             </header>
 

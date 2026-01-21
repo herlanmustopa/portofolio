@@ -1,5 +1,5 @@
 "use client";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
@@ -25,7 +25,29 @@ interface BlogClientProps {
 export default function BlogClient({ articles }: BlogClientProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [viewCounts, setViewCounts] = useState<Record<string, number>>({});
   const t = useTranslations("blog");
+
+  // Fetch all view counts at once
+  useEffect(() => {
+    const fetchViews = async () => {
+      try {
+        const slugs = articles.map((a) => a.slug);
+        const res = await fetch("/api/views", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ slugs }),
+        });
+        const data = await res.json();
+        setViewCounts(data.views || {});
+      } catch {
+        // Silently fail
+      }
+    };
+    if (articles.length > 0) {
+      fetchViews();
+    }
+  }, [articles]);
 
   // Extract unique categories from all articles
   const allCategories = useMemo(() => {
@@ -240,6 +262,28 @@ export default function BlogClient({ articles }: BlogClientProps) {
                     >
                       {article.description || t("clickToReadMore")}
                     </p>
+                    {/* View Count */}
+                    <div className={`mt-3 pt-3 border-t border-black/10 dark:border-white/10 flex items-center gap-1 text-xs text-black/50 dark:text-dark-text-muted ${albert_Sans.className}`}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                        <circle cx="12" cy="12" r="3" />
+                      </svg>
+                      <span>
+                        {viewCounts[article.slug] !== undefined
+                          ? `${viewCounts[article.slug].toLocaleString()} views`
+                          : "— views"}
+                      </span>
+                    </div>
                   </div>
                 </Link>
               </motion.div>
