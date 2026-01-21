@@ -15,6 +15,7 @@ interface Article {
   imageUrl: string | null;
   slug: string;
   description: string;
+  categories: string[];
 }
 
 interface BlogClientProps {
@@ -23,19 +24,54 @@ interface BlogClientProps {
 
 export default function BlogClient({ articles }: BlogClientProps) {
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const t = useTranslations("blog");
 
-  // Filter articles based on search query
-  const filteredArticles = useMemo(() => {
-    if (!searchQuery.trim()) return articles;
+  // Extract unique categories from all articles
+  const allCategories = useMemo(() => {
+    const categorySet = new Set<string>();
+    articles.forEach((article) => {
+      article.categories?.forEach((category) => {
+        if (category) categorySet.add(category);
+      });
+    });
+    return Array.from(categorySet).sort();
+  }, [articles]);
 
-    const query = searchQuery.toLowerCase();
-    return articles.filter(
-      (article) =>
-        article.title.toLowerCase().includes(query) ||
-        article.description?.toLowerCase().includes(query)
-    );
-  }, [articles, searchQuery]);
+  // Filter articles based on search query and category
+  const filteredArticles = useMemo(() => {
+    let filtered = articles;
+
+    // Filter by category
+    if (selectedCategory) {
+      filtered = filtered.filter((article) =>
+        article.categories?.includes(selectedCategory)
+      );
+    }
+
+    // Filter by search query
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase();
+      filtered = filtered.filter(
+        (article) =>
+          article.title.toLowerCase().includes(query) ||
+          article.description?.toLowerCase().includes(query)
+      );
+    }
+
+    return filtered;
+  }, [articles, searchQuery, selectedCategory]);
+
+  const handleCategoryClick = (category: string | null) => {
+    setSelectedCategory(category);
+  };
+
+  const clearAllFilters = () => {
+    setSearchQuery("");
+    setSelectedCategory(null);
+  };
+
+  const hasActiveFilters = searchQuery || selectedCategory;
 
   return (
     <main className="bg-primary dark:bg-dark-bg pt-32 pb-16 min-h-screen transition-colors duration-300">
@@ -70,7 +106,7 @@ export default function BlogClient({ articles }: BlogClientProps) {
         </header>
 
         {/* Search */}
-        <div className="max-w-xl mx-auto mb-12">
+        <div className="max-w-xl mx-auto mb-8">
           <SearchInput
             value={searchQuery}
             onChange={setSearchQuery}
@@ -78,15 +114,76 @@ export default function BlogClient({ articles }: BlogClientProps) {
           />
         </div>
 
-        {/* Results Count */}
-        {searchQuery && (
-          <motion.p
+        {/* Category Filter */}
+        {allCategories.length > 0 && (
+          <motion.div
+            className="mb-8"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <p className={`text-center text-sm text-black/60 dark:text-dark-text-muted mb-3 ${albert_Sans.className}`}>
+              {t("filterByCategory")}
+            </p>
+            <div className="flex flex-wrap justify-center gap-2">
+              <motion.button
+                onClick={() => handleCategoryClick(null)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                  selectedCategory === null
+                    ? "bg-green dark:bg-green-light text-white"
+                    : "bg-white dark:bg-dark-card text-black/70 dark:text-dark-text-muted hover:bg-green/10 dark:hover:bg-green-light/10"
+                } ${albert_Sans.className}`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {t("allCategories")}
+              </motion.button>
+              {allCategories.map((category) => (
+                <motion.button
+                  key={category}
+                  onClick={() => handleCategoryClick(category)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                    selectedCategory === category
+                      ? "bg-green dark:bg-green-light text-white"
+                      : "bg-white dark:bg-dark-card text-black/70 dark:text-dark-text-muted hover:bg-green/10 dark:hover:bg-green-light/10"
+                  } ${albert_Sans.className}`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {category}
+                </motion.button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
+        {/* Active Filters & Results Count */}
+        {hasActiveFilters && (
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className={`text-center mb-8 text-black/60 dark:text-dark-text-muted ${albert_Sans.className}`}
+            className={`text-center mb-8 ${albert_Sans.className}`}
           >
-            {t("articlesFound", { count: filteredArticles.length, query: searchQuery })}
-          </motion.p>
+            <p className="text-black/60 dark:text-dark-text-muted">
+              {t("articlesFound", { count: filteredArticles.length })}
+              {selectedCategory && (
+                <span className="ml-1">
+                  {t("inCategory", { category: selectedCategory })}
+                </span>
+              )}
+              {searchQuery && (
+                <span className="ml-1">
+                  {t("forQuery", { query: searchQuery })}
+                </span>
+              )}
+            </p>
+            <button
+              onClick={clearAllFilters}
+              className="mt-2 text-green dark:text-green-light hover:underline text-sm"
+            >
+              {t("clearAllFilters")}
+            </button>
+          </motion.div>
         )}
 
         {/* Articles Grid */}
@@ -120,6 +217,19 @@ export default function BlogClient({ articles }: BlogClientProps) {
                     </div>
                   )}
                   <div className="p-6">
+                    {/* Category Tags */}
+                    {article.categories && article.categories.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mb-3">
+                        {article.categories.map((category) => (
+                          <span
+                            key={category}
+                            className={`text-xs px-2 py-1 rounded-full bg-green/10 dark:bg-green-light/10 text-green dark:text-green-light ${albert_Sans.className}`}
+                          >
+                            {category}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                     <h3
                       className={`text-xl font-bold text-black dark:text-dark-text mb-3 line-clamp-2 ${unbounded.className}`}
                     >
@@ -146,19 +256,19 @@ export default function BlogClient({ articles }: BlogClientProps) {
           >
             <div className="text-6xl mb-4">📝</div>
             <h3 className={`text-xl font-semibold text-black dark:text-dark-text mb-2 ${unbounded.className}`}>
-              {searchQuery ? t("noArticlesFound") : t("noArticles")}
+              {hasActiveFilters ? t("noArticlesFound") : t("noArticles")}
             </h3>
             <p className={`text-black/60 dark:text-dark-text-muted ${albert_Sans.className}`}>
-              {searchQuery
+              {hasActiveFilters
                 ? t("noArticlesDescription")
                 : t("stayTuned")}
             </p>
-            {searchQuery && (
+            {hasActiveFilters && (
               <button
-                onClick={() => setSearchQuery("")}
+                onClick={clearAllFilters}
                 className={`mt-4 text-green dark:text-green-light hover:underline ${albert_Sans.className}`}
               >
-                {t("clearSearch")}
+                {t("clearAllFilters")}
               </button>
             )}
           </motion.div>

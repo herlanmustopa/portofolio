@@ -13,6 +13,7 @@ export interface ArticlePreview {
   imageUrl: string | null;
   slug: string;
   description: string;
+  categories: string[];
 }
 
 export interface ArticleDetail {
@@ -33,7 +34,8 @@ export async function getArticles(): Promise<ArticlePreview[]> {
     title,
     mainImage,
     "slug": slug.current,
-    "description": pt::text(body[0..1])
+    "description": pt::text(body[0..1]),
+    "categories": categories[]->title
   }`;
 
   const articles = await client.fetch(query);
@@ -44,6 +46,7 @@ export async function getArticles(): Promise<ArticlePreview[]> {
     imageUrl: article.mainImage ? urlFor(article.mainImage).width(800).url() : null,
     slug: article.slug,
     description: article.description,
+    categories: article.categories || [],
   }));
 }
 
