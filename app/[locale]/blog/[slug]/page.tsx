@@ -7,6 +7,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { albert_Sans, unbounded } from "@/utils/font";
 import Page from "@/components/organisms/pages";
 import Breadcrumb from "@/components/molecules/Breadcrumb";
+import ArticleComments from "@/components/molecules/ArticleComments";
 import { client } from "@/sanity/client";
 import { getArticle, getAllArticleSlugs } from "@/sanity/queries";
 
@@ -204,8 +205,14 @@ export default async function ArticlePage({ params }: Props) {
               <PortableText value={article.body} />
             </div>
           </article>
+
+          {/* Giscus Comments */}
+          <div className="max-w-3xl mx-auto">
+            <ArticleComments slug={slug} />
+          </div>
         </Page>
       </main>
     </>
   );
 }
+
