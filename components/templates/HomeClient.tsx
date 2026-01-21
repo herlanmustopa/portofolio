@@ -1,16 +1,40 @@
 "use client";
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import Banner from "@/components/templates/banner";
-import Expertice from "@/components/templates/expertice";
-import Projects from "@/components/templates/projects";
-import About from "@/components/templates/about";
-import Timeline from "@/components/templates/timeline";
-import Contact from "@/components/templates/contact";
-import ArticleSection from "@/components/templates/ArticleSection";
-import Testimonials from "@/components/templates/Testimonials";
-import Footer from "@/components/organisms/footer";
 import Navbar from "@/components/organisms/navbar";
-import ContactModal from "@/components/organisms/contactModal";
+
+// Dynamic imports for below-fold components to reduce main-thread work
+const Expertice = dynamic(() => import("@/components/templates/expertice"), {
+  ssr: false,
+});
+const Projects = dynamic(() => import("@/components/templates/projects"), {
+  ssr: false,
+});
+const About = dynamic(() => import("@/components/templates/about"), {
+  ssr: false,
+});
+const Timeline = dynamic(() => import("@/components/templates/timeline"), {
+  ssr: false,
+});
+const Testimonials = dynamic(
+  () => import("@/components/templates/Testimonials"),
+  { ssr: false }
+);
+const ArticleSection = dynamic(
+  () => import("@/components/templates/ArticleSection"),
+  { ssr: false }
+);
+const Contact = dynamic(() => import("@/components/templates/contact"), {
+  ssr: false,
+});
+const Footer = dynamic(() => import("@/components/organisms/footer"), {
+  ssr: false,
+});
+const ContactModal = dynamic(
+  () => import("@/components/organisms/contactModal"),
+  { ssr: false }
+);
 
 interface Article {
   _id: string;
@@ -50,3 +74,4 @@ export default function HomeClient({ articles }: HomeClientProps) {
     </>
   );
 }
+

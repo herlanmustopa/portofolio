@@ -126,6 +126,7 @@ const nextConfig = {
       'next-intl',
       '@portabletext/react',
       'tailwind-merge',
+      'lucide-react',
     ],
   },
 };

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { motion, type Variants } from "framer-motion";
 import { albert_Sans, unbounded, thesignature } from "@/utils/font";
@@ -23,6 +23,16 @@ const textVariant: Variants = {
     opacity: 1,
     y: 0,
     transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }
+  },
+};
+
+// LCP-optimized variant for mobile - starts visible with no delay
+const lcpTextVariant: Variants = {
+  hidden: { opacity: 1, y: 0 }, // Start visible immediately for LCP
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0 }
   },
 };
 
@@ -62,6 +72,15 @@ const floatingVariant: Variants = {
 
 export default function Banner() {
   const t = useTranslations("banner");
+  const [isMobile, setIsMobile] = useState(true); // Default to mobile for SSR (LCP optimization)
+
+  useEffect(() => {
+    // Check if we're on mobile viewport
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const handleCTAClick = () => {
     const targetSection = document.getElementById("projects");
@@ -152,10 +171,10 @@ export default function Banner() {
             {t("subtitle")}
           </motion.h2>
 
-          {/* Description - LCP element, no animation delay */}
+          {/* Description - LCP element, no animation delay on mobile */}
           <motion.p
             className={`text-base md:text-lg lg:text-xl max-w-3xl leading-relaxed text-white/90 ${albert_Sans.className}`}
-            variants={textVariant}
+            variants={isMobile ? lcpTextVariant : textVariant}
           >
             {t("description")}
           </motion.p>
