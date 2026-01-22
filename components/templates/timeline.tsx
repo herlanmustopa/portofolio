@@ -3,7 +3,7 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import Page from "../organisms/pages";
-import { albert_Sans, thesignature, unbounded } from "@/utils/font";
+import { albert_Sans, thesignature, unbounded } from "@/app/fonts";
 import { cn } from "@/utils/classMerge";
 
 interface ITimeline {
@@ -160,3 +160,4 @@ export default function Timeline() {
     </section>
   );
 }
+

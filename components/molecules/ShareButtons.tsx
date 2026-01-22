@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocaleContext } from "@/context/LocaleProvider";
-import { albert_Sans } from "@/utils/font";
+import { albert_Sans } from "@/app/fonts";
 
 interface ShareButtonsProps {
     title: string;
@@ -249,3 +249,4 @@ export default function ShareButtons({ title, url, description, slug, showCount 
         </>
     );
 }
+

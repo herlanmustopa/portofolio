@@ -1,7 +1,7 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
-import { albert_Sans } from "@/utils/font";
+import { albert_Sans } from "@/app/fonts";
 
 interface ToastProps {
   message: string;
@@ -66,3 +66,4 @@ export default function Toast({ message, type, isVisible, onClose }: ToastProps)
     </AnimatePresence>
   );
 }
+

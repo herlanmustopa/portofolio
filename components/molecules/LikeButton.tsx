@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { albert_Sans } from "@/utils/font";
+import { albert_Sans } from "@/app/fonts";
 
 interface LikeButtonProps {
   slug: string;
@@ -183,3 +183,4 @@ export default function LikeButton({ slug, showCount = true, size = "md" }: Like
     </div>
   );
 }
+

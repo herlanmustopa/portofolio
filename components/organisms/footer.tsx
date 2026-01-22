@@ -2,7 +2,7 @@
 import React from "react";
 import { useTranslations } from "next-intl";
 import Page from "./pages";
-import { albert_Sans } from "@/utils/font";
+import { albert_Sans } from "@/app/fonts";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -50,3 +50,4 @@ export default function Footer() {
     </footer>
   );
 }
+

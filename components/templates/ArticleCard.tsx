@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { albert_Sans, unbounded } from "@/utils/font";
+import { albert_Sans, unbounded } from "@/app/fonts";
 
 interface ArticleStats {
   views: number;
@@ -127,3 +127,4 @@ export default function ArticleCard({ article, index, stats }: ArticleCardProps)
     </motion.div>
   );
 }
+

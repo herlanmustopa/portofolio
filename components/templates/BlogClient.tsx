@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { albert_Sans, thesignature, unbounded } from "@/utils/font";
+import { albert_Sans, thesignature, unbounded } from "@/app/fonts";
 import Page from "../organisms/pages";
 import Breadcrumb from "../molecules/Breadcrumb";
 import SearchInput from "../molecules/SearchInput";
@@ -372,3 +372,4 @@ export default function BlogClient({ articles }: BlogClientProps) {
     </main>
   );
 }
+

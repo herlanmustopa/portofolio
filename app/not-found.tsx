@@ -1,6 +1,6 @@
 "use client";
 
-import { unbounded, albert_Sans, thesignature } from "@/utils/font";
+import { unbounded, albert_Sans, thesignature } from "@/app/fonts";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -237,3 +237,4 @@ export default function RootNotFound() {
     </main>
   );
 }
+

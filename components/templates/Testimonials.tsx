@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
-import { albert_Sans, thesignature, unbounded } from "@/utils/font";
+import { albert_Sans, thesignature, unbounded } from "@/app/fonts";
 import Page from "../organisms/pages";
 
 interface Testimonial {
@@ -186,3 +186,4 @@ export default function Testimonials() {
     </section>
   );
 }
+

@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { unbounded, albert_Sans, thesignature } from "@/utils/font";
+import { unbounded, albert_Sans, thesignature } from "@/app/fonts";
 import { motion } from "framer-motion";
 import Page from "@/components/organisms/pages";
 

@@ -1,6 +1,6 @@
 "use client";
 import { useTranslations } from "next-intl";
-import { albert_Sans, thesignature, unbounded } from "@/utils/font";
+import { albert_Sans, thesignature, unbounded } from "@/app/fonts";
 import Page from "../organisms/pages";
 import { motion, useInView, type Variants } from "framer-motion";
 import { useRef } from "react";
@@ -188,3 +188,4 @@ export default function Expertise() {
     </section>
   );
 }
+

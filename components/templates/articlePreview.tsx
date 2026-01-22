@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { albert_Sans, thesignature, unbounded } from "@/utils/font";
+import { albert_Sans, thesignature, unbounded } from "@/app/fonts";
 import Page from "../organisms/pages";
 import { client } from "../../sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
@@ -183,3 +183,4 @@ export default function ArticlePreview() {
     </section>
   );
 }
+

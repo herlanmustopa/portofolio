@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import { useTranslations } from "next-intl";
 import { motion, useInView, type Variants } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
-import { albert_Sans, thesignature, unbounded } from "@/utils/font";
+import { albert_Sans, thesignature, unbounded } from "@/app/fonts";
 import Page from "../organisms/pages";
 import { cn } from "@/utils/classMerge";
 
@@ -119,6 +119,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             alt={title}
             width={1280}
             height={720}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+            quality={75}
             className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
             priority={index < 2} // Prioritize first 2 images
           />
@@ -366,3 +368,4 @@ export default function Projects() {
     </section>
   );
 }
+

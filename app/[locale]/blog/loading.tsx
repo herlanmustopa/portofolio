@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { thesignature, unbounded, albert_Sans } from "@/utils/font";
+import { thesignature, unbounded, albert_Sans } from "@/app/fonts";
 import Page from "@/components/organisms/pages";
 import { ArticleGridSkeleton, Skeleton } from "@/components/molecules/Skeleton";
 

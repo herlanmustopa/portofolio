@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Link } from "@/i18n/navigation";
-import { albert_Sans, thesignature, unbounded } from "@/utils/font";
+import { albert_Sans, thesignature, unbounded } from "@/app/fonts";
 import Page from "../organisms/pages";
 import ArticleCard from "./ArticleCard";
 
@@ -146,3 +146,4 @@ export default function ArticleSection({ articles }: ArticleSectionProps) {
     </section>
   );
 }
+

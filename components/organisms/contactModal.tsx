@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
-import { albert_Sans, unbounded } from "@/utils/font";
+import { albert_Sans, unbounded } from "@/app/fonts";
 
 interface IContact {
   icon: string;
@@ -139,3 +139,4 @@ export default function ContactModal({ isOpen, onClose }: iModal) {
     </AnimatePresence>
   );
 }
+

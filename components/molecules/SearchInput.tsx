@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { albert_Sans } from "@/utils/font";
+import { albert_Sans } from "@/app/fonts";
 
 interface SearchInputProps {
   value: string;
@@ -76,3 +76,4 @@ export default function SearchInput({
     </motion.div>
   );
 }
+

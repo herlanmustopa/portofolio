@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { albert_Sans } from "@/utils/font";
+import { albert_Sans } from "@/app/fonts";
 
 interface ViewCounterProps {
   slug: string;
@@ -65,3 +65,4 @@ export default function ViewCounter({
     </span>
   );
 }
+

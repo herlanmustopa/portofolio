@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import { motion, type Variants } from "framer-motion";
-import { albert_Sans, thesignature, unbounded } from "@/utils/font";
+import { albert_Sans, thesignature, unbounded } from "@/app/fonts";
 import Page from "../organisms/pages";
 import Toast from "../molecules/Toast";
 
@@ -279,3 +279,4 @@ export default function Contact() {
     </section>
   );
 }
+

@@ -1,6 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@100;200;300;400;500;600;700;800;900&family=Unbounded:wght@200;300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom font */
+@font-face {
+  font-family: 'Thesignature';
+  src: url('/font-files/Thesignature.otf') format('opentype');
+  font-display: swap;
+}
 
 :root {
   --foreground-rgb: 0, 0, 0;

@@ -19,6 +19,11 @@ const config: Config = {
       "4xl": "2560px",
     },
     extend: {
+      fontFamily: {
+        "albert-sans": ["'Albert Sans'", "sans-serif"],
+        unbounded: ["'Unbounded'", "sans-serif"],
+        thesignature: ["'Thesignature'", "cursive"],
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

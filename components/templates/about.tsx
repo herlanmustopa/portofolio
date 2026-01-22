@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import { useTranslations } from "next-intl";
 import { motion, useInView, type Variants } from "framer-motion";
 import Image from "next/image";
-import { albert_Sans, thesignature, unbounded } from "@/utils/font";
+import { albert_Sans, thesignature, unbounded } from "@/app/fonts";
 import Page from "../organisms/pages";
 import profilePlaceholder from "../../public/img/ID_CARD.png";
 
@@ -159,3 +159,4 @@ export default function About({ onContactClick }: AboutProps) {
     </section>
   );
 }
+

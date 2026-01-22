@@ -1,4 +1,3 @@
-import { albert_Sans } from "@/utils/font";
 import "./globals.css";
 import { ClientComponents } from "@/components/providers/ClientComponents";
 
@@ -20,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id" className={albert_Sans.className} suppressHydrationWarning>
+    <html lang="id" className="font-albert-sans" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>

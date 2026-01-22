@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { motion, type Variants } from "framer-motion";
-import { albert_Sans, unbounded, thesignature } from "@/utils/font";
+import { albert_Sans, unbounded, thesignature } from "@/app/fonts";
 import Button from "../molecules/button";
 import Page from "../organisms/pages";
 
@@ -243,3 +243,4 @@ export default function Banner() {
     </section>
   );
 }
+

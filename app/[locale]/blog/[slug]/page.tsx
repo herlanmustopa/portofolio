@@ -4,7 +4,7 @@ import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import imageUrlBuilder from "@sanity/image-url";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { albert_Sans, unbounded } from "@/utils/font";
+import { albert_Sans, unbounded } from "@/app/fonts";
 import Page from "@/components/organisms/pages";
 import Breadcrumb from "@/components/molecules/Breadcrumb";
 import ArticleComments from "@/components/molecules/ArticleComments";

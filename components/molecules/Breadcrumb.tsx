@@ -2,7 +2,7 @@
 
 import { Link } from "@/i18n/navigation";
 import { usePathname } from "next/navigation";
-import { albert_Sans } from "@/utils/font";
+import { albert_Sans } from "@/app/fonts";
 
 export interface BreadcrumbItem {
   name: string;
@@ -89,3 +89,4 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
     </>
   );
 }
+
