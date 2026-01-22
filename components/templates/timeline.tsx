@@ -3,7 +3,6 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import Page from "../organisms/pages";
-import { albert_Sans, thesignature, unbounded } from "@/app/fonts";
 import { cn } from "@/utils/classMerge";
 
 interface ITimeline {
@@ -136,11 +135,11 @@ export default function Timeline() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className={`text-7xl text-green dark:text-green-light mb-4 ${thesignature.className}`}>
+          <h1 className={`text-7xl text-green dark:text-green-light mb-4 font-thesignature`}>
             {t("title")}
           </h1>
           <h2
-            className={`text-2xl md:text-3xl lg:text-4xl font-semibold text-black dark:text-dark-text ${unbounded.className}`}
+            className={`text-2xl md:text-3xl lg:text-4xl font-semibold text-black dark:text-dark-text font-unbounded`}
           >
             {t("subtitle")}
           </h2>

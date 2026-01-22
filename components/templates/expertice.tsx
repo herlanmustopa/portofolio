@@ -1,6 +1,5 @@
 "use client";
 import { useTranslations } from "next-intl";
-import { albert_Sans, thesignature, unbounded } from "@/app/fonts";
 import Page from "../organisms/pages";
 import { motion, useInView, type Variants } from "framer-motion";
 import { useRef } from "react";
@@ -77,7 +76,7 @@ function TechCard({
 
       {/* Title */}
       <h3
-        className={`text-xl lg:text-2xl font-bold text-black dark:text-dark-text mb-4 relative z-10 ${unbounded.className}`}
+        className={`text-xl lg:text-2xl font-bold text-black dark:text-dark-text mb-4 relative z-10 font-unbounded`}
       >
         {title}
       </h3>
@@ -87,7 +86,7 @@ function TechCard({
         {skills.map((skill: string, index: number) => (
           <li
             key={index}
-            className={`text-sm lg:text-base text-black/80 dark:text-dark-text-muted flex items-start group-hover:text-black dark:group-hover:text-dark-text transition-colors duration-200 ${albert_Sans.className}`}
+            className={`text-sm lg:text-base text-black/80 dark:text-dark-text-muted flex items-start group-hover:text-black dark:group-hover:text-dark-text transition-colors duration-200 font-albert-sans`}
           >
             <span className="text-green dark:text-green-light mr-3 mt-1 font-bold">✓</span>
             <span className="leading-relaxed">{skill}</span>
@@ -136,13 +135,13 @@ export default function Expertise() {
         >
           {/* Header */}
           <motion.h1
-            className={`text-6xl lg:text-7xl text-green dark:text-green-light mb-4 ${thesignature.className}`}
+            className={`text-6xl lg:text-7xl text-green dark:text-green-light mb-4 font-thesignature`}
             variants={itemVariants}
           >
             {t("title")}
           </motion.h1>
           <motion.h2
-            className={`text-2xl md:text-3xl lg:text-4xl font-semibold mb-16 text-black dark:text-dark-text ${unbounded.className}`}
+            className={`text-2xl md:text-3xl lg:text-4xl font-semibold mb-16 text-black dark:text-dark-text font-unbounded`}
             variants={itemVariants}
           >
             {t("subtitle")}
@@ -163,7 +162,7 @@ export default function Expertise() {
           {/* Bottom CTA */}
           <motion.div className="mt-16 text-center" variants={itemVariants}>
             <motion.p
-              className={`text-black/70 dark:text-dark-text-muted mb-6 max-w-2xl mx-auto ${albert_Sans.className}`}
+              className={`text-black/70 dark:text-dark-text-muted mb-6 max-w-2xl mx-auto font-albert-sans`}
               variants={itemVariants}
             >
               {t("cta.description")}
@@ -178,7 +177,7 @@ export default function Expertise() {
                 const contactSection = document.getElementById("contact");
                 contactSection?.scrollIntoView({ behavior: "smooth" });
               }}
-              className={`bg-green dark:bg-green-light text-white font-bold py-3 px-8 rounded-full transition-all duration-300 hover:bg-green-80 dark:hover:bg-green ${albert_Sans.className}`}
+              className={`bg-green dark:bg-green-light text-white font-bold py-3 px-8 rounded-full transition-all duration-300 hover:bg-green-80 dark:hover:bg-green font-albert-sans`}
             >
               {t("cta.button")}
             </motion.button>

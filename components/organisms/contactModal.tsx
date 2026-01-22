@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
-import { albert_Sans, unbounded } from "@/app/fonts";
 
 interface IContact {
   icon: string;
@@ -40,8 +39,8 @@ const ContactLink = ({ icon, title, value, href, isEmail, copyText, copiedText }
     >
       <span className="text-3xl mr-4">{icon}</span>
       <div className="flex-grow">
-        <p className={`font-bold text-white ${unbounded.className}`}>{title}</p>
-        <p className={`text-white/70 ${albert_Sans.className}`}>{value}</p>
+        <p className={`font-bold text-white font-unbounded`}>{title}</p>
+        <p className={`text-white/70 font-albert-sans`}>{value}</p>
       </div>
       {isEmail && (
         <span className="text-sm font-semibold text-gold transition-opacity duration-300">
@@ -99,11 +98,11 @@ export default function ContactModal({ isOpen, onClose }: iModal) {
           </button>
 
           <h2
-            className={`text-3xl font-bold text-white mb-2 ${unbounded.className}`}
+            className={`text-3xl font-bold text-white mb-2 font-unbounded`}
           >
             {t("title")}
           </h2>
-          <p className={`text-white/70 mb-8 ${albert_Sans.className}`}>
+          <p className={`text-white/70 mb-8 font-albert-sans`}>
             {t("subtitle")}
           </p>
 

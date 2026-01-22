@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocaleContext } from "@/context/LocaleProvider";
-import { albert_Sans } from "@/app/fonts";
 
 interface ShareButtonsProps {
     title: string;
@@ -109,7 +108,7 @@ export default function ShareButtons({ title, url, description, slug, showCount 
                         {locale === "id" ? "Bagikan:" : "Share:"}
                     </span>
                     {showCount && slug && (
-                        <span className={`text-sm text-black/40 dark:text-dark-text-muted ${albert_Sans.className}`}>
+                        <span className={`text-sm text-black/40 dark:text-dark-text-muted font-albert-sans`}>
                             {shares === null ? (
                                 <span className="inline-block w-6 h-4 bg-black/10 dark:bg-white/10 rounded animate-pulse" />
                             ) : (

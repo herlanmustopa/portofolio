@@ -3,7 +3,6 @@ import React, { useRef } from "react";
 import { useTranslations } from "next-intl";
 import { motion, useInView, type Variants } from "framer-motion";
 import Image from "next/image";
-import { albert_Sans, thesignature, unbounded } from "@/app/fonts";
 import Page from "../organisms/pages";
 import profilePlaceholder from "../../public/img/ID_CARD.png";
 
@@ -82,19 +81,19 @@ export default function About({ onContactClick }: AboutProps) {
           <div className="lg:col-span-3 text-left">
             <motion.h1
               variants={textVariant}
-              className={`text-6xl text-green dark:text-green-light mb-4 ${thesignature.className}`}
+              className={`text-6xl text-green dark:text-green-light mb-4 font-thesignature`}
             >
               {t("title")}
             </motion.h1>
             <motion.h2
               variants={textVariant}
-              className={`text-2xl font-semibold text-black dark:text-dark-text mb-6 ${unbounded.className}`}
+              className={`text-2xl font-semibold text-black dark:text-dark-text mb-6 font-unbounded`}
             >
               {t("subtitle")}
             </motion.h2>
             <motion.p
               variants={textVariant}
-              className={`text-black/80 dark:text-dark-text-muted mb-8 leading-relaxed ${albert_Sans.className}`}
+              className={`text-black/80 dark:text-dark-text-muted mb-8 leading-relaxed font-albert-sans`}
             >
               {t("description")}
             </motion.p>
@@ -114,7 +113,7 @@ export default function About({ onContactClick }: AboutProps) {
                 >
                   <span className="text-2xl mr-3">{value.icon}</span>
                   <span
-                    className={`font-semibold text-black dark:text-dark-text ${albert_Sans.className}`}
+                    className={`font-semibold text-black dark:text-dark-text font-albert-sans`}
                   >
                     {value.text}
                   </span>
@@ -136,7 +135,7 @@ export default function About({ onContactClick }: AboutProps) {
                   transition: { duration: 0.2 },
                 }}
                 whileTap={{ scale: 0.95 }}
-                className={`bg-green dark:bg-green-light text-white font-bold py-3 px-8 rounded-full transition-colors hover:bg-green-80 dark:hover:bg-green shadow-lg ${albert_Sans.className}`}
+                className={`bg-green dark:bg-green-light text-white font-bold py-3 px-8 rounded-full transition-colors hover:bg-green-80 dark:hover:bg-green shadow-lg font-albert-sans`}
               >
                 {t("downloadCv")}
               </motion.a>
@@ -148,7 +147,7 @@ export default function About({ onContactClick }: AboutProps) {
                   transition: { duration: 0.2 },
                 }}
                 whileTap={{ scale: 0.95 }}
-                className={`font-bold text-black dark:text-dark-text hover:text-green dark:hover:text-green-light transition-colors cursor-pointer ${albert_Sans.className}`}
+                className={`font-bold text-black dark:text-dark-text hover:text-green dark:hover:text-green-light transition-colors cursor-pointer font-albert-sans`}
               >
                 {t("letsTalk")} →
               </motion.button>

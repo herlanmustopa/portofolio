@@ -2,7 +2,6 @@
 import React from "react";
 import { useTranslations } from "next-intl";
 import Page from "./pages";
-import { albert_Sans } from "@/app/fonts";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -13,7 +12,7 @@ export default function Footer() {
       <Page>
         <div className="py-12 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-8">
           <div className="flex-shrink-0">
-            <h3 className={`text-lg font-bold ${albert_Sans.className}`}>
+            <h3 className={`text-lg font-bold font-albert-sans`}>
               Herlan Mustopa
             </h3>
             <p className="text-white/70">{t("role")}</p>

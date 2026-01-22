@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { motion, type Variants } from "framer-motion";
-import { albert_Sans, unbounded, thesignature } from "@/app/fonts";
 import Button from "../molecules/button";
 import Page from "../organisms/pages";
 
@@ -152,7 +151,7 @@ export default function Banner() {
         >
           {/* Name with special animation */}
           <motion.h1
-            className={`text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-gold mb-4 leading-none ${thesignature.className}`}
+            className={`text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-gold mb-4 leading-none font-thesignature`}
             variants={nameVariant}
             whileHover={{
               scale: 1.05,
@@ -165,7 +164,7 @@ export default function Banner() {
 
           {/* Subtitle with gradient text */}
           <motion.h2
-            className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-6 bg-gradient-to-r from-white via-gray-100 to-gold bg-clip-text text-transparent ${unbounded.className}`}
+            className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-6 bg-gradient-to-r from-white via-gray-100 to-gold bg-clip-text text-transparent font-unbounded`}
             variants={textVariant}
           >
             {t("subtitle")}
@@ -173,7 +172,7 @@ export default function Banner() {
 
           {/* Description - LCP element, no animation delay on mobile */}
           <motion.p
-            className={`text-base md:text-lg lg:text-xl max-w-3xl leading-relaxed text-white/90 ${albert_Sans.className}`}
+            className={`text-base md:text-lg lg:text-xl max-w-3xl leading-relaxed text-white/90 font-albert-sans`}
             variants={isMobile ? lcpTextVariant : textVariant}
           >
             {t("description")}
@@ -192,7 +191,7 @@ export default function Banner() {
               <Button
                 text={t("cta")}
                 onClick={handleCTAClick}
-                className={`${albert_Sans.className} my-10 hover:bg-gold border-2 font-bold transition-all duration-300 hover:shadow-lg hover:shadow-gold/25`}
+                className={`font-albert-sans my-10 hover:bg-gold border-2 font-bold transition-all duration-300 hover:shadow-lg hover:shadow-gold/25`}
               />
             </motion.div>
           </motion.div>
@@ -221,7 +220,7 @@ export default function Banner() {
                 ease: "easeInOut",
               }}
             >
-              <span className={`text-sm mb-2 ${albert_Sans.className}`}>
+              <span className={`text-sm mb-2 font-albert-sans`}>
                 {t("scrollToExplore")}
               </span>
               <motion.div

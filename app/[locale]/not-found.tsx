@@ -2,7 +2,6 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { unbounded, albert_Sans, thesignature } from "@/app/fonts";
 import { motion } from "framer-motion";
 import Page from "@/components/organisms/pages";
 
@@ -51,7 +50,7 @@ export default function NotFound() {
             className="relative"
           >
             <motion.h1
-              className={`text-[10rem] md:text-[14rem] font-bold text-green/10 dark:text-green-light/10 select-none ${unbounded.className}`}
+              className={`text-[10rem] md:text-[14rem] font-bold text-green/10 dark:text-green-light/10 select-none font-unbounded`}
               animate={{
                 y: [0, -10, 0],
               }}
@@ -66,7 +65,7 @@ export default function NotFound() {
 
             {/* Overlay text */}
             <motion.span
-              className={`absolute inset-0 flex items-center justify-center text-7xl md:text-9xl font-bold text-green dark:text-green-light ${unbounded.className}`}
+              className={`absolute inset-0 flex items-center justify-center text-7xl md:text-9xl font-bold text-green dark:text-green-light font-unbounded`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.5 }}
@@ -82,10 +81,10 @@ export default function NotFound() {
             transition={{ delay: 0.4, duration: 0.5 }}
             className="mt-4"
           >
-            <h2 className={`text-2xl md:text-3xl font-semibold text-black dark:text-dark-text mb-4 ${unbounded.className}`}>
+            <h2 className={`text-2xl md:text-3xl font-semibold text-black dark:text-dark-text mb-4 font-unbounded`}>
               {t("subtitle")}
             </h2>
-            <p className={`text-black/60 dark:text-dark-text-muted mb-8 max-w-md mx-auto ${albert_Sans.className}`}>
+            <p className={`text-black/60 dark:text-dark-text-muted mb-8 max-w-md mx-auto font-albert-sans`}>
               {t("description")}
             </p>
           </motion.div>
@@ -202,7 +201,7 @@ export default function NotFound() {
           >
             <Link href="/">
               <motion.span
-                className={`inline-flex items-center gap-2 bg-green dark:bg-green-light text-white px-8 py-4 rounded-full font-bold hover:shadow-lg transition-shadow ${albert_Sans.className}`}
+                className={`inline-flex items-center gap-2 bg-green dark:bg-green-light text-white px-8 py-4 rounded-full font-bold hover:shadow-lg transition-shadow font-albert-sans`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -227,7 +226,7 @@ export default function NotFound() {
 
           {/* Decorative signature */}
           <motion.p
-            className={`mt-12 text-4xl text-green/30 dark:text-green-light/30 ${thesignature.className}`}
+            className={`mt-12 text-4xl text-green/30 dark:text-green-light/30 font-thesignature`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 0.5 }}

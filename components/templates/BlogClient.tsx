@@ -3,8 +3,7 @@ import { useState, useMemo, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { motion, AnimatePresence } from "framer-motion";
-import { albert_Sans, thesignature, unbounded } from "@/app/fonts";
+import { motion } from "framer-motion";
 import Page from "../organisms/pages";
 import Breadcrumb from "../molecules/Breadcrumb";
 import SearchInput from "../molecules/SearchInput";
@@ -117,17 +116,17 @@ export default function BlogClient({ articles }: BlogClientProps) {
         {/* Header */}
         <header className="text-center mb-12">
           <h1
-            className={`text-6xl lg:text-7xl text-green dark:text-green-light mb-4 ${thesignature.className}`}
+            className={`text-6xl lg:text-7xl text-green dark:text-green-light mb-4 font-thesignature`}
           >
             {t("title")}
           </h1>
           <h2
-            className={`text-2xl md:text-3xl lg:text-4xl font-semibold text-black dark:text-dark-text ${unbounded.className}`}
+            className={`text-2xl md:text-3xl lg:text-4xl font-semibold text-black dark:text-dark-text font-unbounded`}
           >
             {t("subtitle")}
           </h2>
           <p
-            className={`mt-4 text-black/70 dark:text-dark-text-muted max-w-2xl mx-auto ${albert_Sans.className}`}
+            className={`mt-4 text-black/70 dark:text-dark-text-muted max-w-2xl mx-auto font-albert-sans`}
           >
             {t("description")}
           </p>
@@ -150,7 +149,7 @@ export default function BlogClient({ articles }: BlogClientProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <p className={`text-center text-sm text-black/60 dark:text-dark-text-muted mb-3 ${albert_Sans.className}`}>
+            <p className={`text-center text-sm text-black/60 dark:text-dark-text-muted mb-3 font-albert-sans`}>
               {t("filterByCategory")}
             </p>
             <div className="flex flex-wrap justify-center gap-2">
@@ -160,7 +159,7 @@ export default function BlogClient({ articles }: BlogClientProps) {
                   selectedCategory === null
                     ? "bg-green dark:bg-green-light text-white"
                     : "bg-white dark:bg-dark-card text-black/70 dark:text-dark-text-muted hover:bg-green/10 dark:hover:bg-green-light/10"
-                } ${albert_Sans.className}`}
+                } font-albert-sans`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -174,7 +173,7 @@ export default function BlogClient({ articles }: BlogClientProps) {
                     selectedCategory === category
                       ? "bg-green dark:bg-green-light text-white"
                       : "bg-white dark:bg-dark-card text-black/70 dark:text-dark-text-muted hover:bg-green/10 dark:hover:bg-green-light/10"
-                  } ${albert_Sans.className}`}
+                  } font-albert-sans`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -190,7 +189,7 @@ export default function BlogClient({ articles }: BlogClientProps) {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className={`text-center mb-8 ${albert_Sans.className}`}
+            className={`text-center mb-8 font-albert-sans`}
           >
             <p className="text-black/60 dark:text-dark-text-muted">
               {t("articlesFound", { count: filteredArticles.length })}
@@ -215,20 +214,15 @@ export default function BlogClient({ articles }: BlogClientProps) {
         )}
 
         {/* Articles Grid */}
-        <AnimatePresence mode="popLayout">
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            layout
-          >
-            {filteredArticles.map((article, index) => (
-              <motion.div
-                key={article._id}
-                layout
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-              >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredArticles.map((article) => {
+            const stats = articleStats[article.slug];
+            const views = stats?.views ?? 0;
+            const likes = stats?.likes ?? 0;
+            const shares = stats?.shares ?? 0;
+
+            return (
+              <div key={article._id}>
                 <Link
                   href={`/blog/${article.slug}`}
                   className="block bg-white dark:bg-dark-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full"
@@ -245,102 +239,35 @@ export default function BlogClient({ articles }: BlogClientProps) {
                     </div>
                   )}
                   <div className="p-6">
-                    {/* Category Tags */}
                     {article.categories && article.categories.length > 0 && (
                       <div className="flex flex-wrap gap-2 mb-3">
                         {article.categories.map((category) => (
                           <span
                             key={category}
-                            className={`text-xs px-2 py-1 rounded-full bg-green/10 dark:bg-green-light/10 text-green dark:text-green-light ${albert_Sans.className}`}
+                            className="text-xs px-2 py-1 rounded-full bg-green/10 dark:bg-green-light/10 text-green dark:text-green-light font-albert-sans"
                           >
                             {category}
                           </span>
                         ))}
                       </div>
                     )}
-                    <h3
-                      className={`text-xl font-bold text-black dark:text-dark-text mb-3 line-clamp-2 ${unbounded.className}`}
-                    >
+                    <h3 className="text-xl font-bold text-black dark:text-dark-text mb-3 line-clamp-2 font-unbounded">
                       {article.title}
                     </h3>
-                    <p
-                      className={`text-black/70 dark:text-dark-text-muted text-sm line-clamp-3 ${albert_Sans.className}`}
-                    >
+                    <p className="text-black/70 dark:text-dark-text-muted text-sm line-clamp-3 font-albert-sans">
                       {article.description || t("clickToReadMore")}
                     </p>
-                    {/* Stats: Views, Likes, Shares */}
-                    <div className={`mt-3 pt-3 border-t border-black/10 dark:border-white/10 flex items-center gap-4 text-xs text-black/50 dark:text-dark-text-muted ${albert_Sans.className}`}>
-                      {/* Views */}
-                      <div className="flex items-center gap-1">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="14"
-                          height="14"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
-                          <circle cx="12" cy="12" r="3" />
-                        </svg>
-                        <span>
-                          {articleStats[article.slug]?.views?.toLocaleString() ?? "—"}
-                        </span>
-                      </div>
-
-                      {/* Likes */}
-                      <div className="flex items-center gap-1">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="14"
-                          height="14"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-                        </svg>
-                        <span>
-                          {articleStats[article.slug]?.likes?.toLocaleString() ?? "—"}
-                        </span>
-                      </div>
-
-                      {/* Shares */}
-                      <div className="flex items-center gap-1">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="14"
-                          height="14"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <circle cx="18" cy="5" r="3" />
-                          <circle cx="6" cy="12" r="3" />
-                          <circle cx="18" cy="19" r="3" />
-                          <line x1="8.59" x2="15.42" y1="13.51" y2="17.49" />
-                          <line x1="15.41" x2="8.59" y1="6.51" y2="10.49" />
-                        </svg>
-                        <span>
-                          {articleStats[article.slug]?.shares?.toLocaleString() ?? "—"}
-                        </span>
-                      </div>
+                    <div className="mt-3 pt-3 border-t border-black/10 dark:border-white/10 flex items-center gap-4 text-xs text-black/50 dark:text-dark-text-muted font-albert-sans">
+                      <span>👁 {views > 0 ? views.toLocaleString() : "—"}</span>
+                      <span>❤️ {likes > 0 ? likes.toLocaleString() : "—"}</span>
+                      <span>🔗 {shares > 0 ? shares.toLocaleString() : "—"}</span>
                     </div>
                   </div>
                 </Link>
-              </motion.div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
+              </div>
+            );
+          })}
+        </div>
 
         {/* Empty State */}
         {filteredArticles.length === 0 && (
@@ -350,10 +277,10 @@ export default function BlogClient({ articles }: BlogClientProps) {
             className="text-center py-16"
           >
             <div className="text-6xl mb-4">📝</div>
-            <h3 className={`text-xl font-semibold text-black dark:text-dark-text mb-2 ${unbounded.className}`}>
+            <h3 className={`text-xl font-semibold text-black dark:text-dark-text mb-2 font-unbounded`}>
               {hasActiveFilters ? t("noArticlesFound") : t("noArticles")}
             </h3>
-            <p className={`text-black/60 dark:text-dark-text-muted ${albert_Sans.className}`}>
+            <p className={`text-black/60 dark:text-dark-text-muted font-albert-sans`}>
               {hasActiveFilters
                 ? t("noArticlesDescription")
                 : t("stayTuned")}
@@ -361,7 +288,7 @@ export default function BlogClient({ articles }: BlogClientProps) {
             {hasActiveFilters && (
               <button
                 onClick={clearAllFilters}
-                className={`mt-4 text-green dark:text-green-light hover:underline ${albert_Sans.className}`}
+                className={`mt-4 text-green dark:text-green-light hover:underline font-albert-sans`}
               >
                 {t("clearAllFilters")}
               </button>

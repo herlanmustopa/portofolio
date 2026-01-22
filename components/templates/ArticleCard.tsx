@@ -3,7 +3,6 @@ import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { albert_Sans, unbounded } from "@/app/fonts";
 
 interface ArticleStats {
   views: number;
@@ -53,16 +52,16 @@ export default function ArticleCard({ article, index, stats }: ArticleCardProps)
         )}
         <div className="p-6">
           <h3
-            className={`text-xl font-bold text-black dark:text-dark-text mb-3 line-clamp-2 ${unbounded.className}`}
+            className={`text-xl font-bold text-black dark:text-dark-text mb-3 line-clamp-2 font-unbounded`}
           >
             {article.title}
           </h3>
-          <p className={`text-black/70 dark:text-dark-text-muted text-sm line-clamp-3 ${albert_Sans.className}`}>
+          <p className={`text-black/70 dark:text-dark-text-muted text-sm line-clamp-3 font-albert-sans`}>
             {article.description || t("clickToReadMore")}
           </p>
 
           {/* Stats: Views, Likes, Shares */}
-          <div className={`mt-3 pt-3 border-t border-black/10 dark:border-white/10 flex items-center gap-4 text-xs text-black/50 dark:text-dark-text-muted ${albert_Sans.className}`}>
+          <div className={`mt-3 pt-3 border-t border-black/10 dark:border-white/10 flex items-center gap-4 text-xs text-black/50 dark:text-dark-text-muted font-albert-sans`}>
             {/* Views */}
             <div className="flex items-center gap-1">
               <svg

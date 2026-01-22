@@ -1,7 +1,6 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { thesignature, unbounded, albert_Sans } from "@/app/fonts";
 import Page from "@/components/organisms/pages";
 import { ArticleGridSkeleton, Skeleton } from "@/components/molecules/Skeleton";
 
@@ -19,17 +18,17 @@ export default function BlogLoading() {
         {/* Header */}
         <header className="text-center mb-12">
           <h1
-            className={`text-6xl lg:text-7xl text-green dark:text-green-light mb-4 ${thesignature.className}`}
+            className={`text-6xl lg:text-7xl text-green dark:text-green-light mb-4 font-thesignature`}
           >
             {t("title")}
           </h1>
           <h2
-            className={`text-2xl md:text-3xl lg:text-4xl font-semibold text-black dark:text-dark-text ${unbounded.className}`}
+            className={`text-2xl md:text-3xl lg:text-4xl font-semibold text-black dark:text-dark-text font-unbounded`}
           >
             {t("subtitle")}
           </h2>
           <p
-            className={`mt-4 text-black/70 dark:text-dark-text-muted max-w-2xl mx-auto ${albert_Sans.className}`}
+            className={`mt-4 text-black/70 dark:text-dark-text-muted max-w-2xl mx-auto font-albert-sans`}
           >
             {t("description")}
           </p>

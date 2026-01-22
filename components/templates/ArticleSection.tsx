@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Link } from "@/i18n/navigation";
-import { albert_Sans, thesignature, unbounded } from "@/app/fonts";
 import Page from "../organisms/pages";
 import ArticleCard from "./ArticleCard";
 
@@ -60,11 +59,11 @@ export default function ArticleSection({ articles }: ArticleSectionProps) {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className={`text-7xl text-green dark:text-green-light mb-4 ${thesignature.className}`}>
+          <h1 className={`text-7xl text-green dark:text-green-light mb-4 font-thesignature`}>
             {t("title")}
           </h1>
           <h2
-            className={`text-2xl md:text-3xl lg:text-4xl font-semibold text-black dark:text-dark-text ${unbounded.className}`}
+            className={`text-2xl md:text-3xl lg:text-4xl font-semibold text-black dark:text-dark-text font-unbounded`}
           >
             {t("subtitle")}
           </h2>
@@ -77,7 +76,7 @@ export default function ArticleSection({ articles }: ArticleSectionProps) {
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.2 }}
           >
-            <span className={`px-4 py-2 bg-green/10 dark:bg-green-light/10 text-green dark:text-green-light rounded-full text-sm font-medium ${albert_Sans.className}`}>
+            <span className={`px-4 py-2 bg-green/10 dark:bg-green-light/10 text-green dark:text-green-light rounded-full text-sm font-medium font-albert-sans`}>
               {articles.length} {t("articleCount")}
             </span>
           </motion.div>
@@ -104,7 +103,7 @@ export default function ArticleSection({ articles }: ArticleSectionProps) {
         >
           <Link href="/blog">
             <motion.button
-              className={`group relative inline-flex items-center gap-3 px-8 py-4 bg-green dark:bg-green-light text-white rounded-full font-medium overflow-hidden ${albert_Sans.className}`}
+              className={`group relative inline-flex items-center gap-3 px-8 py-4 bg-green dark:bg-green-light text-white rounded-full font-medium overflow-hidden font-albert-sans`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -138,7 +137,7 @@ export default function ArticleSection({ articles }: ArticleSectionProps) {
           </Link>
 
           {/* Additional text */}
-          <p className={`mt-4 text-black/50 dark:text-dark-text-muted text-sm ${albert_Sans.className}`}>
+          <p className={`mt-4 text-black/50 dark:text-dark-text-muted text-sm font-albert-sans`}>
             {t("exploreMore")}
           </p>
         </motion.div>

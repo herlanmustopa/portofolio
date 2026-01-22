@@ -4,7 +4,6 @@ import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import imageUrlBuilder from "@sanity/image-url";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { albert_Sans, unbounded } from "@/app/fonts";
 import Page from "@/components/organisms/pages";
 import Breadcrumb from "@/components/molecules/Breadcrumb";
 import ArticleComments from "@/components/molecules/ArticleComments";
@@ -167,13 +166,13 @@ export default async function ArticlePage({ params }: Props) {
             {/* Article Header */}
             <header className="mb-8 text-center">
               <h1
-                className={`text-3xl md:text-5xl font-bold text-black dark:text-dark-text mb-4 ${unbounded.className}`}
+                className={`text-3xl md:text-5xl font-bold text-black dark:text-dark-text mb-4 font-unbounded`}
                 itemProp="headline"
               >
                 {article.title}
               </h1>
               <p
-                className={`text-black/60 dark:text-dark-text-muted ${albert_Sans.className}`}
+                className={`text-black/60 dark:text-dark-text-muted font-albert-sans`}
               >
                 {t("by")}{" "}
                 <span
@@ -215,7 +214,7 @@ export default async function ArticlePage({ params }: Props) {
 
             {/* Article Content */}
             <div
-              className={`prose lg:prose-xl max-w-none text-black dark:text-dark-text dark:prose-invert ${albert_Sans.className}`}
+              className={`prose lg:prose-xl max-w-none text-black dark:text-dark-text dark:prose-invert font-albert-sans`}
               itemProp="articleBody"
             >
               <PortableText value={article.body} />

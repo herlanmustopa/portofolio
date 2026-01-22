@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { albert_Sans } from "@/app/fonts";
 
 interface LikeButtonProps {
   slug: string;
@@ -172,7 +171,7 @@ export default function LikeButton({ slug, showCount = true, size = "md" }: Like
       </motion.button>
 
       {showCount && (
-        <span className={`text-sm text-black/60 dark:text-dark-text-muted ${albert_Sans.className}`}>
+        <span className={`text-sm text-black/60 dark:text-dark-text-muted font-albert-sans`}>
           {likes === null ? (
             <span className="inline-block w-6 h-4 bg-black/10 dark:bg-white/10 rounded animate-pulse" />
           ) : (

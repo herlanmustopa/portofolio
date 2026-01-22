@@ -3,7 +3,6 @@ import React, { useRef } from "react";
 import { useTranslations } from "next-intl";
 import { motion, useInView, type Variants } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
-import { albert_Sans, thesignature, unbounded } from "@/app/fonts";
 import Page from "../organisms/pages";
 import { cn } from "@/utils/classMerge";
 
@@ -132,10 +131,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             whileHover={{ opacity: 1 }}
           >
             <div className="text-center text-white p-6">
-              <p className={`text-xl font-bold mb-2 ${unbounded.className}`}>
+              <p className={`text-xl font-bold mb-2 font-unbounded`}>
                 {title}
               </p>
-              <p className={`text-sm opacity-90 ${albert_Sans.className}`}>
+              <p className={`text-sm opacity-90 font-albert-sans`}>
                 {clickToViewDetailsText}
               </p>
             </div>
@@ -149,7 +148,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         variants={itemVariants}
       >
         <motion.p
-          className={`text-gold mb-2 font-semibold ${albert_Sans.className}`}
+          className={`text-gold mb-2 font-semibold font-albert-sans`}
           initial={{ opacity: 0, x: align === "right" ? 20 : -20 }}
           animate={
             isInView
@@ -162,7 +161,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </motion.p>
 
         <motion.h3
-          className={`text-3xl lg:text-4xl font-bold text-black dark:text-dark-text mb-4 ${unbounded.className}`}
+          className={`text-3xl lg:text-4xl font-bold text-black dark:text-dark-text mb-4 font-unbounded`}
           initial={{ opacity: 0, x: align === "right" ? 20 : -20 }}
           animate={
             isInView
@@ -175,7 +174,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </motion.h3>
 
         <motion.p
-          className={`text-black/80 dark:text-dark-text-muted mb-6 leading-relaxed ${albert_Sans.className}`}
+          className={`text-black/80 dark:text-dark-text-muted mb-6 leading-relaxed font-albert-sans`}
           initial={{ opacity: 0, x: align === "right" ? 20 : -20 }}
           animate={
             isInView
@@ -199,7 +198,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           {stack.map((tech, techIndex) => (
             <motion.span
               key={tech}
-              className={`bg-green/10 dark:bg-green-light/10 text-green dark:text-green-light text-sm font-medium px-3 py-1 rounded-full border border-green/20 dark:border-green-light/20 hover:bg-green/20 dark:hover:bg-green-light/20 transition-colors ${albert_Sans.className}`}
+              className={`bg-green/10 dark:bg-green-light/10 text-green dark:text-green-light text-sm font-medium px-3 py-1 rounded-full border border-green/20 dark:border-green-light/20 hover:bg-green/20 dark:hover:bg-green-light/20 transition-colors font-albert-sans`}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={
                 isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
@@ -228,7 +227,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
             }}
             whileTap={{ scale: 0.95 }}
-            className={`bg-green dark:bg-green-light text-white font-bold py-3 px-6 rounded-full transition-all duration-300 hover:bg-green-80 dark:hover:bg-green shadow-lg ${albert_Sans.className}`}
+            className={`bg-green dark:bg-green-light text-white font-bold py-3 px-6 rounded-full transition-all duration-300 hover:bg-green-80 dark:hover:bg-green shadow-lg font-albert-sans`}
           >
             {viewCaseStudyText}
           </motion.button>
@@ -238,7 +237,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               href={liveLink}
               target="_blank"
               rel="noopener noreferrer"
-              className={`text-black dark:text-dark-text font-bold hover:text-green dark:hover:text-green-light transition-colors group ${albert_Sans.className}`}
+              className={`text-black dark:text-dark-text font-bold hover:text-green dark:hover:text-green-light transition-colors group font-albert-sans`}
               whileHover={{ x: 5 }}
             >
               {liveDemoText}
@@ -339,13 +338,13 @@ export default function Projects() {
           className="w-full text-center"
         >
           <motion.h1
-            className={`text-6xl lg:text-7xl text-green dark:text-green-light mb-4 ${thesignature.className}`}
+            className={`text-6xl lg:text-7xl text-green dark:text-green-light mb-4 font-thesignature`}
             variants={itemVariants}
           >
             {t("title")}
           </motion.h1>
           <motion.h2
-            className={`text-2xl md:text-3xl lg:text-4xl font-semibold mb-20 text-black dark:text-dark-text ${unbounded.className}`}
+            className={`text-2xl md:text-3xl lg:text-4xl font-semibold mb-20 text-black dark:text-dark-text font-unbounded`}
             variants={itemVariants}
           >
             {t("subtitle")}

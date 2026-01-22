@@ -2,7 +2,6 @@
 
 import { Link } from "@/i18n/navigation";
 import { usePathname } from "next/navigation";
-import { albert_Sans } from "@/app/fonts";
 
 export interface BreadcrumbItem {
   name: string;
@@ -51,7 +50,7 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
       />
 
       {/* Visual Breadcrumb */}
-      <nav aria-label="Breadcrumb" className={`${albert_Sans.className}`}>
+      <nav aria-label="Breadcrumb" className={`font-albert-sans`}>
         <ol
           className="flex items-center space-x-2 text-sm text-black/60 dark:text-dark-text-muted"
           itemScope

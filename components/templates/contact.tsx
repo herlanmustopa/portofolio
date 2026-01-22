@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import { motion, type Variants } from "framer-motion";
-import { albert_Sans, thesignature, unbounded } from "@/app/fonts";
 import Page from "../organisms/pages";
 import Toast from "../molecules/Toast";
 
@@ -117,13 +116,13 @@ export default function Contact() {
           variants={containerVariants}
         >
           <motion.h1
-            className={`text-7xl text-green dark:text-green-light mb-4 ${thesignature.className}`}
+            className={`text-7xl text-green dark:text-green-light mb-4 font-thesignature`}
             variants={itemVariants}
           >
             {t("title")}
           </motion.h1>
           <motion.h2
-            className={`text-2xl md:text-3xl lg:text-4xl font-semibold text-black dark:text-dark-text ${unbounded.className}`}
+            className={`text-2xl md:text-3xl lg:text-4xl font-semibold text-black dark:text-dark-text font-unbounded`}
             variants={itemVariants}
           >
             {t("subtitle")}
@@ -155,7 +154,7 @@ export default function Contact() {
                 value={formData.fullName}
                 onChange={handleInputChange}
                 required
-                className={`block w-full shadow-sm py-3 px-4 placeholder-gray-500 dark:placeholder-gray-400 bg-white dark:bg-dark-bg text-black dark:text-dark-text focus:ring-2 focus:ring-green dark:focus:ring-green-light focus:border-green dark:focus:border-green-light border border-gray-300 dark:border-dark-border rounded-md transition-all duration-300 ${albert_Sans.className}`}
+                className={`block w-full shadow-sm py-3 px-4 placeholder-gray-500 dark:placeholder-gray-400 bg-white dark:bg-dark-bg text-black dark:text-dark-text focus:ring-2 focus:ring-green dark:focus:ring-green-light focus:border-green dark:focus:border-green-light border border-gray-300 dark:border-dark-border rounded-md transition-all duration-300 font-albert-sans`}
               />
             </motion.div>
 
@@ -176,7 +175,7 @@ export default function Contact() {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className={`block w-full shadow-sm py-3 px-4 placeholder-gray-500 dark:placeholder-gray-400 bg-white dark:bg-dark-bg text-black dark:text-dark-text focus:ring-2 focus:ring-green dark:focus:ring-green-light focus:border-green dark:focus:border-green-light border border-gray-300 dark:border-dark-border rounded-md transition-all duration-300 ${albert_Sans.className}`}
+                className={`block w-full shadow-sm py-3 px-4 placeholder-gray-500 dark:placeholder-gray-400 bg-white dark:bg-dark-bg text-black dark:text-dark-text focus:ring-2 focus:ring-green dark:focus:ring-green-light focus:border-green dark:focus:border-green-light border border-gray-300 dark:border-dark-border rounded-md transition-all duration-300 font-albert-sans`}
               />
             </motion.div>
 
@@ -196,7 +195,7 @@ export default function Contact() {
                 value={formData.message}
                 onChange={handleInputChange}
                 required
-                className={`block w-full shadow-sm py-3 px-4 placeholder-gray-500 dark:placeholder-gray-400 bg-white dark:bg-dark-bg text-black dark:text-dark-text focus:ring-2 focus:ring-green dark:focus:ring-green-light focus:border-green dark:focus:border-green-light border border-gray-300 dark:border-dark-border rounded-md transition-all duration-300 resize-none ${albert_Sans.className}`}
+                className={`block w-full shadow-sm py-3 px-4 placeholder-gray-500 dark:placeholder-gray-400 bg-white dark:bg-dark-bg text-black dark:text-dark-text focus:ring-2 focus:ring-green dark:focus:ring-green-light focus:border-green dark:focus:border-green-light border border-gray-300 dark:border-dark-border rounded-md transition-all duration-300 resize-none font-albert-sans`}
               />
             </motion.div>
 
@@ -208,7 +207,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full inline-flex justify-center items-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-full text-white bg-green dark:bg-green-light hover:bg-green-80 dark:hover:bg-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green dark:focus:ring-green-light transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed ${albert_Sans.className}`}
+                className={`w-full inline-flex justify-center items-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-full text-white bg-green dark:bg-green-light hover:bg-green-80 dark:hover:bg-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green dark:focus:ring-green-light transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed font-albert-sans`}
               >
                 {isSubmitting ? (
                   <>
@@ -239,7 +238,7 @@ export default function Contact() {
             variants={containerVariants}
           >
             <motion.p
-              className={`text-gray-600 dark:text-dark-text-muted mb-4 ${albert_Sans.className}`}
+              className={`text-gray-600 dark:text-dark-text-muted mb-4 font-albert-sans`}
               variants={itemVariants}
             >
               {t("reachOut")}
@@ -250,7 +249,7 @@ export default function Contact() {
             >
               <motion.a
                 href="mailto:herlan.mustopa@outlook.com"
-                className={`text-green dark:text-green-light hover:text-green-80 dark:hover:text-green font-semibold transition-colors ${albert_Sans.className}`}
+                className={`text-green dark:text-green-light hover:text-green-80 dark:hover:text-green font-semibold transition-colors font-albert-sans`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -258,7 +257,7 @@ export default function Contact() {
               </motion.a>
               <motion.a
                 href="tel:628119011099"
-                className={`text-green dark:text-green-light hover:text-green-80 dark:hover:text-green font-semibold transition-colors ${albert_Sans.className}`}
+                className={`text-green dark:text-green-light hover:text-green-80 dark:hover:text-green font-semibold transition-colors font-albert-sans`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

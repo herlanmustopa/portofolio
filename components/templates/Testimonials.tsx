@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
-import { albert_Sans, thesignature, unbounded } from "@/app/fonts";
 import Page from "../organisms/pages";
 
 interface Testimonial {
@@ -65,10 +64,10 @@ export default function Testimonials() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className={`text-6xl lg:text-7xl text-green dark:text-green-light mb-4 ${thesignature.className}`}>
+          <h1 className={`text-6xl lg:text-7xl text-green dark:text-green-light mb-4 font-thesignature`}>
             {t("title")}
           </h1>
-          <h2 className={`text-2xl md:text-3xl lg:text-4xl font-semibold text-black dark:text-dark-text ${unbounded.className}`}>
+          <h2 className={`text-2xl md:text-3xl lg:text-4xl font-semibold text-black dark:text-dark-text font-unbounded`}>
             {t("subtitle")}
           </h2>
         </motion.div>
@@ -113,19 +112,19 @@ export default function Testimonials() {
                 </div>
 
                 {/* Content */}
-                <p className={`text-lg md:text-xl text-black/80 dark:text-dark-text-muted leading-relaxed mb-8 italic ${albert_Sans.className}`}>
+                <p className={`text-lg md:text-xl text-black/80 dark:text-dark-text-muted leading-relaxed mb-8 italic font-albert-sans`}>
                   &ldquo;{testimonials[activeIndex].content}&rdquo;
                 </p>
 
                 {/* Author Info */}
                 <div>
-                  <p className={`text-xl font-bold text-black dark:text-dark-text ${unbounded.className}`}>
+                  <p className={`text-xl font-bold text-black dark:text-dark-text font-unbounded`}>
                     {testimonials[activeIndex].name}
                   </p>
-                  <p className={`text-green dark:text-green-light font-medium ${albert_Sans.className}`}>
+                  <p className={`text-green dark:text-green-light font-medium font-albert-sans`}>
                     {testimonials[activeIndex].role}
                   </p>
-                  <p className={`text-black/60 dark:text-dark-text-muted text-sm ${albert_Sans.className}`}>
+                  <p className={`text-black/60 dark:text-dark-text-muted text-sm font-albert-sans`}>
                     {testimonials[activeIndex].company}
                   </p>
                 </div>

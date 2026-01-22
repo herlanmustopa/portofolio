@@ -1,6 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-import { albert_Sans } from "@/app/fonts";
 
 interface SearchInputProps {
   value: string;
@@ -44,7 +43,7 @@ export default function SearchInput({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className={`w-full pl-12 pr-4 py-3 bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-full text-black dark:text-dark-text placeholder-gray-400 dark:placeholder-dark-text-muted focus:outline-none focus:ring-2 focus:ring-green dark:focus:ring-green-light focus:border-transparent transition-all duration-300 ${albert_Sans.className}`}
+        className={`w-full pl-12 pr-4 py-3 bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-full text-black dark:text-dark-text placeholder-gray-400 dark:placeholder-dark-text-muted focus:outline-none focus:ring-2 focus:ring-green dark:focus:ring-green-light focus:border-transparent transition-all duration-300 font-albert-sans`}
       />
 
       {/* Clear Button */}

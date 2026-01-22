@@ -1,7 +1,6 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
-import { albert_Sans } from "@/app/fonts";
 
 interface ToastProps {
   message: string;
@@ -28,7 +27,7 @@ export default function Toast({ message, type, isVisible, onClose }: ToastProps)
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 50, scale: 0.9 }}
           transition={{ duration: 0.3 }}
-          className={`fixed bottom-6 right-6 z-50 px-6 py-4 rounded-lg shadow-lg flex items-center gap-3 ${albert_Sans.className} ${
+          className={`fixed bottom-6 right-6 z-50 px-6 py-4 rounded-lg shadow-lg flex items-center gap-3 font-albert-sans ${
             type === "success"
               ? "bg-green dark:bg-green-light text-white"
               : "bg-red-500 text-white"

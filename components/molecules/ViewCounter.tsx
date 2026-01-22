@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { albert_Sans } from "@/app/fonts";
 
 interface ViewCounterProps {
   slug: string;
@@ -41,7 +40,7 @@ export default function ViewCounter({
   }, [slug, increment]);
 
   return (
-    <span className={`inline-flex items-center gap-1 ${albert_Sans.className} ${className}`}>
+    <span className={`inline-flex items-center gap-1 font-albert-sans ${className}`}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
