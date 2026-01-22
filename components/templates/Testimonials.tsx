@@ -124,7 +124,7 @@ export default function Testimonials() {
                   <p className={`text-green dark:text-green-light font-medium font-albert-sans`}>
                     {testimonials[activeIndex].role}
                   </p>
-                  <p className={`text-black/60 dark:text-dark-text-muted text-sm font-albert-sans`}>
+                  <p className={`text-text-secondary dark:text-dark-text-muted text-sm font-albert-sans`}>
                     {testimonials[activeIndex].company}
                   </p>
                 </div>
@@ -157,11 +157,10 @@ export default function Testimonials() {
                   <button
                     key={index}
                     onClick={() => setActiveIndex(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      index === activeIndex
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${index === activeIndex
                         ? "bg-green dark:bg-green-light w-8"
                         : "bg-green/30 dark:bg-green-light/30 hover:bg-green/50 dark:hover:bg-green-light/50"
-                    }`}
+                      }`}
                     aria-label={`Go to testimonial ${index + 1}`}
                   />
                 ))}

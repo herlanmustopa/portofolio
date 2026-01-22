@@ -52,7 +52,7 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
       {/* Visual Breadcrumb */}
       <nav aria-label="Breadcrumb" className={`font-albert-sans`}>
         <ol
-          className="flex items-center space-x-2 text-sm text-black/60 dark:text-dark-text-muted"
+          className="flex items-center space-x-2 text-sm text-text-secondary dark:text-dark-text-muted"
           itemScope
           itemType="https://schema.org/BreadcrumbList"
         >

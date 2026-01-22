@@ -41,7 +41,7 @@ const TimelineItem = ({ data, index }: ITimeline) => {
           >
             <h3 className="font-bold text-lg text-black dark:text-dark-text">{data.title}</h3>
             <p className="font-semibold text-green dark:text-green-light mb-1">{data.company}</p>
-            <p className="text-sm text-black/70 dark:text-dark-text-muted">{data.description}</p>
+            <p className="text-sm text-text-secondary dark:text-dark-text-muted">{data.description}</p>
           </motion.div>
         )}
       </div>
@@ -65,7 +65,7 @@ const TimelineItem = ({ data, index }: ITimeline) => {
             ></div>
           </div>
         </motion.div>
-        <p className="mt-2 text-xs text-center font-semibold text-black/60 dark:text-dark-text-muted whitespace-nowrap">
+        <p className="mt-2 text-xs text-center font-semibold text-text-secondary dark:text-dark-text-muted whitespace-nowrap">
           {data.date}
         </p>
       </div>
@@ -81,7 +81,7 @@ const TimelineItem = ({ data, index }: ITimeline) => {
           >
             <h3 className="font-bold text-lg text-black dark:text-dark-text">{data.title}</h3>
             <p className="font-semibold text-green dark:text-green-light mb-1">{data.company}</p>
-            <p className="text-sm text-black/70 dark:text-dark-text-muted">{data.description}</p>
+            <p className="text-sm text-text-secondary dark:text-dark-text-muted">{data.description}</p>
           </motion.div>
         )}
       </div>

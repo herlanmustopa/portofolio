@@ -118,7 +118,7 @@ export default function ArticlePreview() {
                   >
                     {article.title}
                   </h3>
-                  <p className={`text-black/70 dark:text-dark-text-muted text-sm line-clamp-3 font-albert-sans`}>
+                  <p className={`text-text-secondary dark:text-dark-text-muted text-sm line-clamp-3 font-albert-sans`}>
                     {article.description || t("clickToRead")}
                   </p>
                 </div>
@@ -174,7 +174,7 @@ export default function ArticlePreview() {
           </Link>
 
           {/* Additional text */}
-          <p className={`mt-4 text-black/50 dark:text-dark-text-muted text-sm font-albert-sans`}>
+          <p className={`mt-4 text-text-tertiary dark:text-dark-text-muted text-sm font-albert-sans`}>
             {t("exploreMore")}
           </p>
         </motion.div>

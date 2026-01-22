@@ -84,7 +84,7 @@ export default function NotFound() {
             <h2 className={`text-2xl md:text-3xl font-semibold text-black dark:text-dark-text mb-4 font-unbounded`}>
               {t("subtitle")}
             </h2>
-            <p className={`text-black/60 dark:text-dark-text-muted mb-8 max-w-md mx-auto font-albert-sans`}>
+            <p className={`text-text-secondary dark:text-dark-text-muted mb-8 max-w-md mx-auto font-albert-sans`}>
               {t("description")}
             </p>
           </motion.div>

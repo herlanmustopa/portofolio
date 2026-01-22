@@ -172,7 +172,7 @@ export default async function ArticlePage({ params }: Props) {
                 {article.title}
               </h1>
               <p
-                className={`text-black/60 dark:text-dark-text-muted font-albert-sans`}
+                className={`text-text-secondary dark:text-dark-text-muted font-albert-sans`}
               >
                 {t("by")}{" "}
                 <span

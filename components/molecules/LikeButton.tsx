@@ -119,11 +119,10 @@ export default function LikeButton({ slug, showCount = true, size = "md" }: Like
     <div className="inline-flex items-center gap-2">
       <motion.button
         onClick={handleLike}
-        className={`relative ${sizeClasses[size]} flex items-center justify-center rounded-full border-2 transition-colors duration-200 ${
-          isLiked
+        className={`relative ${sizeClasses[size]} flex items-center justify-center rounded-full border-2 transition-colors duration-200 ${isLiked
             ? "border-red-500 bg-red-500/10"
             : "border-green/20 dark:border-green-light/20 hover:border-red-400 hover:bg-red-50 dark:hover:bg-red-500/10"
-        }`}
+          }`}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         disabled={isLiked}
@@ -149,7 +148,7 @@ export default function LikeButton({ slug, showCount = true, size = "md" }: Like
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className={isLiked ? "text-red-500" : "text-black/60 dark:text-dark-text-muted"}
+          className={isLiked ? "text-red-500" : "text-text-secondary dark:text-dark-text-muted"}
           animate={isAnimating ? { scale: [1, 1.3, 0.9, 1.1, 1] } : {}}
           transition={{ duration: 0.5 }}
         >
@@ -171,7 +170,7 @@ export default function LikeButton({ slug, showCount = true, size = "md" }: Like
       </motion.button>
 
       {showCount && (
-        <span className={`text-sm text-black/60 dark:text-dark-text-muted font-albert-sans`}>
+        <span className={`text-sm text-text-secondary dark:text-dark-text-muted font-albert-sans`}>
           {likes === null ? (
             <span className="inline-block w-6 h-4 bg-black/10 dark:bg-white/10 rounded animate-pulse" />
           ) : (

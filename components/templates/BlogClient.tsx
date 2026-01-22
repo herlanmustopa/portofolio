@@ -126,7 +126,7 @@ export default function BlogClient({ articles }: BlogClientProps) {
             {t("subtitle")}
           </h2>
           <p
-            className={`mt-4 text-black/70 dark:text-dark-text-muted max-w-2xl mx-auto font-albert-sans`}
+            className={`mt-4 text-text-secondary dark:text-dark-text-muted max-w-2xl mx-auto font-albert-sans`}
           >
             {t("description")}
           </p>
@@ -149,15 +149,15 @@ export default function BlogClient({ articles }: BlogClientProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <p className={`text-center text-sm text-black/60 dark:text-dark-text-muted mb-3 font-albert-sans`}>
+            <p className={`text-center text-sm text-text-secondary dark:text-dark-text-muted mb-3 font-albert-sans`}>
               {t("filterByCategory")}
             </p>
             <div className="flex flex-wrap justify-center gap-2">
               <motion.button
                 onClick={() => handleCategoryClick(null)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${selectedCategory === null
-                    ? "bg-green dark:bg-green-light text-white"
-                    : "bg-white dark:bg-dark-card text-black/70 dark:text-dark-text-muted hover:bg-green/10 dark:hover:bg-green-light/10"
+                  ? "bg-green dark:bg-green-light text-white"
+                  : "bg-white dark:bg-dark-card text-text-secondary dark:text-dark-text-muted hover:bg-green/10 dark:hover:bg-green-light/10"
                   } font-albert-sans`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -169,8 +169,8 @@ export default function BlogClient({ articles }: BlogClientProps) {
                   key={category}
                   onClick={() => handleCategoryClick(category)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${selectedCategory === category
-                      ? "bg-green dark:bg-green-light text-white"
-                      : "bg-white dark:bg-dark-card text-black/70 dark:text-dark-text-muted hover:bg-green/10 dark:hover:bg-green-light/10"
+                    ? "bg-green dark:bg-green-light text-white"
+                    : "bg-white dark:bg-dark-card text-text-secondary dark:text-dark-text-muted hover:bg-green/10 dark:hover:bg-green-light/10"
                     } font-albert-sans`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -189,7 +189,7 @@ export default function BlogClient({ articles }: BlogClientProps) {
             animate={{ opacity: 1 }}
             className={`text-center mb-8 font-albert-sans`}
           >
-            <p className="text-black/60 dark:text-dark-text-muted">
+            <p className="text-text-secondary dark:text-dark-text-muted">
               {t("articlesFound", { count: filteredArticles.length })}
               {selectedCategory && (
                 <span className="ml-1">
@@ -252,10 +252,10 @@ export default function BlogClient({ articles }: BlogClientProps) {
                     <h3 className="text-xl font-bold text-black dark:text-dark-text mb-3 line-clamp-2 font-unbounded">
                       {article.title}
                     </h3>
-                    <p className="text-black/70 dark:text-dark-text-muted text-sm line-clamp-3 font-albert-sans">
+                    <p className="text-text-secondary dark:text-dark-text-muted text-sm line-clamp-3 font-albert-sans">
                       {article.description || t("clickToReadMore")}
                     </p>
-                    <div className="mt-3 pt-3 border-t border-black/10 dark:border-white/10 flex items-center gap-4 text-xs text-black/50 dark:text-dark-text-muted font-albert-sans">
+                    <div className="mt-3 pt-3 border-t border-black/10 dark:border-white/10 flex items-center gap-4 text-xs text-text-tertiary dark:text-dark-text-muted font-albert-sans">
                       <span>👁 {views > 0 ? views.toLocaleString() : "—"}</span>
                       <span>❤️ {likes > 0 ? likes.toLocaleString() : "—"}</span>
                       <span>🔗 {shares > 0 ? shares.toLocaleString() : "—"}</span>
@@ -278,7 +278,7 @@ export default function BlogClient({ articles }: BlogClientProps) {
             <h3 className={`text-xl font-semibold text-black dark:text-dark-text mb-2 font-unbounded`}>
               {hasActiveFilters ? t("noArticlesFound") : t("noArticles")}
             </h3>
-            <p className={`text-black/60 dark:text-dark-text-muted font-albert-sans`}>
+            <p className={`text-text-secondary dark:text-dark-text-muted font-albert-sans`}>
               {hasActiveFilters
                 ? t("noArticlesDescription")
                 : t("stayTuned")}

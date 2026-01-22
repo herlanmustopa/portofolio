@@ -137,7 +137,7 @@ export default function ArticleSection({ articles }: ArticleSectionProps) {
           </Link>
 
           {/* Additional text */}
-          <p className={`mt-4 text-black/50 dark:text-dark-text-muted text-sm font-albert-sans`}>
+          <p className={`mt-4 text-text-tertiary dark:text-dark-text-muted text-sm font-albert-sans`}>
             {t("exploreMore")}
           </p>
         </motion.div>

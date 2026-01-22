@@ -162,7 +162,7 @@ export default function Expertise() {
           {/* Bottom CTA */}
           <motion.div className="mt-16 text-center" variants={itemVariants}>
             <motion.p
-              className={`text-black/70 dark:text-dark-text-muted mb-6 max-w-2xl mx-auto font-albert-sans`}
+              className={`text-text-secondary dark:text-dark-text-muted mb-6 max-w-2xl mx-auto font-albert-sans`}
               variants={itemVariants}
             >
               {t("cta.description")}

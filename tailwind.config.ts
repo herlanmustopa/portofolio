@@ -61,6 +61,9 @@ const config: Config = {
       "dark-border": "#334155",
       "dark-text": "#e2e8f0",
       "dark-text-muted": "#94a3b8",
+      // Accessible text colors (WCAG AA compliant)
+      "text-secondary": "#4b5563", // gray-600, replaces text-black/70
+      "text-tertiary": "#6b7280",  // gray-500, replaces text-black/50
     },
   },
   plugins: [],

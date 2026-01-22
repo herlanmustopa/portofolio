@@ -54,12 +54,12 @@ export default function ArticleCard({ article, index, stats }: ArticleCardProps)
           >
             {article.title}
           </h3>
-          <p className={`text-black/70 dark:text-dark-text-muted text-sm line-clamp-3 font-albert-sans`}>
+          <p className={`text-text-secondary dark:text-dark-text-muted text-sm line-clamp-3 font-albert-sans`}>
             {article.description || t("clickToReadMore")}
           </p>
 
           {/* Stats: Views, Likes, Shares */}
-          <div className={`mt-3 pt-3 border-t border-black/10 dark:border-white/10 flex items-center gap-4 text-xs text-black/50 dark:text-dark-text-muted font-albert-sans`}>
+          <div className={`mt-3 pt-3 border-t border-black/10 dark:border-white/10 flex items-center gap-4 text-xs text-text-tertiary dark:text-dark-text-muted font-albert-sans`}>
             {/* Views */}
             <div className="flex items-center gap-1">
               <svg

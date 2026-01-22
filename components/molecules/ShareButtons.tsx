@@ -104,7 +104,7 @@ export default function ShareButtons({ title, url, description, slug, showCount 
         <>
             <div className="flex flex-wrap items-center gap-3">
                 <div className="flex items-center gap-2">
-                    <span className="text-sm font-medium text-black/60 dark:text-dark-text-muted">
+                    <span className="text-sm font-medium text-text-secondary dark:text-dark-text-muted">
                         {locale === "id" ? "Bagikan:" : "Share:"}
                     </span>
                     {showCount && slug && (
