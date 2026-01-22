@@ -46,9 +46,11 @@ body {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -112,6 +114,7 @@ body {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
   }
@@ -121,6 +124,7 @@ body {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -151,3 +155,77 @@ main {
   animation-timing-function: ease-in-out;
 }
 
+/* ========================================
+   Article Card Animations
+   Replace framer-motion due to Turbopack bug
+   ======================================== */
+
+/* Fade in and slide up animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Article card animation class */
+.article-card-animate {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Staggered animation delays for cards */
+.article-card-animate:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.article-card-animate:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.article-card-animate:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.article-card-animate:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.article-card-animate:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+.article-card-animate:nth-child(6) {
+  animation-delay: 0.5s;
+}
+
+.article-card-animate:nth-child(7) {
+  animation-delay: 0.6s;
+}
+
+.article-card-animate:nth-child(8) {
+  animation-delay: 0.7s;
+}
+
+.article-card-animate:nth-child(9) {
+  animation-delay: 0.8s;
+}
+
+/* Hover effect for article cards */
+.article-card-hover {
+  transition: all 0.3s ease;
+}
+
+.article-card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.dark .article-card-hover:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}

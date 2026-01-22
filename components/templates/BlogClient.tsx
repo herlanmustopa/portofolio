@@ -155,11 +155,10 @@ export default function BlogClient({ articles }: BlogClientProps) {
             <div className="flex flex-wrap justify-center gap-2">
               <motion.button
                 onClick={() => handleCategoryClick(null)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                  selectedCategory === null
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${selectedCategory === null
                     ? "bg-green dark:bg-green-light text-white"
                     : "bg-white dark:bg-dark-card text-black/70 dark:text-dark-text-muted hover:bg-green/10 dark:hover:bg-green-light/10"
-                } font-albert-sans`}
+                  } font-albert-sans`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -169,11 +168,10 @@ export default function BlogClient({ articles }: BlogClientProps) {
                 <motion.button
                   key={category}
                   onClick={() => handleCategoryClick(category)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                    selectedCategory === category
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${selectedCategory === category
                       ? "bg-green dark:bg-green-light text-white"
                       : "bg-white dark:bg-dark-card text-black/70 dark:text-dark-text-muted hover:bg-green/10 dark:hover:bg-green-light/10"
-                  } font-albert-sans`}
+                    } font-albert-sans`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -222,10 +220,10 @@ export default function BlogClient({ articles }: BlogClientProps) {
             const shares = stats?.shares ?? 0;
 
             return (
-              <div key={article._id}>
+              <div key={article._id} className="article-card-animate">
                 <Link
                   href={`/blog/${article.slug}`}
-                  className="block bg-white dark:bg-dark-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full"
+                  className="block bg-white dark:bg-dark-card rounded-lg overflow-hidden shadow-lg article-card-hover h-full"
                 >
                   {article.imageUrl && (
                     <div className="relative h-48 w-full">

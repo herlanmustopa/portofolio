@@ -1,6 +1,5 @@
 "use client";
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 
@@ -27,17 +26,16 @@ interface ArticleCardProps {
 export default function ArticleCard({ article, index, stats }: ArticleCardProps) {
   const t = useTranslations("blog");
 
+  // Extract stats values to avoid Turbopack bug with optional chaining in JSX
+  const views = stats?.views ?? 0;
+  const likes = stats?.likes ?? 0;
+  const shares = stats?.shares ?? 0;
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ y: -10 }}
-    >
+    <div className="article-card-animate">
       <Link
         href={`/blog/${article.slug}`}
-        className="block bg-white dark:bg-dark-card rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 h-full"
+        className="block bg-white dark:bg-dark-card rounded-lg overflow-hidden shadow-lg article-card-hover h-full"
       >
         {article.imageUrl && (
           <div className="relative h-48 w-full">
@@ -78,7 +76,7 @@ export default function ArticleCard({ article, index, stats }: ArticleCardProps)
                 <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
                 <circle cx="12" cy="12" r="3" />
               </svg>
-              <span>{stats?.views?.toLocaleString() ?? "—"}</span>
+              <span>{views > 0 ? views.toLocaleString() : "—"}</span>
             </div>
 
             {/* Likes */}
@@ -96,7 +94,7 @@ export default function ArticleCard({ article, index, stats }: ArticleCardProps)
               >
                 <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
               </svg>
-              <span>{stats?.likes?.toLocaleString() ?? "—"}</span>
+              <span>{likes > 0 ? likes.toLocaleString() : "—"}</span>
             </div>
 
             {/* Shares */}
@@ -118,12 +116,13 @@ export default function ArticleCard({ article, index, stats }: ArticleCardProps)
                 <line x1="8.59" x2="15.42" y1="13.51" y2="17.49" />
                 <line x1="15.41" x2="8.59" y1="6.51" y2="10.49" />
               </svg>
-              <span>{stats?.shares?.toLocaleString() ?? "—"}</span>
+              <span>{shares > 0 ? shares.toLocaleString() : "—"}</span>
             </div>
           </div>
         </div>
       </Link>
-    </motion.div>
+    </div>
   );
 }
+
 
